@@ -111,4 +111,21 @@ export class BaseService<T> {
     return this.http.get<Array<T>>(this.resourcePath(), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
+
+
+  /**
+   * @method registerUser
+   * @description
+   * Registers a new user in the JSON Server.
+   * @param {any} user - The user data to be registered.
+   * @returns {Observable<any>} - An observable with the created user data.
+   */
+  public registerUser(user: any): Observable<any> {
+    return this.http.post<any>(this.resourcePath(), JSON.stringify(user), {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
+
 }
