@@ -1,0 +1,17 @@
+.footer-content {
+    background-color: #d83749;
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+  
+}
+  
+.footer-content p {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+  
+.footer-content p:last-child {
+    margin-bottom: 0;
+}
+  
