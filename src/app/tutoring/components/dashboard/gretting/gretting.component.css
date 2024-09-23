@@ -1,0 +1,49 @@
+.user-greeting {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    color: #ffffff;
+  
+  }
+  
+  .user-info {
+    height: 200px;
+    margin-left: 500px;
+    display: flex;
+    align-items: center;
+  }
+  .user-details{
+    margin-bottom: 40px;
+    width: 180px;
+  }
+  .user-avatar {
+    width: 120px;
+    height: 120px;
+    margin-right: 10px;
+  }
+  
+  mat-icon {
+    width: 400px;
+    height: 400px;
+    font-size: 90px;
+    color: #0c2e6f;
+    margin-left: 25px;
+  }
+  
+  .mat-card-title {
+    color: white;
+    text-align: justify;
+    margin-bottom: 5px;
+  }
+  
+  .mat-card-subtitle {
+    font-size: 20px;
+  }
+  
+  .edit-semester {
+    width: 9%;
+    margin-bottom: 45px;
+    margin-right: 910px;
+    color: #ff0000;
+  }  

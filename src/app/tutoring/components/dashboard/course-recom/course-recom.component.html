@@ -1,0 +1,36 @@
+<p>course-recom works!</p>
+<div class="course-carousel">
+    <h3>What to learn now</h3>
+  
+    <div class="carousel-container">
+      <!-- Tabs for simulating a carousel -->
+      <mat-tab-group [(selectedIndex)]="selectedIndex" (selectedTabChange)="onTabChange($event)">
+        <!-- Simulating carousel effect with tabs -->
+        <mat-tab *ngFor="let course of recommendedCourses">
+          <!-- Tab label with icon and course title -->
+          <ng-template mat-tab-label>
+            <mat-icon>school</mat-icon>
+            {{ course.title }}
+          </ng-template>
+  
+          <!-- Card for course content -->
+          <mat-card class="course-card">
+            <img mat-card-image [src]="course.image" alt="{{ course.title }}">
+            <mat-card-content>
+              <h4 class="course-title">{{ course.title }}</h4>
+              <p class="course-author">{{ course.author }}</p>
+  
+              <!-- Rating -->
+              <div class="course-rating">
+                <mat-icon>star</mat-icon>
+                <span>{{ course.rating }}</span>
+              </div>
+  
+              <!-- Price -->
+              <p class="course-price">{{ course.price }}</p>
+            </mat-card-content>
+          </mat-card>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>  
