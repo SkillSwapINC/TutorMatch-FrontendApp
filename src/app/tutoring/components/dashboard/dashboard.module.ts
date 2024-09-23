@@ -22,13 +22,13 @@ import {LanguageSwitcherComponent} from "../../../public/components/language-swi
 import {PageNotFoundComponent} from "../../../public/pages/page-not-found/page-not-found.component";
 import {LoginComponent} from "../../pages/login/login.component";
 import {RegisterComponent} from "../../pages/register/register.component";
-import {GrettingComponent} from "./gretting/gretting.component";
+import {GreetingComponent} from "./greeting/greeting.component";
 
 @NgModule({
   declarations: [
     DashboardComponent,
     ToolbarComponent,
-    GrettingComponent,
+    GreetingComponent,
     CourseRecomComponent,
     SemestersComponent
   ],
