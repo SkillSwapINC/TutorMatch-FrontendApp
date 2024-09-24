@@ -41,6 +41,7 @@ import {BaseService} from "../../../shared/services/base.service";
     MatInput,
     MatFormFieldModule, MatInputModule, MatSelectModule, MatRadioGroup, MatRadioButton, ReactiveFormsModule, NgIf
   ],
+  providers: [BaseService],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
