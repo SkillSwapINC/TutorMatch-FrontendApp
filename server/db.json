@@ -313,5 +313,15 @@
       "tutorId": 1,
       "courseId": 12
     }
+  ],
+  "users": [
+    {
+      "name": "prueba",
+      "lastName": "prueba",
+      "email": "prueba@upc.edu.pe",
+      "password": "123",
+      "role": "teacher",
+      "id": 1
+    }
   ]
 }
