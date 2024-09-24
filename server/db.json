@@ -1,5 +1,317 @@
 {
-  "tutors": [],
-  "courses": [],
-  "tutorings": []
+  "semesters": [
+    {
+      "id": 1,
+      "name": "First",
+      "courses": [
+        {
+          "id": 1,
+          "name": "Introducción a los Algoritmos",
+          "description": "Fundamentos de algoritmos y su aplicación.",
+          "cycle": 1
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Second",
+      "courses": [
+        {
+          "id": 2,
+          "name": "Algoritmos",
+          "description": "Estudio de algoritmos avanzados y su análisis.",
+          "cycle": 2
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Third",
+      "courses": [
+        {
+          "id": 3,
+          "name": "Algoritmos y Estructuras de Datos",
+          "description": "Estructuras de datos y su uso en algoritmos.",
+          "cycle": 3
+        },
+        {
+          "id": 4,
+          "name": "Diseño y Patrones de Software",
+          "description": "Principios de diseño y patrones de software.",
+          "cycle": 3
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Fourth",
+      "courses": [
+        {
+          "id": 5,
+          "name": "Diseño de Base de Datos",
+          "description": "Modelado y diseño de bases de datos.",
+          "cycle": 4
+        },
+        {
+          "id": 6,
+          "name": "IHC y Tecnologías Móviles",
+          "description": "Interacción Humano-Computadora y desarrollo móvil.",
+          "cycle": 4
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Fifth",
+      "courses": [
+        {
+          "id": 7,
+          "name": "Aplicaciones Web",
+          "description": "Desarrollo de aplicaciones para la web.",
+          "cycle": 5
+        },
+        {
+          "id": 8,
+          "name": "Desarrollo de Aplicaciones Open Source",
+          "description": "Principios y prácticas del desarrollo Open Source.",
+          "cycle": 5
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Sixth",
+      "courses": [
+        {
+          "id": 9,
+          "name": "Aplicaciones para Dispositivos Móviles",
+          "description": "Desarrollo de aplicaciones para móviles.",
+          "cycle": 6
+        },
+        {
+          "id": 10,
+          "name": "Complejidad Algorítmica",
+          "description": "Estudio de la complejidad de algoritmos.",
+          "cycle": 6
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Seventh",
+      "courses": [
+        {
+          "id": 11,
+          "name": "Diseño de Experimentos de Ingeniería de Software",
+          "description": "Diseño de experimentos en el contexto del software.",
+          "cycle": 7
+        },
+        {
+          "id": 12,
+          "name": "Fundamentos de Arquitectura de Software",
+          "description": "Principios de arquitectura de software.",
+          "cycle": 7
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Eighth",
+      "courses": [
+        {
+          "id": 13,
+          "name": "Arquitecturas de Software Emergentes",
+          "description": "Nuevas tendencias en arquitecturas de software.",
+          "cycle": 8
+        },
+        {
+          "id": 14,
+          "name": "Gerencia de Proyectos en Computación",
+          "description": "Gestión de proyectos en el ámbito de la computación.",
+          "cycle": 8
+        }
+      ]
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "name": "Introducción a los Algoritmos",
+      "description": "Fundamentos de algoritmos y su aplicación.",
+      "cycle": 1
+    },
+    {
+      "id": 2,
+      "name": "Algoritmos",
+      "description": "Estudio de algoritmos avanzados y su análisis.",
+      "cycle": 2
+    },
+    {
+      "id": 3,
+      "name": "Algoritmos y Estructuras de Datos",
+      "description": "Estructuras de datos y su uso en algoritmos.",
+      "cycle": 3
+    },
+    {
+      "id": 4,
+      "name": "Diseño y Patrones de Software",
+      "description": "Principios de diseño y patrones de software.",
+      "cycle": 3
+    },
+    {
+      "id": 5,
+      "name": "Diseño de Base de Datos",
+      "description": "Modelado y diseño de bases de datos.",
+      "cycle": 4
+    },
+    {
+      "id": 6,
+      "name": "IHC y Tecnologías Móviles",
+      "description": "Interacción Humano-Computadora y desarrollo móvil.",
+      "cycle": 4
+    },
+    {
+      "id": 7,
+      "name": "Aplicaciones Web",
+      "description": "Desarrollo de aplicaciones para la web.",
+      "cycle": 5
+    },
+    {
+      "id": 8,
+      "name": "Desarrollo de Aplicaciones Open Source",
+      "description": "Principios y prácticas del desarrollo Open Source.",
+      "cycle": 5
+    },
+    {
+      "id": 9,
+      "name": "Aplicaciones para Dispositivos Móviles",
+      "description": "Desarrollo de aplicaciones para móviles.",
+      "cycle": 6
+    },
+    {
+      "id": 10,
+      "name": "Complejidad Algorítmica",
+      "description": "Estudio de la complejidad de algoritmos.",
+      "cycle": 6
+    },
+    {
+      "id": 11,
+      "name": "Diseño de Experimentos de Ingeniería de Software",
+      "description": "Diseño de experimentos en el contexto del software.",
+      "cycle": 7
+    },
+    {
+      "id": 12,
+      "name": "Fundamentos de Arquitectura de Software",
+      "description": "Principios de arquitectura de software.",
+      "cycle": 7
+    },
+    {
+      "id": 13,
+      "name": "Arquitecturas de Software Emergentes",
+      "description": "Nuevas tendencias en arquitecturas de software.",
+      "cycle": 8
+    },
+    {
+      "id": 14,
+      "name": "Gerencia de Proyectos en Computación",
+      "description": "Gestión de proyectos en el ámbito de la computación.",
+      "cycle": 8
+    }
+  ],
+  "tutors": [
+    {
+      "id": 1,
+      "name": "Juan",
+      "surename": "Pérez",
+      "email": "juan.perez@example.com",
+      "password": "securepassword123",
+      "avatar": "https://example.com/avatars/juan.jpg",
+      "gender": "Male",
+      "cycle": "1"
+    }
+  ],
+  "tutorings": [
+    {
+      "id": 1,
+      "title": "Clases de Introducción a los Algoritmos",
+      "description": "Sesiones personalizadas para aprender los fundamentos de algoritmos.",
+      "price": 50,
+      "image": "https://example.com/images/algorithms.jpg",
+      "tutorId": 1,
+      "courseId": 1
+    },
+    {
+      "id": 2,
+      "title": "Desarrollo de Aplicaciones Open Source (Fifth)",
+      "description": "Prueba Final",
+      "price": 25.99,
+      "times": {
+        "0": [
+          "10-11",
+          "11-12"
+        ],
+        "1": [
+          "10-11",
+          "11-12"
+        ],
+        "2": [
+          "10-11",
+          "11-12"
+        ],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": []
+      },
+      "image": "",
+      "tutorId": 1,
+      "courseId": 8
+    },
+    {
+      "id": 3,
+      "title": "Aplicaciones para Dispositivos Móviles (Sixth)",
+      "description": "Aplicaciones para Dispositivos Móviles",
+      "price": 20,
+      "times": {
+        "0": [],
+        "1": [],
+        "2": [
+          "10-11",
+          "11-12"
+        ],
+        "3": [
+          "10-11",
+          "11-12"
+        ],
+        "4": [],
+        "5": [],
+        "6": []
+      },
+      "image": "",
+      "tutorId": 1,
+      "courseId": 9
+    },
+    {
+      "id": 4,
+      "title": "Fundamentos de Arquitectura de Software (Seventh)",
+      "description": "hola",
+      "price": 50,
+      "times": {
+        "0": [],
+        "1": [
+          "10-11",
+          "15-16"
+        ],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": []
+      },
+      "image": "",
+      "tutorId": 1,
+      "courseId": 12
+    }
+  ]
 }
