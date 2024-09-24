@@ -23,6 +23,7 @@ import {PageNotFoundComponent} from "../../../public/pages/page-not-found/page-n
 import {LoginComponent} from "../../pages/login/login.component";
 import {RegisterComponent} from "../../pages/register/register.component";
 import {GreetingComponent} from "./greeting/greeting.component";
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import {GreetingComponent} from "./greeting/greeting.component";
     MatInput,
     MatButton,
     MatCardSubtitle, MatCardTitle, LoginComponent, RegisterComponent,
-    MatIconButton, MatFormFieldModule, MatInputModule, FormsModule, NgOptimizedImage, MatCard, MatCardHeader, MatAnchor, MatCardAvatar, MatTabGroup, MatTab, MatTabLabel, MatCardContent, MatCardImage, MatGridList, MatGridTile, FooterContentComponent, MatMenuTrigger, LanguageSwitcherComponent, MatMenu, PageNotFoundComponent
+    MatIconButton, MatFormFieldModule, MatInputModule, FormsModule, NgOptimizedImage, MatCard, MatCardHeader, MatAnchor, MatCardAvatar, MatTabGroup, MatTab, MatTabLabel, MatCardContent, MatCardImage, MatGridList, MatGridTile, FooterContentComponent, MatMenuTrigger, LanguageSwitcherComponent, MatMenu, PageNotFoundComponent, TranslateModule
   ],
   exports: [DashboardComponent, ToolbarComponent]
 })
