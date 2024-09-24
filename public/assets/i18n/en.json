@@ -13,6 +13,19 @@
     "pEmail": "E-mail",
     "pPassword": "Password",
     "pName": "Name",
-    "pLastName": "Last Name"
+    "pLastName": "Last Name",
+    "search": "Search any course",
+    "helloAgain": "Hello again",
+    "editSemester": "Edit Semester",
+    "whatLearn": "What to learn now",
+    "softwareSemesters": "Software Engineering Semesters",
+    "first": "First Semester",
+    "second": "Second Semester",
+    "third": "Third Semester",
+    "fourth": "Fourth Semester",
+    "fifth": "Fifth Semester",
+    "sixth": "Sixth Semester",
+    "seventh": "Seventh Semester",
+    "eighth": "Eighth Semester"
   }
 }

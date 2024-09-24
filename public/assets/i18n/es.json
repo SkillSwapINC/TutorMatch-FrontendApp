@@ -13,6 +13,19 @@
     "pEmail": "Correo electrónico",
     "pPassword": "Contraseña",
     "pName": "Nombre",
-    "pLastName": "Apellido"
+    "pLastName": "Apellido",
+    "search": "Buscar cualquier curso",
+    "helloAgain": "Hola de nuevo",
+    "editSemester": "Editar Semestre",
+    "whatLearn": "Que aprender ahora",
+    "softwareSemesters": "Semestres de Ingeniería de Software",
+    "first": "Primer Semestre",
+    "second": "Segundo Semestre",
+    "third": "Tercer Semestre",
+    "fourth": "Cuarto Semestre",
+    "fifth": "Quinto Semestre",
+    "sixth": "Sexto Semestre",
+    "seventh": "Séptimo Semestre",
+    "eighth": "Octavo Semestre"
   }
 }
