@@ -1,5 +1,18 @@
 {
-    "footer": {
+  "login": {
+    "message": "¿Tienes una cuenta registrada en TutorMatch?",
+    "title": "Iniciar Sesión",
+    "forgot": "¿Olvidaste tu contraseña?",
+    "signIn": "Iniciar Sesión"
+  },
+  "register": {
+    "message": "¡Crea una cuenta en TutorMatch ahora!",
+    "title": "¡Regístrate ahora!",
+    "teacher": "Tutor",
+    "student": "Estudiante",
+    "signUp": "Registrarse"
+  },
+  "footer": {
         "intro": "Copyright © 2024 SkillSwapInc, Reservados todos los derechos"
     }
 }

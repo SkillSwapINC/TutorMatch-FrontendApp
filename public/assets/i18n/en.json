@@ -1,6 +1,18 @@
 {
-    "footer": {
-        
-        "intro":"Copyright © 2024 SkillSwapInc, All rights reserved"
-    }
+  "login": {
+    "message": "Do you have a registered account on TutorMatch?",
+    "title": "Log In",
+    "forgot": "Forgot your password?",
+    "signIn": "Sign In"
+  },
+  "register": {
+    "message": "Create an account on TutorMatch Now!!!",
+    "title": "Sign Up Now!!",
+    "teacher": "Teacher",
+    "student": "Student",
+    "signUp": "Sign Up"
+  },
+  "footer": {
+    "intro":"Copyright © 2024 SkillSwapInc, All rights reserved"
+  }
 }
