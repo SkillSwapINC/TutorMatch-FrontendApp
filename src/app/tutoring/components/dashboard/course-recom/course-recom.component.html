@@ -1,5 +1,5 @@
 <div class="course-carousel">
-    <h3>{{'footer.whatLearn' | translate}}</h3>
+    <h3 style="color: #ffffff">{{'footer.whatLearn' | translate}}</h3>
       <div class="carousel-container">
       <!-- Tabs for simulating a carousel -->
       <mat-tab-group [(selectedIndex)]="selectedIndex" (selectedTabChange)="onTabChange($event)">
@@ -7,21 +7,21 @@
         <mat-tab *ngFor="let course of recommendedCourses">
           <!-- Tab label with icon and course title -->
           <ng-template mat-tab-label>
-            <mat-icon>school</mat-icon>
-            {{ course.title }}
+            <mat-icon style="color: #ffffff">school</mat-icon>
+            <p style="color: #ffffff"> &nbsp; &nbsp; &nbsp;{{ course.title }}</p>
           </ng-template>
 
           <!-- Card for course content -->
           <mat-card class="course-card">
             <img mat-card-image [src]="course.image" alt="{{ course.title }}">
             <mat-card-content>
-              <h4 class="course-title">{{ course.title }}</h4>
-              <p class="course-author">{{ course.author }}</p>
+              <h4 class="course-title" style="color: #ffffff">{{ course.title }}</h4>
+              <p class="course-author" style="color: #ffffff">{{ course.author }}</p>
 
               <!-- Rating -->
               <div class="course-rating">
                 <mat-icon>star</mat-icon>
-                <span>{{ course.rating }}</span>
+                <span style="color: #ffffff">{{ course.rating }}</span>
               </div>
 
               <!-- Price -->
