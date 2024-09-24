@@ -1,0 +1,90 @@
+:host {
+  display: block;
+  background-color: #242524;
+  color: white;
+  padding: 20px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+h3 {
+  margin-bottom: 10px;
+}
+
+.mat-dialog-content {
+  max-height: none;
+}
+
+.semester-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.semester-buttons button {
+  flex: 1 0 21%;
+  color: white;
+  border-color: #444;
+}
+
+.semester-buttons button.selected {
+  background-color: #d7374b;
+  color: white;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+textarea {
+  min-height: 100px;
+}
+
+button[color="warn"] {
+  background-color: #d7374b;
+}
+
+.upload-text {
+  margin-left: 10px;
+  color: #888;
+}
+
+.subtitle {
+  color: #888;
+  font-size: 0.9em;
+  margin-top: 0;
+}
+
+.time-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 5px;
+}
+
+.time-table th {
+  text-align: center;
+  font-weight: normal;
+  color: #888;
+}
+
+.time-table button {
+  width: 100%;
+  min-width: 0;
+  padding: 5px;
+  color: white;
+  border-color: #444;
+}
+
+.time-table button.selected {
+  background-color: #d7374b;
+  color: white;
+}
+
+mat-dialog-actions {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
