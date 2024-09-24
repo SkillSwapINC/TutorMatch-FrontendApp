@@ -9,6 +9,9 @@ import {MatInput} from "@angular/material/input";
 import {MatAnchor, MatButton, MatIconButton} from "@angular/material/button";
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import {MatCard, MatCardAvatar, MatCardContent, MatCardHeader, MatCardImage} from "@angular/material/card";
 import { MatCardSubtitle, MatCardTitle} from "@angular/material/card";
@@ -24,6 +27,8 @@ import {LoginComponent} from "../../pages/login/login.component";
 import {RegisterComponent} from "../../pages/register/register.component";
 import {GreetingComponent} from "./greeting/greeting.component";
 import {TranslateModule} from "@ngx-translate/core";
+import { AddTutoringDialogComponent } from './add-tutoring-dialog/add-tutoring-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +36,8 @@ import {TranslateModule} from "@ngx-translate/core";
     ToolbarComponent,
     GreetingComponent,
     CourseRecomComponent,
-    SemestersComponent
+    SemestersComponent,
+    AddTutoringDialogComponent
   ],
   imports: [
     CommonModule,
@@ -41,8 +47,8 @@ import {TranslateModule} from "@ngx-translate/core";
     MatInput,
     MatButton,
     MatCardSubtitle, MatCardTitle, LoginComponent, RegisterComponent,
-    MatIconButton, MatFormFieldModule, MatInputModule, FormsModule, NgOptimizedImage, MatCard, MatCardHeader, MatAnchor, MatCardAvatar, MatTabGroup, MatTab, MatTabLabel, MatCardContent, MatCardImage, MatGridList, MatGridTile, FooterContentComponent, MatMenuTrigger, LanguageSwitcherComponent, MatMenu, PageNotFoundComponent, TranslateModule
-  ],
+    MatIconButton, MatFormFieldModule, MatInputModule, FormsModule, NgOptimizedImage, MatCard, MatCardHeader, MatAnchor, MatCardAvatar, MatTabGroup, MatTab, MatTabLabel, MatCardContent, MatCardImage, MatGridList, MatGridTile, FooterContentComponent, MatMenuTrigger, LanguageSwitcherComponent, MatMenu, PageNotFoundComponent, TranslateModule,
+    MatDialogModule,MatButtonModule,MatSelectModule  ],
   exports: [DashboardComponent, ToolbarComponent]
 })
 export class DashboardModule { }
