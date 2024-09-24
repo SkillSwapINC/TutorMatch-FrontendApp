@@ -14,6 +14,12 @@ import {TranslateService} from "@ngx-translate/core";
 export class AppComponent {
   title = 'TutorMatch-FrontendApp';
 
+  options=[
+    {path:'/Dashboard',title:'Dashboard'},
+    {path:'/LogIn',title:'Login'},
+    {path:'/Register',title:'Register'},
+
+  ]
   constructor(translate: TranslateService) {
     translate.setDefaultLang('es');
     translate.use('en');
