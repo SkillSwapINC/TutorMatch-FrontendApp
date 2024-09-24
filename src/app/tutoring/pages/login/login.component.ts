@@ -10,6 +10,7 @@ import {MatIcon} from "@angular/material/icon";
 import {MatMenu, MatMenuTrigger} from "@angular/material/menu";
 import {LanguageSwitcherComponent} from "../../../public/components/language-switcher/language-switcher.component";
 import {Router} from "@angular/router";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,7 @@ import {Router} from "@angular/router";
     ReactiveFormsModule,
     MatFormField,
     MatInput,
-    MatFormFieldModule, MatInputModule, MatSelectModule, MatIcon, MatIconButton, MatMenuTrigger, LanguageSwitcherComponent, MatMenu
+    MatFormFieldModule, MatInputModule, MatSelectModule, MatIcon, MatIconButton, MatMenuTrigger, LanguageSwitcherComponent, MatMenu, TranslateModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'

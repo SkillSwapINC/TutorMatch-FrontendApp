@@ -21,6 +21,7 @@ import {MatRadioButton, MatRadioGroup} from "@angular/material/radio";
 import {NgIf} from "@angular/common";
 import { upcEmailValidator } from './upcEmailValidator';
 import {BaseService} from "../../../shared/services/base.service";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-register',
@@ -39,7 +40,7 @@ import {BaseService} from "../../../shared/services/base.service";
     MatFormField,
     MatCheckbox,
     MatInput,
-    MatFormFieldModule, MatInputModule, MatSelectModule, MatRadioGroup, MatRadioButton, ReactiveFormsModule, NgIf
+    MatFormFieldModule, MatInputModule, MatSelectModule, MatRadioGroup, MatRadioButton, ReactiveFormsModule, NgIf, TranslateModule
   ],
   providers: [BaseService],
   templateUrl: './register.component.html',
@@ -53,7 +54,7 @@ export class RegisterComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private registerService: BaseService<any>  
+    private registerService: BaseService<any>
   ) {
     this.registerForm = this.fb.group({
       name: ['', Validators.required],
@@ -75,7 +76,7 @@ export class RegisterComponent {
     if (this.registerForm.valid) {
       const formValues = this.registerForm.value;
 
-      
+
       this.registerService.registerUser(formValues).subscribe({
         next: (response) => {
           console.log('User registered successfully:', response);
