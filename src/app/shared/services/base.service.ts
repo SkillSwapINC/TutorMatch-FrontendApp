@@ -128,4 +128,17 @@ export class BaseService<T> {
     });
   }
 
+  /**
+   * @method createTutoring
+   * @description
+   * Creates a new tutoring session by sending the tutoring data to the JSON Server.
+   * @param {any} tutoring - The tutoring session data to be created.
+   * @returns {Observable<any>} - An observable with the created tutoring session data.
+   */
+  public createTutoring(tutoring:any): Observable<any> {
+    return this.http.post<any>(this.resourcePath(), JSON.stringify(tutoring), {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    })
+  }
+
 }
