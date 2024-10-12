@@ -26,4 +26,8 @@ export class ToolbarComponent {
   navigateToSettings() {
     this.router.navigate(['/Settings']).then();
   }
+
+  navigateToProfile() {
+    this.router.navigate(['/Profile']).then(); // Navegar a ProfileComponent
+  }
 }
