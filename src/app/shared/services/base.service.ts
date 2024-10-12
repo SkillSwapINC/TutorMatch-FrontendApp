@@ -4,11 +4,12 @@ import {catchError, Observable, retry, throwError} from "rxjs";
 import {inject} from "@angular/core";
 
 /**
- * Base service class for CRUD operations
+ * @class BaseService
  * @description
- * This class provides the basic CRUD operations for a resource.
- * @remarks
- * It is intended to be extended by other services.
+ * This is a generic base service class that provides common functionality for making HTTP requests
+ * to a RESTful API. It includes methods for handling errors, constructing resource paths,
+ * and fetching data from the server.
+ * @template T - The type of the resource handled by the service.
  */
 export class BaseService<T> {
   /**
@@ -139,6 +140,19 @@ export class BaseService<T> {
     return this.http.post<any>(this.resourcePath(), JSON.stringify(tutoring), {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     })
+  }
+
+  /**
+   * @method updateUser
+   * @description
+   * Updates an existing user in the JSON Server.
+   * @param {T} user - The user data to be updated.
+   * @param {number} id - The ID of the user to be updated.
+   * @returns {Observable<T>} - An observable with the updated user data.
+   */
+  public updateUser(user: T, id: number): Observable<T> {
+    return this.http.put<T>(`${this.resourcePath()}/${id}`, JSON.stringify(user), this.httpOptions)
+      .pipe(catchError(this.handleError));
   }
 
 }
