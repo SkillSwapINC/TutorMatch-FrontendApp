@@ -20,7 +20,7 @@ import {MatTab, MatTabGroup, MatTabLabel} from "@angular/material/tabs";
 import { SemestersComponent } from './semesters/semesters.component';
 import {MatGridList, MatGridTile} from "@angular/material/grid-list";
 import {FooterContentComponent} from "../../../public/components/footer-content/footer-content.component";
-import {MatMenu, MatMenuTrigger} from "@angular/material/menu";
+import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {LanguageSwitcherComponent} from "../../../public/components/language-switcher/language-switcher.component";
 import {PageNotFoundComponent} from "../../../public/pages/page-not-found/page-not-found.component";
 import {LoginComponent} from "../../../public/pages/login/login.component";
@@ -48,7 +48,7 @@ import { AddTutoringDialogComponent } from './add-tutoring-dialog/add-tutoring-d
     MatButton,
     MatCardSubtitle, MatCardTitle, LoginComponent, RegisterComponent,
     MatIconButton, MatFormFieldModule, MatInputModule, FormsModule, NgOptimizedImage, MatCard, MatCardHeader, MatAnchor, MatCardAvatar, MatTabGroup, MatTab, MatTabLabel, MatCardContent, MatCardImage, MatGridList, MatGridTile, FooterContentComponent, MatMenuTrigger, LanguageSwitcherComponent, MatMenu, PageNotFoundComponent, TranslateModule,
-    MatDialogModule,MatButtonModule,MatSelectModule  ],
+    MatDialogModule, MatButtonModule, MatSelectModule, MatMenuItem],
   exports: [DashboardComponent, ToolbarComponent]
 })
 export class DashboardModule { }

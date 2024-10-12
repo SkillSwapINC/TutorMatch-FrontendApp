@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTutoringDialogComponent } from '../add-tutoring-dialog/add-tutoring-dialog.component';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-toolbar',
@@ -9,7 +10,7 @@ import { AddTutoringDialogComponent } from '../add-tutoring-dialog/add-tutoring-
 })
 export class ToolbarComponent {
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog,private router: Router) {}
 
   openAddTutoringDialog(): void {
     const dialogRef = this.dialog.open(AddTutoringDialogComponent);
@@ -20,5 +21,9 @@ export class ToolbarComponent {
 
       }
     });
+  }
+
+  navigateToSettings() {
+    this.router.navigate(['/Settings']).then();
   }
 }
