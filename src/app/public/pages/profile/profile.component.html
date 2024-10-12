@@ -1,0 +1,44 @@
+<mat-card *ngIf="currentUser" class="profile-card">
+  <mat-card-header>
+    <mat-card-title>User Profile</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div *ngIf="currentUser.avatar" class="avatar-container">
+      <img [src]="currentUser.avatar" alt="Avatar" class="avatar">
+    </div>
+
+    <mat-list>
+      <mat-list-item>
+        <span matListItemTitle>Name: </span>
+        <span matListItemLine>{{ currentUser.name }}</span>
+      </mat-list-item>
+
+      <mat-list-item>
+        <span matListItemTitle>Last Name: </span>
+        <span matListItemLine>{{ currentUser.lastName }}</span>
+      </mat-list-item>
+
+      <mat-list-item>
+        <span matListItemTitle>Email: </span>
+        <span matListItemLine>{{ currentUser.email }}</span>
+      </mat-list-item>
+
+      <mat-list-item>
+        <span matListItemTitle>Role: </span>
+        <span matListItemLine>{{ currentUser.role }}</span>
+      </mat-list-item>
+
+      <mat-list-item>
+        <span matListItemTitle>Gender: </span>
+        <span matListItemLine>{{ currentUser.gender }}</span>
+      </mat-list-item>
+
+      <mat-list-item>
+        <span matListItemTitle>Cycle: </span>
+        <span matListItemLine>{{ currentUser.cycle }}</span>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <button mat-button (click)="onNavigateHome()">Dashboard</button>
+</mat-card>
