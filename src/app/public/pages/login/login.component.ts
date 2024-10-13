@@ -35,12 +35,6 @@ export class LoginComponent {
   loginForm: FormGroup;
   errorMessage: string = '';
 
-  /**
-   * @constructor
-   * @param {FormBuilder} fb - An instance of FormBuilder for creating form groups.
-   * @param {AuthService} authService - An instance of AuthService for authentication services.
-   * @param {Router} router - An instance of Router for navigation.
-   */
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -48,33 +42,30 @@ export class LoginComponent {
     });
   }
 
-  /**
-   * @method onSignUp
-   * @description Navigates to the register route for user sign-up.
-   */
-  onSignUp(){
-    this.router.navigate(['Register']).then()
+  onSignUp() {
+    this.router.navigate(['Register']).then();
   }
 
-  /**
-   * @method onSubmit
-   * @description Handles the form submission for login.
-   */
   onSubmit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
 
       this.errorMessage = '';
-      /**
-       * @description Attempts to login with the provided credentials using the AuthService.
-       */
+
       this.authService.login(email, password).subscribe({
         next: (users: any[]) => {
           if (users.length > 0) {
             const user = users[0];
             this.authService.setCurrentUser(user);
 
-            this.router.navigate(['Dashboard']).then();
+            if (user.role === 'teacher') {
+              this.authService.setIsTutor(true);
+              this.router.navigate(['Dashboard']).then();
+            } else {
+              this.authService.setIsTutor(false);
+              this.router.navigate(['Dashboard']).then();
+            }
+
           } else {
             this.errorMessage = 'Invalid credentials. Please try again.';
           }
@@ -92,3 +83,4 @@ export class LoginComponent {
     }
   }
 }
+
