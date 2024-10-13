@@ -8,7 +8,7 @@ import {MatInput, MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {MatIcon} from "@angular/material/icon";
 import {MatMenu, MatMenuTrigger} from "@angular/material/menu";
-import {LanguageSwitcherComponent} from "../../../public/components/language-switcher/language-switcher.component";
+import {LanguageSwitcherComponent} from "../../components/language-switcher/language-switcher.component";
 import {Router} from "@angular/router";
 import {TranslateModule} from "@ngx-translate/core";
 
