@@ -18,7 +18,6 @@ import {MatInput} from "@angular/material/input";
     MatButton,
     MatInput,
     MatLabel
-
   ],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.css'
@@ -30,7 +29,6 @@ export class SettingsComponent implements OnInit {
    * @description Holds the current user's data.
    */
   currentUser: any;
-
 
   /**
    * @constructor
@@ -49,7 +47,6 @@ export class SettingsComponent implements OnInit {
       cycle: [null]
     });
   }
-
 
   /**
    * @method ngOnInit
@@ -118,5 +115,4 @@ export class SettingsComponent implements OnInit {
       reader.readAsDataURL(file);
     }
   }
-
 }

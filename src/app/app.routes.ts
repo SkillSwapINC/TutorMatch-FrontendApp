@@ -6,7 +6,6 @@ import {LoginComponent} from "./public/pages/login/login.component";
 import {SettingsComponent} from "./public/pages/settings/settings.component";
 import {ProfileComponent} from "./public/pages/profile/profile.component";
 
-
 export const routes: Routes = [
   {path:'Dashboard',                component:DashboardComponent},
   {path:'LogIn',                    component:LoginComponent},
@@ -15,5 +14,4 @@ export const routes: Routes = [
   {path:'Profile',                  component:ProfileComponent},
   { path: '',                       redirectTo: 'Dashboard', pathMatch: 'full' },
   { path: '**',                     component: PageNotFoundComponent }
-
 ];

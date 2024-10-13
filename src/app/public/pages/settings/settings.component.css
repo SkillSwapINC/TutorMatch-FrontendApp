@@ -35,6 +35,7 @@ form {
   box-shadow: 0 10px 30px var(--shadow-color);
   width: 100%;
   max-width: 500px;
+  animation: fadeIn 0.5s ease-out; /* Mantener animación de fadeIn */
 }
 
 mat-form-field {
@@ -109,8 +110,4 @@ button[type="submit"]:hover {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-form {
-  animation: fadeIn 0.5s ease-out;
 }
