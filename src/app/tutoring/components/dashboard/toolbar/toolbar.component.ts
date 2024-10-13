@@ -23,6 +23,7 @@ export class ToolbarComponent implements OnInit {
   ngOnInit() {
     const userRole = this.registerService.getUserRole();
     this.isTutor = userRole === 'teacher';
+    this.isTutor = this.authService.getIsTutor();
   }
 
   openAddTutoringDialog(): void {
