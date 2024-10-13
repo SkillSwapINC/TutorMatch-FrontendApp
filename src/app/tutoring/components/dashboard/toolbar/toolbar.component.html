@@ -33,11 +33,14 @@
         <mat-icon>language</mat-icon>
       </button>
     </div>
-  <mat-menu #profileMenu="matMenu">
-    <button mat-menu-item (click)="navigateToSettings()">
-      <span>Settings</span>
-    </button>
-  </mat-menu>
+    <mat-menu #profileMenu="matMenu">
+      <button mat-menu-item (click)="navigateToSettings()">
+        <span>Settings</span>
+      </button>
+      <button mat-menu-item (click)="navigateToProfile()">
+        <span>Profile</span>
+      </button>
+    </mat-menu>
     <mat-menu #languageMenu="matMenu">
       <app-language-switcher></app-language-switcher>
     </mat-menu>

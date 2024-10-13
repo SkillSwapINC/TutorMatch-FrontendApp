@@ -8,6 +8,7 @@
   --input-background: #f0f0f0;
   --shadow-color: rgba(0, 0, 0, 0.1);
 }
+
 .container {
   display: flex;
   flex-direction: column;
@@ -18,6 +19,7 @@
   padding: 2rem;
   box-sizing: border-box;
 }
+
 h2 {
   font-size: 2.5rem;
   color: var(--primary-color);
@@ -25,6 +27,7 @@ h2 {
   text-align: center;
   text-shadow: 2px 2px 4px var(--shadow-color);
 }
+
 form {
   background-color: var(--card-background);
   padding: 2rem;
@@ -32,14 +35,18 @@ form {
   box-shadow: 0 10px 30px var(--shadow-color);
   width: 100%;
   max-width: 500px;
+  animation: fadeIn 0.5s ease-out; /* Mantener animación de fadeIn */
 }
+
 mat-form-field {
   width: 100%;
   margin-bottom: 1.5rem;
 }
+
 input[type="file"] {
   display: none;
 }
+
 label[for="avatar"] {
   display: inline-block;
   background-color: var(--primary-color);
@@ -49,9 +56,11 @@ label[for="avatar"] {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
 label[for="avatar"]:hover {
   background-color: var(--primary-dark);
 }
+
 button[type="submit"] {
   width: 100%;
   padding: 1rem;
@@ -60,40 +69,45 @@ button[type="submit"] {
   letter-spacing: 1px;
   transition: all 0.3s ease;
 }
+
 button[type="submit"]:hover {
   background-color: var(--primary-dark);
   box-shadow: 0 4px 8px var(--shadow-color);
   transform: translateY(-2px);
 }
+
 /* Custom styles for Material components */
 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
   background-color: var(--input-background);
   border-radius: 5px 5px 0 0;
 }
+
 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-underline::before {
   background-color: var(--primary-color);
 }
+
 ::ng-deep .mat-select-value,
 ::ng-deep .mat-select-arrow {
   color: var(--text-color);
 }
+
 ::ng-deep .mat-form-field-label {
   color: var(--primary-color);
 }
+
 /* Responsive adjustments */
 @media (max-width: 600px) {
   form {
     padding: 1.5rem;
   }
+
   h2 {
     font-size: 2rem;
   }
 }
+
 /* Animation for form appearance */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
-}
-form {
-  animation: fadeIn 0.5s ease-out;
 }

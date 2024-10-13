@@ -48,7 +48,7 @@ import { AddTutoringDialogComponent } from './add-tutoring-dialog/add-tutoring-d
     MatButton,
     MatCardSubtitle, MatCardTitle, LoginComponent, RegisterComponent,
     MatIconButton, MatFormFieldModule, MatInputModule, FormsModule, NgOptimizedImage, MatCard, MatCardHeader, MatAnchor, MatCardAvatar, MatTabGroup, MatTab, MatTabLabel, MatCardContent, MatCardImage, MatGridList, MatGridTile, FooterContentComponent, MatMenuTrigger, LanguageSwitcherComponent, MatMenu, PageNotFoundComponent, TranslateModule,
-    MatDialogModule,MatButtonModule,MatSelectModule, MatMenuItem  ],
+    MatDialogModule, MatButtonModule, MatSelectModule, MatMenuItem],
   exports: [DashboardComponent, ToolbarComponent]
 })
 export class DashboardModule { }

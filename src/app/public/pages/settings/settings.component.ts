@@ -6,6 +6,7 @@ import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {MatButton} from "@angular/material/button";
 import {MatInput} from "@angular/material/input";
+
 @Component({
   selector: 'app-settings',
   standalone: true,
@@ -28,6 +29,7 @@ export class SettingsComponent implements OnInit {
    * @description Holds the current user's data.
    */
   currentUser: any;
+
   /**
    * @constructor
    * @param {FormBuilder} fb - An instance of FormBuilder for creating form groups.
@@ -45,6 +47,7 @@ export class SettingsComponent implements OnInit {
       cycle: [null]
     });
   }
+
   /**
    * @method ngOnInit
    * @description Lifecycle hook that is called after the component's constructor.
@@ -56,6 +59,7 @@ export class SettingsComponent implements OnInit {
       this.populateForm();
     }
   }
+
   /**
    * @method populateForm
    * @description Populates the settings form with the current user's data.
@@ -67,6 +71,7 @@ export class SettingsComponent implements OnInit {
       cycle: this.currentUser.cycle
     });
   }
+
   /**
    * @method onSave
    * @description Handles the form submission for saving user settings.
@@ -94,6 +99,7 @@ export class SettingsComponent implements OnInit {
       console.log('Form is invalid');
     }
   }
+
   /**
    * @method onFileSelected
    * @description Handles the file selection event for the avatar upload.
