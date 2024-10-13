@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  serverBasePath: undefined
+  serverBasePath: 'https://my-json-server.typicode.com/SkillSwapINC/TutorMatch-JSON-Server'
 };

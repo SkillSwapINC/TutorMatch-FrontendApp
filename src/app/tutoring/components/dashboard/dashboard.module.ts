@@ -23,8 +23,8 @@ import {FooterContentComponent} from "../../../public/components/footer-content/
 import {MatMenu, MatMenuTrigger} from "@angular/material/menu";
 import {LanguageSwitcherComponent} from "../../../public/components/language-switcher/language-switcher.component";
 import {PageNotFoundComponent} from "../../../public/pages/page-not-found/page-not-found.component";
-import {LoginComponent} from "../../pages/login/login.component";
-import {RegisterComponent} from "../../pages/register/register.component";
+import {LoginComponent} from "../../../public/pages/login/login.component";
+import {RegisterComponent} from "../../../public/pages/register/register.component";
 import {GreetingComponent} from "./greeting/greeting.component";
 import {TranslateModule} from "@ngx-translate/core";
 import { AddTutoringDialogComponent } from './add-tutoring-dialog/add-tutoring-dialog.component';

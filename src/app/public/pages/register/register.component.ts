@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatIcon} from "@angular/material/icon";
 import {MatButton, MatIconButton} from "@angular/material/button";
-import {LanguageSwitcherComponent} from "../../../public/components/language-switcher/language-switcher.component";
+import {LanguageSwitcherComponent} from "../../components/language-switcher/language-switcher.component";
 import {MatMenu, MatMenuTrigger} from "@angular/material/menu";
 import {MatCard, MatCardTitle} from "@angular/material/card";
 import {
