@@ -322,6 +322,14 @@
       "password": "123",
       "role": "teacher",
       "id": 1
+    },
+    {
+      "name": "asda",
+      "lastName": "adasd",
+      "email": "dasdas@upc.edu.pe",
+      "password": "asdsad",
+      "role": "teacher",
+      "id": 2
     }
   ]
 }
