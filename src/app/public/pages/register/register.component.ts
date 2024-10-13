@@ -23,6 +23,7 @@ import { upcEmailValidator } from './upcEmailValidator';
 import {TranslateModule} from "@ngx-translate/core";
 import {RegisterService} from "../../services/register.service";
 
+
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -46,39 +47,83 @@ import {RegisterService} from "../../services/register.service";
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+
+  /**
+   * @property registerForm {FormGroup}
+   * @description The reactive form group for user registration data.
+   */
   registerForm: FormGroup;
-  isTutor: boolean = true;
+
+  /**
+   * @property isTutor {boolean}
+   * @description Flag indicating whether the selected role is "teacher".
+   * @property isStudent {boolean}
+   * @description Flag indicating whether the selected role is "student".
+   */
+  isTutor: boolean = false;
   isStudent: boolean = false;
 
+  /**
+   * @private static tutorId: number
+   * @description A static counter used to generate unique tutor IDs.
+   */
+  private static tutorId: number = 1;
+
+
+  /**
+   * @constructor
+   * @param {FormBuilder} fb - An instance of FormBuilder for creating form groups.
+   * @param {Router} router - An instance of Router for navigation.
+   * @param {RegisterService} registerService - An instance of RegisterService for user registration and role management.
+   */
   constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private registerService: RegisterService
+      private fb: FormBuilder,
+      private router: Router,
+      private registerService: RegisterService
   ) {
     this.registerForm = this.fb.group({
       name: ['', Validators.required],
       lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email,upcEmailValidator]],
+      email: ['', [Validators.required, Validators.email, upcEmailValidator]],
       password: ['', Validators.required],
       role: ['', Validators.required]
     });
   }
 
-
+  /**
+   * @method onRoleChange
+   * @description Handles the change event for the role selection dropdown.
+   * @param {any} event - The change event object.
+   */
   onRoleChange(event: any) {
     const selectedRole = event.value;
     this.isTutor = selectedRole === 'teacher';
     this.isStudent = selectedRole === 'student';
   }
 
+  /**
+   * @method onSignUp
+   * @description Handles the form submission for user registration.
+   */
   onSignUp() {
     if (this.registerForm.valid) {
       const formValues = this.registerForm.value;
+      this.registerService.setUserRole(formValues.role);
+      let userToRegister: any = {
+        ...formValues,
+        avatar: null,
+        gender: null,
+        cycle: null
+      };
 
+      if (formValues.role === 'teacher') {
+        userToRegister.tutorId = this.generateTutorId();
+      }
 
-      this.registerService.registerUser(formValues).subscribe({
+      this.registerService.registerUser(userToRegister).subscribe({
         next: (response) => {
           console.log('User registered successfully:', response);
+          localStorage.setItem('currentUser', JSON.stringify(response));
           this.router.navigate(['Dashboard']).then();
         },
         error: (error) => {
@@ -90,7 +135,21 @@ export class RegisterComponent {
     }
   }
 
+  /**
+   * @method private generateTutorId
+   * @description Generates a unique ID for newly registered tutors.
+   * @returns {number} - The generated tutor ID.
+   */
+  private generateTutorId(): number {
+    return RegisterComponent.tutorId++;
+  }
+
+  /**
+   * @method onLogin
+   * @description Navigates to the login route.
+   */
   onLogin() {
     this.router.navigate(['LogIn']).then();
   }
+
 }
