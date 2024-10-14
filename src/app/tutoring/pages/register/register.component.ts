@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { MatToolbar } from "@angular/material/toolbar";
-import { MatIcon } from "@angular/material/icon";
-import { MatButton, MatIconButton } from "@angular/material/button";
-import { LanguageSwitcherComponent } from "../../../public/components/language-switcher/language-switcher.component";
-import { MatMenu, MatMenuTrigger } from "@angular/material/menu";
-import { MatCard, MatCardTitle } from "@angular/material/card";
+import {MatToolbar} from "@angular/material/toolbar";
+import {MatIcon} from "@angular/material/icon";
+import {MatButton, MatIconButton} from "@angular/material/button";
+import {LanguageSwitcherComponent} from "../../../public/components/language-switcher/language-switcher.component";
+import {MatMenu, MatMenuTrigger} from "@angular/material/menu";
+import {MatCard, MatCardTitle} from "@angular/material/card";
 import {
   FormBuilder,
   FormGroup,
@@ -12,16 +12,16 @@ import {
   ReactiveFormsModule,
   Validators
 } from "@angular/forms";
-import { MatFormField, MatFormFieldModule } from "@angular/material/form-field";
-import { MatCheckbox } from "@angular/material/checkbox";
-import { MatInput, MatInputModule } from "@angular/material/input";
-import { MatSelectModule } from "@angular/material/select";
-import { Router } from "@angular/router";
-import { MatRadioButton, MatRadioGroup } from "@angular/material/radio";
-import { NgIf } from "@angular/common";
-import { upcEmailValidator } from './upcEmailValidator';
-import { TranslateModule } from "@ngx-translate/core";
-import { RegisterService } from "../../services/register.service";
+import {MatFormField, MatFormFieldModule} from "@angular/material/form-field";
+import {MatCheckbox} from "@angular/material/checkbox";
+import {MatInput, MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import {Router} from "@angular/router";
+import {MatRadioButton, MatRadioGroup} from "@angular/material/radio";
+import {NgIf} from "@angular/common";
+import {upcEmailValidator} from './upcEmailValidator';
+import {TranslateModule} from "@ngx-translate/core";
+import {RegisterService} from "../../services/register.service";
 
 @Component({
   selector: 'app-register',
