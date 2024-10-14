@@ -108,34 +108,27 @@ export class RegisterComponent {
   onSignUp() {
     if (this.registerForm.valid) {
       const formValues = this.registerForm.value;
-      this.registerService.setUserRole(formValues.role);
-      let userToRegister: any = {
-        ...formValues,
-        avatar: null,
-        gender: null,
-        cycle: null
-      };
 
       if (formValues.role === 'teacher') {
-        userToRegister.tutorId = this.generateTutorId();
-      }
+        sessionStorage.setItem('pendingTutor', JSON.stringify(formValues));
 
-      this.registerService.registerUser(userToRegister).subscribe({
-        next: (response) => {
-          console.log('User registered successfully:', response);
-          localStorage.setItem('currentUser', JSON.stringify(response));
-          if (formValues.role === 'student') {
+        this.router.navigate(['Plans']).then();
+      } else if (formValues.role === 'student') {
+
+        this.registerService.setUserRole(formValues.role);
+        this.registerService.registerUser(formValues).subscribe({
+          next: (response) => {
+            console.log('Usuario registrado correctamente:', response);
+            localStorage.setItem('currentUser', JSON.stringify(response));
             this.router.navigate(['Dashboard']).then();
-          } else if (formValues.role === 'teacher') {
-            this.router.navigate(['Plans']).then();
+          },
+          error: (error) => {
+            console.error('Error al registrar el usuario:', error);
           }
-        },
-        error: (error) => {
-          console.error('Error registering user:', error);
-        }
-      });
+        });
+      }
     } else {
-      console.log('Form is invalid');
+      console.log('Formulario inválido');
     }
   }
 

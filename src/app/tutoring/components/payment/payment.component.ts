@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import {RegisterService} from "../../../public/services/register.service";
 
 @Component({
   selector: 'app-payment',
@@ -23,7 +24,7 @@ export class PaymentComponent {
   formValid: boolean | string = false;
   cardType: string | null = null;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private registerService: RegisterService) {}
 
   get cardNumberDisplay() {
     return this.cardNumber.padEnd(16, 'X').replace(/(.{4})/g, '$1 ');
@@ -91,10 +92,30 @@ export class PaymentComponent {
 
   onSubmit() {
     if (this.formValid) {
-      console.log('Payment submitted');
-      this.router.navigate(['/Dashboard']).then();
+      // Lógica para procesar el pago
+
+      // Si el pago es exitoso, registrar al tutor
+      const pendingTutor = sessionStorage.getItem('pendingTutor');
+      if (pendingTutor) {
+        const tutorData = JSON.parse(pendingTutor);
+
+
+        this.registerService.setUserRole(tutorData.role);
+        this.registerService.registerUser(tutorData).subscribe({
+          next: (response) => {
+            console.log('Tutor registrado correctamente:', response);
+            localStorage.setItem('currentUser', JSON.stringify(response));
+            sessionStorage.removeItem('pendingTutor');
+            this.router.navigate(['/Dashboard']).then();
+          },
+          error: (error) => {
+            console.error('Error al registrar el tutor:', error);
+          }
+        });
+      }
     }
   }
+
 
   openPayPalLogin() {
     window.open('https://www.paypal.com/signin', '_blank', 'width=500,height=600');
