@@ -49,7 +49,6 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
-
       this.errorMessage = '';
 
       this.authService.login(email, password).subscribe({
@@ -57,15 +56,10 @@ export class LoginComponent {
           if (users.length > 0) {
             const user = users[0];
             this.authService.setCurrentUser(user);
+            
+            this.authService.setIsTutor(user.role === 'teacher');
 
-            if (user.role === 'teacher') {
-              this.authService.setIsTutor(true);
-              this.router.navigate(['Dashboard']).then();
-            } else {
-              this.authService.setIsTutor(false);
-              this.router.navigate(['Dashboard']).then();
-            }
-
+            this.router.navigate(['Dashboard']).then();
           } else {
             this.errorMessage = 'Invalid credentials. Please try again.';
           }
