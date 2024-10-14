@@ -14,6 +14,6 @@ export const routes: Routes = [
   {path:'Plans',                    component:PlansComponent},
   { path: 'Settings',               component: SettingsComponent },
   {path:'Profile',                  component:ProfileComponent},
-  { path: '',                       redirectTo: 'Dashboard', pathMatch: 'full' },
+  { path: '',                       redirectTo: 'LogIn', pathMatch: 'full' },
   { path: '**',                     component: PageNotFoundComponent }
 ];
