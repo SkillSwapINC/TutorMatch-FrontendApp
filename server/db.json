@@ -330,6 +330,14 @@
       "password": "asdsad",
       "role": "teacher",
       "id": 2
+    },
+    {
+      "name": "Erasmus Bradshaw",
+      "lastName": "Vinson",
+      "email": "zejemebax@upc.edu.pe",
+      "password": "Pa$$w0rd!",
+      "role": "student",
+      "id": 3
     }
   ]
 }
