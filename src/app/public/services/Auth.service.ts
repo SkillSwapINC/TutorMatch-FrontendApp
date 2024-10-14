@@ -20,8 +20,16 @@ export class AuthService extends BaseService<any> {
   constructor(private router: Router) {
     super();
     this.resourceEndPoint = '/users';
+    this.loadCurrentUser();
   }
 
+  private loadCurrentUser() {
+    const user = this.getCurrentUser();
+    if (user) {
+      this.isTutor = user.role === 'teacher'; 
+    }
+  }
+  
   /**
    * @method login
    * @description Attempts to log in a user using their email and password.
