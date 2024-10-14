@@ -1,10 +1,11 @@
-import {Component} from '@angular/core';
-import {MatToolbar} from "@angular/material/toolbar";
-import {MatIcon} from "@angular/material/icon";
-import {MatButton, MatIconButton} from "@angular/material/button";
-import {LanguageSwitcherComponent} from "../../../public/components/language-switcher/language-switcher.component";
-import {MatMenu, MatMenuTrigger} from "@angular/material/menu";
-import {MatCard, MatCardTitle} from "@angular/material/card";
+// src/app/tutoring/pages/register/register.component.ts
+import { Component } from '@angular/core';
+import { MatToolbar } from "@angular/material/toolbar";
+import { MatIcon } from "@angular/material/icon";
+import { MatButton, MatIconButton } from "@angular/material/button";
+import { LanguageSwitcherComponent } from "../../../public/components/language-switcher/language-switcher.component";
+import { MatMenu, MatMenuTrigger } from "@angular/material/menu";
+import { MatCard, MatCardTitle } from "@angular/material/card";
 import {
   FormBuilder,
   FormGroup,
@@ -12,16 +13,16 @@ import {
   ReactiveFormsModule,
   Validators
 } from "@angular/forms";
-import {MatFormField, MatFormFieldModule} from "@angular/material/form-field";
-import {MatCheckbox} from "@angular/material/checkbox";
-import {MatInput, MatInputModule} from "@angular/material/input";
-import {MatSelectModule} from "@angular/material/select";
-import {Router} from "@angular/router";
-import {MatRadioButton, MatRadioGroup} from "@angular/material/radio";
-import {NgIf} from "@angular/common";
+import { MatFormField, MatFormFieldModule } from "@angular/material/form-field";
+import { MatCheckbox } from "@angular/material/checkbox";
+import { MatInput, MatInputModule } from "@angular/material/input";
+import { MatSelectModule } from "@angular/material/select";
+import { Router } from "@angular/router";
+import { MatRadioButton, MatRadioGroup } from "@angular/material/radio";
+import { NgIf } from "@angular/common";
 import { upcEmailValidator } from './upcEmailValidator';
-import {TranslateModule} from "@ngx-translate/core";
-import {RegisterService} from "../../services/register.service";
+import { TranslateModule } from "@ngx-translate/core";
+import { RegisterService } from "../../services/register.service";
 
 @Component({
   selector: 'app-register',
@@ -58,12 +59,11 @@ export class RegisterComponent {
     this.registerForm = this.fb.group({
       name: ['', Validators.required],
       lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email,upcEmailValidator]],
+      email: ['', [Validators.required, Validators.email, upcEmailValidator]],
       password: ['', Validators.required],
       role: ['', Validators.required]
     });
   }
-
 
   onRoleChange(event: any) {
     const selectedRole = event.value;
@@ -75,11 +75,14 @@ export class RegisterComponent {
     if (this.registerForm.valid) {
       const formValues = this.registerForm.value;
 
-
       this.registerService.registerUser(formValues).subscribe({
         next: (response) => {
           console.log('User registered successfully:', response);
-          this.router.navigate(['Dashboard']).then();
+          if (this.isTutor) {
+            this.router.navigate(['Plans']).then();
+          } else if (this.isStudent) {
+            this.router.navigate(['Dashboard']).then();
+          }
         },
         error: (error) => {
           console.error('Error registering user:', error);
