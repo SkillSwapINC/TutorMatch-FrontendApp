@@ -316,60 +316,51 @@
   ],
   "users": [
     {
-      "name": "prueba",
-      "lastName": "prueba",
-      "email": "prueba@upc.edu.pe",
+      "name": "Teacher",
+      "lastName": "Test",
+      "email": "u2014342@upc.edu.pe",
       "password": "123",
       "role": "teacher",
+      "avatar": null,
+      "gender": null,
+      "cycle": null,
+      "tutorId": 1,
       "id": 1
     },
     {
-      "name": "asda",
-      "lastName": "adasd",
-      "email": "dasdas@upc.edu.pe",
-      "password": "asdsad",
-      "role": "teacher",
+      "name": "Student",
+      "lastName": "Test",
+      "email": "u20207832@upc.edu.pe",
+      "password": "123",
+      "role": "student",
+      "avatar": null,
+      "gender": null,
+      "cycle": null,
       "id": 2
     },
     {
-      "name": "Erasmus Bradshaw",
-      "lastName": "Vinson",
-      "email": "zejemebax@upc.edu.pe",
-      "password": "Pa$$w0rd!",
-      "role": "student",
+      "name": "TeacherTest",
+      "lastName": "Second",
+      "email": "u201962@upc.edu.pe",
+      "password": "upc$$",
+      "role": "teacher",
+      "avatar": null,
+      "gender": null,
+      "cycle": null,
+      "tutorId": 2,
       "id": 3
     },
     {
-      "name": "Beau Solis",
-      "lastName": "Mejia",
-      "email": "norafojupo@upc.edu.pe",
-      "password": "Pa$$w0rd!",
-      "role": "student",
+      "name": "TeacherTest",
+      "lastName": "Third",
+      "email": "u202142A34@upc.edu.pe",
+      "password": "upc123",
+      "role": "teacher",
+      "avatar": null,
+      "gender": null,
+      "cycle": null,
+      "tutorId": 3,
       "id": 4
-    },
-    {
-      "name": "Ora Holmes",
-      "lastName": "Herring",
-      "email": "mirowi@upc.edu.pe",
-      "password": "Pa$$w0rd!",
-      "role": "teacher",
-      "id": 5
-    },
-    {
-      "name": "Adam Nixon",
-      "lastName": "Joyce",
-      "email": "buberygo@upc.edu.pe",
-      "password": "Pa$$w0rd!",
-      "role": "student",
-      "id": 6
-    },
-    {
-      "name": "Lareina Kirby",
-      "lastName": "Decker",
-      "email": "secyruly@upc.edu.pe",
-      "password": "Pa$$w0rd!",
-      "role": "teacher",
-      "id": 7
     }
   ]
 }
