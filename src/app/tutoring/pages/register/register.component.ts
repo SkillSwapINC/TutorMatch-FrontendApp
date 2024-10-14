@@ -1,4 +1,3 @@
-// src/app/tutoring/pages/register/register.component.ts
 import { Component } from '@angular/core';
 import { MatToolbar } from "@angular/material/toolbar";
 import { MatIcon } from "@angular/material/icon";

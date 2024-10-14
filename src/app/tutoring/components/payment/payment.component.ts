@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -21,6 +22,8 @@ export class PaymentComponent {
   cvvValid = true;
   formValid: boolean | string = false;
   cardType: string | null = null;
+
+  constructor(private router: Router) {}
 
   get cardNumberDisplay() {
     return this.cardNumber.padEnd(16, 'X').replace(/(.{4})/g, '$1 ');
@@ -79,7 +82,7 @@ export class PaymentComponent {
 
   isCreditCardValid() {
     return this.nameValid && this.cardNumberValid && this.expiryValid && this.cvvValid &&
-      this.cardHolder && this.cardNumber && this.expiryDate && this.cvv;
+        this.cardHolder && this.cardNumber && this.expiryDate && this.cvv;
   }
 
   updateFormValidity() {
@@ -89,6 +92,7 @@ export class PaymentComponent {
   onSubmit() {
     if (this.formValid) {
       console.log('Payment submitted');
+      this.router.navigate(['/Dashboard']).then();
     }
   }
 
@@ -96,5 +100,3 @@ export class PaymentComponent {
     window.open('https://www.paypal.com/signin', '_blank', 'width=500,height=600');
   }
 }
-
-export class AppComponent {}
