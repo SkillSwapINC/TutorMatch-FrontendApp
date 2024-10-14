@@ -124,7 +124,11 @@ export class RegisterComponent {
         next: (response) => {
           console.log('User registered successfully:', response);
           localStorage.setItem('currentUser', JSON.stringify(response));
-          this.router.navigate(['Dashboard']).then();
+          if (formValues.role === 'student') {
+            this.router.navigate(['Dashboard']).then();
+          } else if (formValues.role === 'teacher') {
+            this.router.navigate(['Plans']).then();
+          }
         },
         error: (error) => {
           console.error('Error registering user:', error);
