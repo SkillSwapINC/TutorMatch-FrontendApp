@@ -17,6 +17,8 @@ export class ToolbarComponent implements OnInit {
     const currentUser = this.authService.getCurrentUser();
     if (currentUser && currentUser.role === 'tutor') {
       this.isTutor = true;
+    } else {
+      this.isTutor = this.authService.getIsTutor();
     }
   }
 
