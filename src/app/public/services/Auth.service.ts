@@ -26,10 +26,10 @@ export class AuthService extends BaseService<any> {
   private loadCurrentUser() {
     const user = this.getCurrentUser();
     if (user) {
-      this.isTutor = user.role === 'teacher'; 
+      this.isTutor = user.role === 'teacher';
     }
   }
-  
+
   /**
    * @method login
    * @description Attempts to log in a user using their email and password.
@@ -51,7 +51,7 @@ export class AuthService extends BaseService<any> {
    */
   setCurrentUser(user: any): void {
     localStorage.setItem(this.currentUserKey, JSON.stringify(user));
-    this.isTutor = user.role === 'teacher';  // Verificar si el rol es 'teacher'
+    this.isTutor = user.role === 'teacher';
   }
 
   /**
