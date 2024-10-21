@@ -17,12 +17,15 @@ export class ToolbarComponent implements OnInit {
     const currentUser = this.authService.getCurrentUser();
     if (currentUser && currentUser.role === 'teacher') {
       this.isTutor = true;
-    }
+    } else {
+      this.isTutor = this.authService.getIsTutor();
+      }
   }
 
   ngOnInit() {
     const userRole = this.registerService.getUserRole();
     this.isTutor = userRole === 'teacher';
+    this.isTutor = this.authService.getIsTutor();
     const userData = localStorage.getItem('currentUser');
     if (userData) {
       this.currentUser = JSON.parse(userData);
