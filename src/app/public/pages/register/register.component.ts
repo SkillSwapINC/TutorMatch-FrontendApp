@@ -63,10 +63,10 @@ export class RegisterComponent {
   isStudent: boolean = false;
 
   /**
-   * @private static tutorId: number
-   * @description A static counter used to generate unique tutor IDs.
+   * @private tutorId: number
+   * @description A counter used to generate unique tutor IDs.
    */
-  private static tutorId: number = 1;
+  private tutorId: number = 1;
 
   /**
    * @constructor
@@ -85,6 +85,29 @@ export class RegisterComponent {
       email: ['', [Validators.required, Validators.email, upcEmailValidator]],
       password: ['', Validators.required],
       role: ['', Validators.required]
+    });
+    this.initializeTutorId();
+  }
+
+  /**
+   * @method private initializeTutorId
+   * @description
+   * Initializes the `tutorId` by retrieving the list of existing tutors from the server
+   * and calculating the next available `tutorId`. The highest `tutorId` is determined,
+   * and the next tutor will be assigned the subsequent `tutorId`.
+   * If no tutors exist, the `tutorId` starts from 1.
+   */
+  private initializeTutorId(): void {
+    this.registerService.getTutors().subscribe({
+      next: (tutors) => {
+        if (tutors.length > 0) {
+          const maxId = Math.max(...tutors.map(tutor => tutor.tutorId));
+          this.tutorId = maxId + 1;
+        }
+      },
+      error: (error) => {
+        console.error('Error getting tutors:', error);
+      }
     });
   }
 
@@ -116,33 +139,24 @@ export class RegisterComponent {
       };
 
       if (formValues.role === 'teacher') {
-        userToRegister.tutorId = this.generateTutorId();
+        userToRegister.tutorId = this.tutorId;
         sessionStorage.setItem('pendingTutor', JSON.stringify(userToRegister));
         this.router.navigate(['Plans']).then();
       } else if (formValues.role === 'student') {
         this.registerService.registerUser(userToRegister).subscribe({
           next: (response) => {
-            console.log('Usuario registrado correctamente:', response);
+            console.log('User registered successfully:', response);
             localStorage.setItem('currentUser', JSON.stringify(response));
             this.router.navigate(['Dashboard']).then();
           },
           error: (error) => {
-            console.error('Error al registrar el usuario:', error);
+            console.error('Error registering user:', error);
           }
         });
       }
     } else {
-      console.log('Formulario inválido');
+      console.log('Invalid form');
     }
-  }
-
-  /**
-   * @method private generateTutorId
-   * @description Generates a unique ID for newly registered tutors.
-   * @returns {number} - The generated tutor ID.
-   */
-  private generateTutorId(): number {
-    return RegisterComponent.tutorId++;
   }
 
   /**
