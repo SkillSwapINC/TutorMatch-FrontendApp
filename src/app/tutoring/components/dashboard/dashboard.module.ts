@@ -29,7 +29,7 @@ import {GreetingComponent} from "./greeting/greeting.component";
 import {TranslateModule} from "@ngx-translate/core";
 import { AddTutoringDialogComponent } from './add-tutoring-dialog/add-tutoring-dialog.component';
 import {CourseListComponent} from "./course-list/course-list.component";
-import {CourseDetailComponent} from "./add-tutoring-dialog/course-detail/course-detail.component";
+import {CourseDetailComponent} from "../course-detail/course-detail.component";
 import {RouterLink} from "@angular/router";
 
 

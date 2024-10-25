@@ -31,9 +31,13 @@ export class TutoringService extends BaseService<any> {
     return this.http.get(`${this.resourcePath()}?cycle=${cycle}`);
   }
 
+  getUsers(): Observable<any> {
+    this.resourceEndPoint = '/users';
+    return this.http.get(this.resourcePath());
+  }
 
   getTutorById(tutorId: number): Observable<any> {
-    this.resourceEndPoint = '/tutors';
-    return this.http.get(`${this.resourcePath()}/${tutorId}`);
+    this.resourceEndPoint = '/users';
+    return this.http.get(`${this.resourcePath()}?id=${tutorId}&role=tutor`);
   }
 }

@@ -6,7 +6,7 @@ import {LoginComponent} from "./public/pages/login/login.component";
 import {SettingsComponent} from "./public/pages/settings/settings.component";
 import {ProfileComponent} from "./public/pages/profile/profile.component";
 import {PlansComponent} from "./tutoring/components/plans/plans.component";
-import {CourseDetailComponent} from "./tutoring/components/dashboard/add-tutoring-dialog/course-detail/course-detail.component";
+import {CourseDetailComponent} from "./tutoring/components/course-detail/course-detail.component";
 import {CourseListComponent} from "./tutoring/components/dashboard/course-list/course-list.component";
 
 export const routes: Routes = [
