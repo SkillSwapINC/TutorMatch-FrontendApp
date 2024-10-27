@@ -1,0 +1,16 @@
+
+ <app-toolbar></app-toolbar>
+<div class="container" *ngIf="semesterCourses?.length">
+  <h1>{{ semesterName }} - Courses</h1>
+
+  <div class="courses-grid">
+    <a *ngFor="let course of semesterCourses" [routerLink]="['/course', course.id]" class="course-card">
+      <img [src]="course.image || 'assets/images/default-image-url.png'" alt="Course Image">
+      <h2>{{ course.name }}</h2>
+      <p>Dictado por: {{ course.tutorName }}</p>
+      <p>Precio: S/{{ course.price }}</p>
+      <button class="request-tutoring-button">Solicitar Tutoría</button>
+    </a>
+  </div>
+</div>
+<app-footer-content></app-footer-content>
