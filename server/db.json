@@ -233,15 +233,6 @@
   ],
   "tutorings": [
     {
-      "id": 1,
-      "title": "Clases de Introducción a los Algoritmos",
-      "description": "Sesiones personalizadas para aprender los fundamentos de algoritmos.",
-      "price": 50,
-      "image": "https://example.com/images/algorithms.jpg",
-      "tutorId": 1,
-      "courseId": 1
-    },
-    {
       "id": 2,
       "title": "Desarrollo de Aplicaciones Open Source (Fifth)",
       "description": "Prueba Final",
