@@ -27,7 +27,6 @@ export class CourseListComponent implements OnInit {
 
 
       this.semesterName = `Semester ${cycle}`;
-    }, (error) => {
     });
   }
 }
