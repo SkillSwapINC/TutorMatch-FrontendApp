@@ -25,8 +25,6 @@ export class CourseDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const courseId = Number(this.route.snapshot.paramMap.get('id') ?? 0);
-    console.log('Course ID from URL:', courseId);
-
     if (courseId !== 0) {
       this.getCourseDetails(courseId);
     }
@@ -70,11 +68,7 @@ export class CourseDetailComponent implements OnInit {
           this.tutorName = 'No disponible';
           this.tutorAvatar = undefined;
         }
-      },
-      (error: any) => {
-        console.error('Error al obtener los datos del tutor:', error);
-      }
-    );
+      });
   }
 
 
@@ -85,7 +79,6 @@ export class CourseDetailComponent implements OnInit {
       (courses: any[]) => {
         const selectedCourse = courses.find(course => course.id === courseId);
         if (selectedCourse) {
-
           this.semesterName = `Semester ${selectedCourse.cycle}`;
         } else {
           this.semesterName = 'Semestre no encontrado';
