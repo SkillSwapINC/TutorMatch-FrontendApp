@@ -303,6 +303,32 @@
       "image": "",
       "tutorId": 1,
       "courseId": 12
+    },
+    {
+      "id": 5,
+      "title": "Algoritmos (Second)",
+      "description": "Con Maslucan",
+      "price": 20.5,
+      "times": {
+        "0": [
+          "10-11"
+        ],
+        "1": [
+          "10-11"
+        ],
+        "2": [
+          "10-11"
+        ],
+        "3": [
+          "10-11"
+        ],
+        "4": [],
+        "5": [],
+        "6": []
+      },
+      "image": "",
+      "tutorId": 1,
+      "courseId": 2
     }
   ],
   "users": [

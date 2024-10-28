@@ -21,16 +21,13 @@ export class CourseListComponent implements OnInit {
 
 
     this.tutoringService.getCourses().subscribe((courses: any[]) => {
-      console.log('Todos los cursos obtenidos:', courses);
 
 
       this.semesterCourses = courses.filter(course => course.cycle === cycle);
 
-      console.log(`Cursos filtrados para el semestre ${cycle}:`, this.semesterCourses);
 
       this.semesterName = `Semester ${cycle}`;
     }, (error) => {
-      console.error('Error al obtener los cursos:', error);
     });
   }
 }

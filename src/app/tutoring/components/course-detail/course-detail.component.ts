@@ -43,20 +43,15 @@ export class CourseDetailComponent implements OnInit {
           this.coursePrice = selectedCourse.price;
           this.times = selectedCourse.times || {};
 
-          // Asegúrate de que este sea el `tutorId` correcto
-          console.log('Tutor ID del curso:', selectedCourse.tutorId);
-
           this.getTutorDetails(selectedCourse.tutorId);
           this.getSemesterName(selectedCourse.courseId);
           this.courseNotFound = false;
         } else {
-          console.error('No se encontró el curso con el ID:', courseId);
+
           this.courseNotFound = true;
         }
       },
-      (error: any) => {
-        console.error('Error al obtener los datos de tutorings:', error);
-      }
+
     );
   }
 
@@ -64,17 +59,14 @@ export class CourseDetailComponent implements OnInit {
   getTutorDetails(tutorId: number) {
     this.tutoringService.getUsers().subscribe(
       (users: any[]) => {
-        console.log('Usuarios obtenidos:', users); // Revisa los usuarios retornados
 
         const tutor = users.find((user: any) => user.tutorId == tutorId && user.role === 'teacher');
 
         if (tutor) {
           this.tutorName = `${tutor.name} ${tutor.lastName}`;
           this.tutorAvatar = tutor.avatar;
-          console.log('Tutor encontrado:', this.tutorName);
         } else {
 
-          console.error('El usuario con este ID no es un tutor o no existe');
           this.tutorName = 'No disponible';
           this.tutorAvatar = undefined;
         }
@@ -99,10 +91,6 @@ export class CourseDetailComponent implements OnInit {
           this.semesterName = 'Semestre no encontrado';
         }
       },
-      (error: any) => {
-        console.error('Error al obtener el curso:', error);
-        this.semesterName = 'Semestre no encontrado';
-      }
     );
   }
 

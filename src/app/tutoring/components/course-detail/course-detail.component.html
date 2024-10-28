@@ -1,10 +1,9 @@
 <app-toolbar></app-toolbar>
 <div class="container" *ngIf="course">
-  <!-- Header -->
 
 
   <div class="course-detail">
-    <!-- Columna izquierda -->
+
     <div class="course-info">
       <div class="breadcrumbs">
         <a href="#">{{ semesterName || 'Semestre no encontrado' }} Semester</a> > <a href="#">{{ course?.title || 'Curso no encontrado' }}</a>
@@ -12,22 +11,17 @@
       <h1 class="course-title">{{ course?.title || 'Curso no encontrado' }}</h1>
       <p class="course-description">{{ course?.description || 'Descripción no disponible.' }}</p>
 
-      <!-- Calificación -->
       <p class="course-rating">Calificación: 4.0 <span class="stars">★★★★★</span></p>
 
-      <!-- Nombre del tutor -->
       <p class="course-tutor">Dictado por: {{ tutorName || 'No disponible' }}</p>
 
-      <!-- Sección "What you will learn" vacía por ahora -->
       <div class="what-you-will-learn">
         <h3>What you will learn</h3>
         <ul>
-          <!-- Sección vacía -->
           <li></li>
         </ul>
       </div>
 
-      <!-- Tutor available times -->
       <div class="tutor-available-times">
         <h3>Tutor available times</h3>
         <table>
@@ -47,7 +41,6 @@
       </div>
     </div>
 
-    <!-- Columna derecha (Card con el precio e imagen) -->
     <div class="course-price-section">
       <img *ngIf="courseImage" [src]="courseImage" alt="Imagen del curso">
       <h2 *ngIf="coursePrice" class="course-price">S/{{ coursePrice }}</h2>
@@ -55,6 +48,5 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <app-footer-content></app-footer-content>
 </div>

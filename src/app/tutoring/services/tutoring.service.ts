@@ -19,7 +19,6 @@ export class TutoringService extends BaseService<any> {
     return this.http.get(this.resourcePath());
   }
 
-  // Obtener tutoría por courseId (para el detalle del curso)
   getTutoringByCourseId(courseId: number): Observable<any> {
     this.resourceEndPoint = '/tutorings';
     return this.http.get(`${this.resourcePath()}?courseId=${courseId}`);
