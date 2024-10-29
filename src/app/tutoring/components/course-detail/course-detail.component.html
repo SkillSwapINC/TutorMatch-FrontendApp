@@ -1,19 +1,17 @@
 <app-toolbar></app-toolbar>
 <div class="container" *ngIf="course">
 
-
   <div class="course-detail">
-
     <div class="course-info">
       <div class="breadcrumbs">
-        <a href="#">{{ semesterName || 'Semestre no encontrado' }} Semester</a> > <a href="#">{{ course?.title || 'Curso no encontrado' }}</a>
+        <a href="#">{{ semesterName  }} Semester</a> > <a href="#">{{ course?.title || 'Curso no encontrado' }}</a>
       </div>
-      <h1 class="course-title">{{ course?.title || 'Curso no encontrado' }}</h1>
-      <p class="course-description">{{ course?.description || 'Descripción no disponible.' }}</p>
+      <h1 class="course-title">{{ course?.title }}</h1>
+      <p class="course-description">{{ course?.description  }}</p>
 
       <p class="course-rating">Calificación: 4.0 <span class="stars">★★★★★</span></p>
 
-      <p class="course-tutor">Dictado por: {{ tutorName || 'No disponible' }}</p>
+      <p class="course-tutor">Dictado por: {{ tutorName  }}</p>
 
       <div class="what-you-will-learn">
         <h3>What you will learn</h3>
@@ -29,13 +27,13 @@
             <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
           </tr>
           <tr>
-            <td *ngFor="let time of times['0']">{{ time || 'No disponible' }}</td>
-            <td *ngFor="let time of times['1']">{{ time || 'No disponible' }}</td>
-            <td *ngFor="let time of times['2']">{{ time || 'No disponible' }}</td>
-            <td *ngFor="let time of times['3']">{{ time || 'No disponible' }}</td>
-            <td *ngFor="let time of times['4']">{{ time || 'No disponible' }}</td>
-            <td *ngFor="let time of times['5']">{{ time || 'No disponible' }}</td>
-            <td *ngFor="let time of times['6']">{{ time || 'No disponible' }}</td>
+            <td *ngFor="let time of times['0']">{{ time }}</td>
+            <td *ngFor="let time of times['1']">{{ time}}</td>
+            <td *ngFor="let time of times['2']">{{ time}}</td>
+            <td *ngFor="let time of times['3']">{{ time}}</td>
+            <td *ngFor="let time of times['4']">{{ time}}</td>
+            <td *ngFor="let time of times['5']">{{ time}}</td>
+            <td *ngFor="let time of times['6']">{{ time}}</td>
           </tr>
         </table>
       </div>

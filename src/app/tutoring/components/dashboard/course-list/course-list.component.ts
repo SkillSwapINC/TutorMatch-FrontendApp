@@ -19,13 +19,26 @@ export class CourseListComponent implements OnInit {
   ngOnInit(): void {
     const cycle = Number(this.route.snapshot.paramMap.get('cycle'));
 
+    this.tutoringService.getCoursesBySemester(cycle).subscribe((courses: any[]) => {
+      courses.forEach(course => {
+        this.tutoringService.getTutoringByCourseId(course.id).subscribe((tutorings: any[]) => {
+          tutorings.forEach(tutoring => {
+            this.tutoringService.getTutorById(tutoring.tutorId).subscribe((tutor: any) => {
 
-    this.tutoringService.getCourses().subscribe((courses: any[]) => {
-
-
-      this.semesterCourses = courses.filter(course => course.cycle === cycle);
-
-
+              if (tutor && tutor.length > 0) {
+                this.semesterCourses.push({
+                  id: tutoring.id,
+                  courseName: course.name,
+                  tutorName: `${tutor[0].name} ${tutor[0].lastName}`,
+                  price: tutoring.price,
+                  image: tutoring.image,
+                  title: tutoring.title
+                });
+              }
+            });
+          });
+        });
+      });
       this.semesterName = `Semester ${cycle}`;
     });
   }

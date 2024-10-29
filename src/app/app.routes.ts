@@ -17,7 +17,8 @@ export const routes: Routes = [
   { path: 'Settings',               component: SettingsComponent },
   {path:'Profile',                  component:ProfileComponent},
   { path: 'courses/:cycle', component: CourseListComponent },
-  { path: 'course/:id', component: CourseDetailComponent },
+  { path: 'tutorings/:id', component: CourseDetailComponent },
   { path: '',                       redirectTo: 'LogIn', pathMatch: 'full' },
   { path: '**',                     component: PageNotFoundComponent }
 ];
+

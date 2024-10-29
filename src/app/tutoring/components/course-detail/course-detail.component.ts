@@ -24,28 +24,25 @@ export class CourseDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const courseId = Number(this.route.snapshot.paramMap.get('id') ?? 0);
-    if (courseId !== 0) {
-      this.getCourseDetails(courseId);
+    const tutoringId = Number(this.route.snapshot.paramMap.get('id') ?? 0);
+    if (tutoringId !== 0) {
+      this.getCourseDetails(tutoringId);
     }
   }
 
-  getCourseDetails(courseId: number) {
-    this.tutoringService.getTutoringByCourseId(courseId).subscribe(
-      (tutorings: any[]) => {
-        const selectedCourse = tutorings.find((tutoring: any) => tutoring.courseId === courseId);
+  getCourseDetails(tutoringId: number) {
+    this.tutoringService.getTutoringById(tutoringId).subscribe(
+      (tutoring: any) => {
+        if (tutoring) {
+          this.course = tutoring;
+          this.courseImage = tutoring.image;
+          this.coursePrice = tutoring.price;
+          this.times = tutoring.times || {};
 
-        if (selectedCourse) {
-          this.course = selectedCourse;
-          this.courseImage = selectedCourse.image;
-          this.coursePrice = selectedCourse.price;
-          this.times = selectedCourse.times || {};
-
-          this.getTutorDetails(selectedCourse.tutorId);
-          this.getSemesterName(selectedCourse.courseId);
+          this.getTutorDetails(tutoring.tutorId);
+          this.getSemesterName(tutoring.courseId);
           this.courseNotFound = false;
         } else {
-
           this.courseNotFound = true;
         }
       },
@@ -53,28 +50,24 @@ export class CourseDetailComponent implements OnInit {
     );
   }
 
-
   getTutorDetails(tutorId: number) {
-    this.tutoringService.getUsers().subscribe(
-      (users: any[]) => {
-
-        const tutor = users.find((user: any) => user.tutorId == tutorId && user.role === 'teacher');
+    this.tutoringService.getTutorById(tutorId).subscribe(
+      (response: any) => {
+        const tutor = response.length ? response.find((user: any) => user.role === 'teacher') : null;
 
         if (tutor) {
           this.tutorName = `${tutor.name} ${tutor.lastName}`;
           this.tutorAvatar = tutor.avatar;
         } else {
-
           this.tutorName = 'No disponible';
           this.tutorAvatar = undefined;
         }
-      });
+      },
+
+    );
   }
 
-
-
   getSemesterName(courseId: number) {
-
     this.tutoringService.getCourses().subscribe(
       (courses: any[]) => {
         const selectedCourse = courses.find(course => course.id === courseId);
@@ -84,9 +77,9 @@ export class CourseDetailComponent implements OnInit {
           this.semesterName = 'Semestre no encontrado';
         }
       },
+
     );
   }
-
 
   navigateToSemester() {
     if (this.semesterName) {
