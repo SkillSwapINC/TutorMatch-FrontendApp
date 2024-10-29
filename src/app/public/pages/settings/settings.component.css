@@ -104,6 +104,14 @@ button[type="button"].secondary:hover {
   transform: translateY(-2px);
 }
 
+.avatar{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: block;
+  margin: 1rem 0 0 0;
+}
+
 .upload-message {
   color: green;
   font-weight: bold;

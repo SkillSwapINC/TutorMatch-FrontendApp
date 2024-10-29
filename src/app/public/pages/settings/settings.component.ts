@@ -7,7 +7,7 @@ import {MatOption, MatSelect} from "@angular/material/select";
 import {MatButton} from "@angular/material/button";
 import {MatInput} from "@angular/material/input";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
-import {NgIf} from "@angular/common";
+import {NgIf, NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-settings',
@@ -21,7 +21,8 @@ import {NgIf} from "@angular/common";
     MatInput,
     MatLabel,
     TranslateModule,
-    NgIf
+    NgIf,
+    NgOptimizedImage
   ],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.css'
