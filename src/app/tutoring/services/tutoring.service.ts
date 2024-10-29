@@ -9,7 +9,7 @@ export class TutoringService extends BaseService<any> {
 
   constructor() {
     super();
-
+    this.resourceEndPoint = '/tutorings';
   }
 
   getCourses(): Observable<any> {

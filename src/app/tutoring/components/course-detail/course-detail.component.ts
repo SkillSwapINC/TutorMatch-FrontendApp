@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';  // Importa Router para navegación
+import { ActivatedRoute, Router } from '@angular/router';
 import { TutoringService } from '../../services/tutoring.service';
 
 @Component({
@@ -59,7 +59,6 @@ export class CourseDetailComponent implements OnInit {
           this.tutorName = `${tutor.name} ${tutor.lastName}`;
           this.tutorAvatar = tutor.avatar;
         } else {
-          this.tutorName = 'No disponible';
           this.tutorAvatar = undefined;
         }
       },
@@ -73,8 +72,6 @@ export class CourseDetailComponent implements OnInit {
         const selectedCourse = courses.find(course => course.id === courseId);
         if (selectedCourse) {
           this.semesterName = `Semester ${selectedCourse.cycle}`;
-        } else {
-          this.semesterName = 'Semestre no encontrado';
         }
       },
 
@@ -87,4 +84,5 @@ export class CourseDetailComponent implements OnInit {
       this.router.navigate(['/courses', cycle]);
     }
   }
+
 }

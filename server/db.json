@@ -532,6 +532,38 @@
       "image": "",
       "tutorId": 3,
       "courseId": 13
+    },
+    {
+      "id": 21,
+      "title": "Fundamentos de Arquitectura de Software (Seventh)",
+      "description": "HolaMundo2",
+      "price": 569.9,
+      "times": {
+        "0": [
+          "10-11"
+        ],
+        "1": [
+          "10-11"
+        ],
+        "2": [
+          "10-11"
+        ],
+        "3": [
+          "10-11"
+        ],
+        "4": [
+          "10-11"
+        ],
+        "5": [
+          "10-11"
+        ],
+        "6": [
+          "10-11"
+        ]
+      },
+      "image": "",
+      "tutorId": 4,
+      "courseId": 12
     }
   ],
   "users": [
@@ -581,6 +613,31 @@
       "cycle": null,
       "tutorId": 3,
       "id": 4
+    },
+    {
+      "id": 5,
+      "title": "Gerencia de Proyectos en Computación (Eighth)",
+      "description": "Holamundo",
+      "price": 99,
+      "times": {
+        "0": [],
+        "1": [],
+        "2": [
+          "10-11"
+        ],
+        "3": [
+          "11-12"
+        ],
+        "4": [],
+        "5": [
+          "10-11",
+          "11-12"
+        ],
+        "6": []
+      },
+      "image": "",
+      "tutorId": 4,
+      "courseId": 14
     }
   ]
 }
