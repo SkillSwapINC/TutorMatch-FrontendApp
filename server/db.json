@@ -564,6 +564,37 @@
       "image": "",
       "tutorId": 4,
       "courseId": 12
+    },
+    {
+      "id": 22,
+      "title": "Complejidad Algorítmica (Sixth)",
+      "description": "Hexagonal",
+      "price": 66.6,
+      "times": {
+        "0": [
+          "10-11"
+        ],
+        "1": [
+          "10-11",
+          "15-16"
+        ],
+        "2": [
+          "11-12"
+        ],
+        "3": [],
+        "4": [
+          "10-11",
+          "11-12"
+        ],
+        "5": [],
+        "6": [
+          "10-11",
+          "11-12"
+        ]
+      },
+      "image": "",
+      "tutorId": 4,
+      "courseId": 10
     }
   ],
   "users": [
@@ -613,31 +644,6 @@
       "cycle": null,
       "tutorId": 3,
       "id": 4
-    },
-    {
-      "id": 5,
-      "title": "Gerencia de Proyectos en Computación (Eighth)",
-      "description": "Holamundo",
-      "price": 99,
-      "times": {
-        "0": [],
-        "1": [],
-        "2": [
-          "10-11"
-        ],
-        "3": [
-          "11-12"
-        ],
-        "4": [],
-        "5": [
-          "10-11",
-          "11-12"
-        ],
-        "6": []
-      },
-      "image": "",
-      "tutorId": 4,
-      "courseId": 14
     }
   ]
 }
