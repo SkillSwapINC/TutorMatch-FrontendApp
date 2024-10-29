@@ -180,8 +180,6 @@ export class AddTutoringDialogComponent {
         this.addTutoring.emit(response);
         this.dialogRef.close(response);
       },
-      error: (err) => {
-      }
     });
   }
 
