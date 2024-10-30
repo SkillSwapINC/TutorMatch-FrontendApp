@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from "../../shared/services/base.service";
-import {Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +34,9 @@ export class TutoringService extends BaseService<any> {
 
   getTutorById(tutorId: number): Observable<any> {
     this.resourceEndPoint = '/users';
-    return this.http.get(`${this.resourcePath()}?id=${tutorId}&role=teacher`);
+    return this.http.get<any[]>(`${this.resourcePath()}?tutorId=${tutorId}&role=teacher`).pipe(
+      map((response: any[]) => response[0])
+    );
   }
 
   getTutoringById(tutoringId: number): Observable<any> {
