@@ -31,8 +31,8 @@ export class CourseDetailComponent implements OnInit {
   }
 
   getCourseDetails(tutoringId: number) {
-    this.tutoringService.getTutoringById(tutoringId).subscribe(
-      (tutoring: any) => {
+    this.tutoringService.getTutoringById(tutoringId).subscribe({
+      next: (tutoring: any) => {
         if (tutoring) {
           this.course = tutoring;
           this.courseImage = tutoring.image;
@@ -46,36 +46,44 @@ export class CourseDetailComponent implements OnInit {
           this.courseNotFound = true;
         }
       },
-
-    );
+      error: (error) => {
+        console.error("Error fetching course details", error);
+        this.courseNotFound = true;
+      }
+    });
   }
 
   getTutorDetails(tutorId: number) {
-    this.tutoringService.getTutorById(tutorId).subscribe(
-      (response: any) => {
-        const tutor = response.length ? response.find((user: any) => user.role === 'teacher') : null;
-
+    this.tutoringService.getTutorById(tutorId).subscribe({
+      next: (tutor: any) => {
         if (tutor) {
           this.tutorName = `${tutor.name} ${tutor.lastName}`;
           this.tutorAvatar = tutor.avatar;
         } else {
+          this.tutorName = 'Teacher not available';
           this.tutorAvatar = undefined;
         }
       },
-
-    );
+      error: (error) => {
+        console.error("Error fetching tutor details", error);
+        this.tutorName = 'Teacher not available';
+      }
+    });
   }
 
   getSemesterName(courseId: number) {
-    this.tutoringService.getCourses().subscribe(
-      (courses: any[]) => {
+    this.tutoringService.getCourses().subscribe({
+      next: (courses: any[]) => {
         const selectedCourse = courses.find(course => course.id === courseId);
         if (selectedCourse) {
           this.semesterName = `Semester ${selectedCourse.cycle}`;
         }
       },
-
-    );
+      error: (error) => {
+        console.error("Error fetching semester name", error);
+        this.semesterName = 'Semester not available';
+      }
+    });
   }
 
   navigateToSemester() {
