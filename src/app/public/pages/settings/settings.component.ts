@@ -46,6 +46,10 @@ export class SettingsComponent implements OnInit {
     });
   }
 
+  /**
+   * @method ngOnInit
+   * @description Lifecycle hook that is called after the component's constructor.
+   */
   ngOnInit(): void {
     const user = localStorage.getItem('currentUser');
     if (user) {
@@ -54,6 +58,11 @@ export class SettingsComponent implements OnInit {
     }
   }
 
+  /**
+   * @method populateForm
+   * @description Populates the form with the current user's data.
+   */
+
   populateForm() {
     this.settingsForm.patchValue({
       avatar: this.currentUser.avatar,
@@ -61,6 +70,11 @@ export class SettingsComponent implements OnInit {
       cycle: this.currentUser.cycle
     });
   }
+
+  /**
+   * @method onSave
+   * @description Updates the user's data and navigates to the dashboard page.
+   */
 
   onSave() {
     if (this.settingsForm.valid) {
@@ -83,6 +97,12 @@ export class SettingsComponent implements OnInit {
     }
   }
 
+  /**
+   * @method onFileSelected
+   * @param event
+   * @description Handles the file selected event and updates the avatar image.
+   */
+
   onFileSelected(event: any): void {
     const file = event.target.files[0];
     if (file) {
@@ -103,7 +123,14 @@ export class SettingsComponent implements OnInit {
     }
   }
 
-  onBack(): void {
-    this.router.navigate(['/Dashboard']).then(r => console.log('Navigated back to dashboard:', r));
+  /**
+   * @method goBack
+   * @param event
+   * @description Navigates back to the previous page.
+   */
+
+  goBack(event: Event): void {
+    event.preventDefault();
+    window.history.back();
   }
 }

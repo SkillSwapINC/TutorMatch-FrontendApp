@@ -4,6 +4,7 @@ import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/mat
 import {MatList, MatListItem} from "@angular/material/list";
 import {MatButton} from "@angular/material/button";
 import { Router} from "@angular/router";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +17,8 @@ import { Router} from "@angular/router";
     MatCardContent,
     MatList,
     MatListItem,
-    MatButton
+    MatButton,
+    TranslateModule
   ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
@@ -27,8 +29,6 @@ export class ProfileComponent implements OnInit {
    * @description Holds the current user's data.
    */
   currentUser: any;
-
-  private router: Router = inject(Router);
 
   /**
    * @method ngOnInit
@@ -42,10 +42,12 @@ export class ProfileComponent implements OnInit {
   }
 
   /**
-   * @method onNavigateHome
-   * @description Navigates to the home route.
+   * @method goBack
+   * @param event
+   * @description Navigates back to the previous page.
    */
-  protected onNavigateHome() {
-    this.router.navigate(['Dashboard']).then();
+  goBack(event: Event): void {
+    event.preventDefault();
+    window.history.back();
   }
 }
