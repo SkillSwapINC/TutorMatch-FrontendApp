@@ -1,6 +1,6 @@
 <mat-card *ngIf="currentUser" class="profile-card">
   <mat-card-header>
-    <mat-card-title>User Profile</mat-card-title>
+    <mat-card-title>{{ 'footer.pUserProfile' | translate }}</mat-card-title>
   </mat-card-header>
 
   <mat-card-content>
@@ -10,35 +10,35 @@
 
     <mat-list>
       <mat-list-item>
-        <span matListItemTitle>Name: </span>
+        <span matListItemTitle>{{ 'footer.pName' | translate }}: </span>
         <span matListItemLine>{{ currentUser.name }}</span>
       </mat-list-item>
 
       <mat-list-item>
-        <span matListItemTitle>Last Name: </span>
+        <span matListItemTitle>{{ 'footer.pLastName' | translate }}: </span>
         <span matListItemLine>{{ currentUser.lastName }}</span>
       </mat-list-item>
 
       <mat-list-item>
-        <span matListItemTitle>Email: </span>
+        <span matListItemTitle>{{ 'footer.pEmail' | translate }}: </span>
         <span matListItemLine>{{ currentUser.email }}</span>
       </mat-list-item>
 
       <mat-list-item>
-        <span matListItemTitle>Role: </span>
+        <span matListItemTitle>{{ 'footer.pRole' | translate }}: </span>
         <span matListItemLine>{{ currentUser.role }}</span>
       </mat-list-item>
 
       <mat-list-item>
-        <span matListItemTitle>Gender: </span>
+        <span matListItemTitle>{{ 'footer.pGender' | translate }}: </span>
         <span matListItemLine>{{ currentUser.gender }}</span>
       </mat-list-item>
 
       <mat-list-item>
-        <span matListItemTitle>Cycle: </span>
+        <span matListItemTitle>{{ 'footer.pCycle' | translate }}: </span>
         <span matListItemLine>{{ currentUser.cycle }}</span>
       </mat-list-item>
     </mat-list>
   </mat-card-content>
-  <button mat-button (click)="onNavigateHome()">Dashboard</button>
+  <button mat-button color="warn" (click)="goBack($event)">{{ 'footer.pBack' | translate }}</button>
 </mat-card>
