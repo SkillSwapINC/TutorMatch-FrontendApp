@@ -7,12 +7,11 @@
       <div>
         <img [src]="tutoring.image || 'assets/images/default-image-url.png'" alt="Tutoring Image">
         <h2>{{ tutoring.title }}</h2>
-        <p *ngIf="tutoring.tutorName">{{ 'courses.taughtBy' | translate }}: {{ tutoring.tutorName }}</p>
-        <p *ngIf="tutoring.price">{{ 'courses.price' | translate }}: S/{{ tutoring.price }}</p>
-        <button class="request-tutoring-button">{{ 'courses.requestTutoring' | translate }}</button>
+        <p *ngIf="tutoring.tutorName">{{ 'footer.DictatedBy' | translate }}: {{ tutoring.tutorName }}</p>
+        <p *ngIf="tutoring.price">{{ 'footer.Price' | translate }}: S/. {{ tutoring.price }}</p>
+        <button class="request-tutoring-button">{{ 'footer.RequestTutoring' | translate }}</button>
       </div>
     </a>
   </div>
 </div>
-
 <app-footer-content></app-footer-content>
