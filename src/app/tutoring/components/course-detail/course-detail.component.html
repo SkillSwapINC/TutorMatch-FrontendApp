@@ -11,7 +11,7 @@
 
       <p class="course-rating">Calificación: 4.0 <span class="stars">★★★★★</span></p>
 
-      <p class="course-tutor">Dictado por: {{ tutorName  }}</p>
+      <p class="course-tutor" *ngIf="tutorName">Dictado por: {{ tutorName }}</p>
 
       <div class="what-you-will-learn">
         <h3>What you will learn</h3>
