@@ -3,7 +3,7 @@
   <h1>{{ semesterName }}</h1>
 
   <div class="courses-grid">
-    <a *ngFor="let tutoring of semesterCourses" [routerLink]="['/tutorings', tutoring.id]" class="course-card">
+    <a *ngFor="let tutoring of semesterCourses" [routerLink]="tutoring.id ? ['/tutorings', tutoring.id] : null" class="course-card">
       <div>
         <img [src]="tutoring.image || 'assets/images/default-image-url.png'" alt="Tutoring Image">
         <h2>{{ tutoring.title }}</h2>
