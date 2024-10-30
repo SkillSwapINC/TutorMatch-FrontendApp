@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-payment',
@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent {
+  @Input() selectedPlan: string | undefined;
+  @Input() selectedPrice: number | undefined;
   paymentMethod: 'credit-card' | 'paypal' = 'credit-card';
   cardHolder = 'ㅤ';
   cardNumber = '';
