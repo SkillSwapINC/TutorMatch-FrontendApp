@@ -16,11 +16,19 @@ import { Router } from '@angular/router';
 })
 export class PlansComponent {
   showPayment = false;
+  selectedPlan = '';
+  selectedPrice = 0;
 
   constructor(private router: Router) {}
 
   togglePayment() {
     this.showPayment = !this.showPayment;
+  }
+
+  selectPlan(planName: string, price: number) {
+    this.selectedPlan = planName;
+    this.selectedPrice = price;
+    this.togglePayment();
   }
 
   onLogin() {
