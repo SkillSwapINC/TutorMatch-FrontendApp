@@ -26,17 +26,17 @@
     <h3>{{ 'footer.titleRegister' | translate }}</h3>
 
     <form [formGroup]="registerForm" class="signup-form">
-      <mat-form-field appearance="fill">
+      <mat-form-field color="warn" appearance="fill">
         <mat-label>{{ 'footer.pName' | translate }}</mat-label>
         <input matInput type="text" formControlName="name" [placeholder]="'footer.pName' | translate" required>
       </mat-form-field>
 
-      <mat-form-field appearance="fill">
+      <mat-form-field color="warn" appearance="fill">
         <mat-label>{{ 'footer.pLastName' | translate }}</mat-label>
         <input matInput type="text" formControlName="lastName" [placeholder]="'footer.pLastName' | translate" required>
       </mat-form-field>
 
-      <mat-form-field appearance="fill">
+      <mat-form-field color="warn" appearance="fill">
         <mat-label>{{ 'footer.pGender' | translate }}</mat-label>
         <mat-select formControlName="gender">
           <mat-option value="male">{{ 'footer.pMale' | translate }}</mat-option>
@@ -45,19 +45,19 @@
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field appearance="fill">
+      <mat-form-field color="warn" appearance="fill">
         <mat-label>{{ 'footer.pCycle' | translate }}</mat-label>
         <input matInput type="number" formControlName="cycle" [placeholder]="'footer.pCycle' | translate" required>
       </mat-form-field>
 
-      <mat-form-field appearance="fill">
+      <mat-form-field color="warn" appearance="fill">
         <mat-label>{{ 'footer.pEmail' | translate }}</mat-label>
         <input matInput type="email" formControlName="email" [placeholder]="'footer.pEmail' | translate" required>
         <mat-error *ngIf="registerForm.get('email')?.hasError('invalidEmailDomain')">
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="fill">
+      <mat-form-field color="warn" appearance="fill">
         <mat-label>{{ 'footer.pPassword' | translate }}</mat-label>
         <input matInput type="password" formControlName="password" [placeholder]="'footer.pPassword' | translate" required>
       </mat-form-field>
