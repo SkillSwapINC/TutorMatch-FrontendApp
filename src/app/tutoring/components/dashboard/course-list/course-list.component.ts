@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TutoringService } from '../../../services/tutoring.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-course-list',
@@ -13,7 +14,8 @@ export class CourseListComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private tutoringService: TutoringService
+    private tutoringService: TutoringService,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -40,7 +42,18 @@ export class CourseListComponent implements OnInit {
           });
         });
       });
-      this.semesterName = `Semester ${cycle}`;
+      this.updateSemesterName(cycle);
+    });
+
+    this.translate.onLangChange.subscribe(() => {
+      const cycle = Number(this.route.snapshot.paramMap.get('cycle'));
+      this.updateSemesterName(cycle);
+    });
+  }
+
+  updateSemesterName(cycle: number): void {
+    this.translate.get('footer.semester').subscribe((res: string) => {
+      this.semesterName = `${res} ${cycle}`;
     });
   }
 }
