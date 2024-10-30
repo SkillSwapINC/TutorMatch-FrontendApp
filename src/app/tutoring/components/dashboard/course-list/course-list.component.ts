@@ -24,16 +24,17 @@ export class CourseListComponent implements OnInit {
         this.tutoringService.getTutoringByCourseId(course.id).subscribe((tutorings: any[]) => {
           tutorings.forEach(tutoring => {
             this.tutoringService.getTutorById(tutoring.tutorId).subscribe((tutor: any) => {
-
-              if (tutor && tutor.length > 0) {
-                this.semesterCourses.push({
+              if (tutor) {
+                const newTutoring = {
                   id: tutoring.id,
                   courseName: course.name,
-                  tutorName: `${tutor[0].name} ${tutor[0].lastName}`,
+                  tutorName: `${tutor.name} ${tutor.lastName}`,
                   price: tutoring.price,
                   image: tutoring.image,
                   title: tutoring.title
-                });
+                };
+                console.log('Tutoring data:', newTutoring);
+                this.semesterCourses.push(newTutoring);
               }
             });
           });
