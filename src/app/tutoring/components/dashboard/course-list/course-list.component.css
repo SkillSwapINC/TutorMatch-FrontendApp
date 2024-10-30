@@ -1,18 +1,14 @@
-
 body, html {
   height: 100%;
   margin: 0;
   padding: 0;
 }
-
 .container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  padding: 2rem;
 }
-
-
-
 .courses-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -29,6 +25,12 @@ body, html {
   text-align: center;
   color: white;
   box-sizing: border-box;
+  text-decoration: none;
+}
+
+.course-card:hover{
+  scale: 1.05;
+  transition: 0.3s ease-in-out;
 }
 
 .course-card img {
@@ -37,7 +39,7 @@ body, html {
 }
 
 .request-tutoring-button {
-  background-color: #f4511e;
+  background-color: #7b0523;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -47,5 +49,5 @@ body, html {
 }
 
 .request-tutoring-button:hover {
-  background-color: #e04006;
+  background-color: #f6405f;
 }
