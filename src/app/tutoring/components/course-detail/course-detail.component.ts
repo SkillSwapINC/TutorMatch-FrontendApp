@@ -11,6 +11,7 @@ export class CourseDetailComponent implements OnInit {
   course: any;
   times: any = {};
   tutorName: string | undefined;
+  tutorEmail: string | undefined;
   tutorAvatar: string | undefined;
   courseImage: string | undefined;
   coursePrice: number | undefined;
@@ -19,10 +20,13 @@ export class CourseDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private tutoringService: TutoringService,
-    private router: Router
+    private tutoringService: TutoringService
   ) {}
 
+  /**
+   * @method ngOnInit
+   * @description Lifecycle hook that is called after the component's constructor.
+   */
   ngOnInit(): void {
     const tutoringId = Number(this.route.snapshot.paramMap.get('id') ?? 0);
     if (tutoringId !== 0) {
@@ -30,6 +34,11 @@ export class CourseDetailComponent implements OnInit {
     }
   }
 
+  /**
+   * @method getCourseDetails
+   * @param tutoringId {number} - The ID of the tutoring course.
+   * @description Fetches the details of the tutoring course.
+   */
   getCourseDetails(tutoringId: number) {
     this.tutoringService.getTutoringById(tutoringId).subscribe({
       next: (tutoring: any) => {
@@ -53,12 +62,18 @@ export class CourseDetailComponent implements OnInit {
     });
   }
 
+  /**
+   * @method getTutorDetails
+   * @param tutorId {number} - The ID of the tutor.
+   * @description Fetches the details of the tutor.
+   */
   getTutorDetails(tutorId: number) {
     this.tutoringService.getTutorById(tutorId).subscribe({
       next: (tutor: any) => {
         if (tutor) {
           this.tutorName = `${tutor.name} ${tutor.lastName}`;
           this.tutorAvatar = tutor.avatar;
+          this.tutorEmail = tutor.email
         } else {
           this.tutorName = 'Teacher not available';
           this.tutorAvatar = undefined;
@@ -71,6 +86,11 @@ export class CourseDetailComponent implements OnInit {
     });
   }
 
+  /**
+   * @method getSemesterName
+   * @param courseId {number} - The ID of the course.
+   * @description Fetches the name of the semester for the course.
+   */
   getSemesterName(courseId: number) {
     this.tutoringService.getCourses().subscribe({
       next: (courses: any[]) => {
@@ -86,11 +106,13 @@ export class CourseDetailComponent implements OnInit {
     });
   }
 
-  navigateToSemester() {
-    if (this.semesterName) {
-      const cycle = Number(this.semesterName.split(' ')[1]);
-      this.router.navigate(['/courses', cycle]);
-    }
+  /**
+   * @method goBack
+   * @param event {Event} - The event object.
+   * @description Navigates back to the previous page.
+   */
+  goBack(event: Event): void {
+    event.preventDefault();
+    window.history.back();
   }
-
 }
