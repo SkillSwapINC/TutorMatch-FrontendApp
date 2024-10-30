@@ -150,7 +150,7 @@ export class AddTutoringDialogComponent {
         price: this.price || 0,
         times: selectedTimes,
         image: '',
-        tutorId: this.currentUser?.id || 1,
+        tutorId: this.currentUser?.tutorId || 1,
         courseId: this.availableCourses.find(course => course.name === this.selectedCourse)?.id || 1
       };
       this.createTutoring(newTutoring);
