@@ -86,7 +86,7 @@ export class SettingsComponent implements OnInit {
         next: (response) => {
           console.log('User updated successfully:', response);
           localStorage.setItem('currentUser', JSON.stringify(response));
-          this.router.navigate(['Dashboard']).then();
+          window.history.back();
         },
         error: (error) => {
           console.error('Error updating user:', error);
@@ -106,7 +106,7 @@ export class SettingsComponent implements OnInit {
   onFileSelected(event: any): void {
     const file = event.target.files[0];
     if (file) {
-      if (file.type === 'image/png' || file.type === 'image/jpeg') {
+      if (file.type === 'image/png' || file.type === 'image/jpeg' || file.type === 'image/jpg') {
         const reader = new FileReader();
         reader.onload = (e: any) => {
           this.settingsForm.patchValue({ avatar: e.target.result });
