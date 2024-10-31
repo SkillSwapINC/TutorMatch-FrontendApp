@@ -7,20 +7,18 @@
         <a href="#" (click)="goBack($event)">{{ semesterName  }}</a> > <a>{{ course?.title || 'Curso no encontrado' }}</a>
       </div>
       <h1 class="course-title">{{ course?.title }}</h1>
-      <p class="course-description">{{ course?.description  }}</p>
+      <p class="course-description">{{ course?.description }}</p>
       <p class="course-tutor" *ngIf="tutorName">{{ 'footer.DictatedBy' | translate }}: {{ tutorName }}</p>
       <div class="what-you-will-learn">
         <h3>{{ 'footer.WhatWillLearn' | translate }}</h3>
-        <ul>
-          <li></li>
-        </ul>
+        <p *ngFor="let item of course?.whatTheyWillLearn.split(',')">✔ {{ item }}</p>
       </div>
 
       <div class="tutor-available-times">
         <h3>{{ 'footer.TutorAvT' | translate }}</h3>
         <table>
           <tr>
-            <th>{{ 'footer.Sun' | translate }}</th><th>{{ 'footer.Sun' | translate }}</th><th>{{ 'footer.Tue' | translate }}</th><th>{{ 'footer.Wed' | translate }}</th><th>{{ 'footer.Thu' | translate }}</th><th>{{ 'footer.Fri' | translate }}</th><th>{{ 'footer.Sat' | translate }}</th>
+            <th>{{ 'footer.Sun' | translate }}</th><th>{{ 'footer.Mon' | translate }}</th><th>{{ 'footer.Tue' | translate }}</th><th>{{ 'footer.Wed' | translate }}</th><th>{{ 'footer.Thu' | translate }}</th><th>{{ 'footer.Fri' | translate }}</th><th>{{ 'footer.Sat' | translate }}</th>
           </tr>
           <tr>
             <td *ngFor="let time of times['0']">{{ time }}</td>
@@ -37,7 +35,7 @@
 
     <div class="course-price-section">
       <img *ngIf="courseImage" [src]="courseImage" alt="Imagen del curso">
-      <h2 *ngIf="coursePrice" class="course-price">S/.{{ coursePrice }}</h2>
+      <h2 *ngIf="coursePrice" class="course-price">S/. {{ coursePrice }}</h2>
       <a *ngIf="tutorEmail"
          [href]="'mailto:' + tutorEmail + '?subject=Tutorías sobre ' + course?.title + '&body=Hola,%20me%20gustaría%20saber%20más%20sobre%20esta%20tutoría.%20[Edita%20si%20crees%20necesario]'"
          target="_blank">

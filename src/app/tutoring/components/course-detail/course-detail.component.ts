@@ -15,6 +15,7 @@ export class CourseDetailComponent implements OnInit {
   tutorAvatar: string | undefined;
   courseImage: string | undefined;
   coursePrice: number | undefined;
+  courseWhatTheyWillLearn: string | undefined;
   semesterName: string | undefined;
   courseNotFound: boolean = false;
 
@@ -46,6 +47,7 @@ export class CourseDetailComponent implements OnInit {
           this.course = tutoring;
           this.courseImage = tutoring.image;
           this.coursePrice = tutoring.price;
+          this.courseWhatTheyWillLearn = tutoring.whatTheyWillLearn;
           this.times = tutoring.times || {};
 
           this.getTutorDetails(tutoring.tutorId);
