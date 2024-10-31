@@ -1,12 +1,13 @@
 :root {
   --primary-color: #3f51b5;
   --primary-light: #757de8;
-  --primary-dark: #002984;
+  --primary-dark: #ffffff;
   --text-color: #333;
-  --background-color: #f5f5f5;
+  --background-color: #f3f4f6;
   --card-background: #ffffff;
-  --input-background: #f0f0f0;
+  --input-background: #f8f9fb;
   --shadow-color: rgba(0, 0, 0, 0.1);
+  --button-hover: #344195;
 }
 
 .container {
@@ -15,32 +16,40 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--background-color), var(--primary-light));
+  background: var(--background-color);
   padding: 2rem;
   box-sizing: border-box;
 }
 
 h2 {
-  font-size: 2.5rem;
-  color: var(--primary-color);
-  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  color: white;
+  margin-bottom: 1.5rem;
   text-align: center;
-  text-shadow: 2px 2px 4px var(--shadow-color);
+  text-shadow: 1px 1px 2px var(--shadow-color);
+  font-weight: bold;
+}
+
+.settings-title{
+  font-size: 1.8rem;
+  color: white;
+  text-align: center;
+  font-weight: bold;
 }
 
 form {
-  background-color: var(--card-background);
+  background-color: #ae063a;
   padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px var(--shadow-color);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 500px;
-  animation: fadeIn 0.5s ease-out; /* Mantener animación de fadeIn */
+  max-width: 450px;
+  animation: fadeIn 0.4s ease-out;
 }
 
 mat-form-field {
   width: 100%;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
 input[type="file"] {
@@ -49,37 +58,77 @@ input[type="file"] {
 
 label[for="avatar"] {
   display: inline-block;
-  background-color: var(--primary-color);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
+  background-color: #7a0423;;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
   cursor: pointer;
+  font-weight: 500;
   transition: background-color 0.3s ease;
+  margin: 1.5rem 0;
 }
 
-label[for="avatar"]:hover {
-  background-color: var(--primary-dark);
-}
-
-button[type="submit"] {
+button[type="submit"],
+button[type="button"] {
   width: 100%;
   padding: 1rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  font-weight: bold;
   transition: all 0.3s ease;
+  margin-bottom: 1rem;
+  color: white;
+  background-color: #7a0423;
+  border: none;
+  border-radius: 8px;
 }
 
-button[type="submit"]:hover {
-  background-color: var(--primary-dark);
-  box-shadow: 0 4px 8px var(--shadow-color);
+button[type="submit"]:hover,
+button[type="button"]:hover {
+  background-color: #fb4365;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
 }
 
-/* Custom styles for Material components */
+button[type="button"].secondary {
+  background-color: #ff4081;
+}
+
+button[type="button"].secondary:hover {
+  background-color: #e4356b;
+}
+
+.upload-button:hover{
+  background-color: #fb4365;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.avatar{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: block;
+  margin: 1rem 0 0 0;
+}
+
+.upload-message {
+  color: green;
+  font-weight: bold;
+  margin-top: -1rem;
+  margin-bottom: 0.5rem;
+}
+
+.error-message {
+  color: #423c3c;
+  font-weight: bold;
+  margin-top: -1rem;
+  margin-bottom: 0.5rem;
+}
+
 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
   background-color: var(--input-background);
-  border-radius: 5px 5px 0 0;
+  border-radius: 8px 8px 0 0;
 }
 
 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-underline::before {
@@ -102,7 +151,7 @@ button[type="submit"]:hover {
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 }
 

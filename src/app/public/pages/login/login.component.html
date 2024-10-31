@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="custom-toolbar">
+<mat-toolbar color="warn" class="custom-toolbar">
 
     <div class="container">
       <img class="logo" src="TutorMatch.png" alt="user" height="118" width="50">
@@ -26,13 +26,13 @@
 
         <mat-card-content>
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <mat-form-field appearance="outline" class="form-field">
+            <mat-form-field color="warn"  appearance="outline" class="form-field">
               <mat-label>{{ 'footer.pEmail' | translate }}</mat-label>
               <input matInput formControlName="email" [placeholder]="'footer.pEmail' | translate">
             </mat-form-field>
 
 
-            <mat-form-field appearance="outline" class="form-field">
+            <mat-form-field color="warn"  appearance="outline" class="form-field">
               <mat-label>{{ 'footer.pPassword' | translate }}</mat-label>
               <input matInput formControlName="password" type="password" [placeholder]="'footer.pPassword' | translate">
             </mat-form-field>

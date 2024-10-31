@@ -88,3 +88,76 @@ mat-dialog-actions {
   margin-bottom: 0;
   padding-bottom: 0;
 }
+
+.avatar{
+  width: 200px;
+  height: 100px;
+  display: block;
+  margin: 1rem 0 0 0;
+}
+
+.upload-message {
+  color: green;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.error-message {
+  color: #423c3c;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+label[for="courseImage"] {
+  display: inline-block;
+  background-color: #7a0423;;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  margin: 1.5rem 0;
+}
+
+button[type="submit"],
+button[type="button"] {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+  color: white;
+  background-color: #7a0423;
+  border: none;
+  border-radius: 8px;
+}
+
+button[type="submit"]:hover,
+button[type="button"]:hover {
+  background-color: #fb4365;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+button[type="button"].secondary {
+  background-color: #ff4081;
+}
+
+button[type="button"].secondary:hover {
+  background-color: #e4356b;
+}
+
+.upload-button:hover{
+  background-color: #fb4365;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
