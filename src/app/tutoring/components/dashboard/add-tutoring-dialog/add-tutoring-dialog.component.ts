@@ -21,7 +21,9 @@ export class AddTutoringDialogComponent {
   timeSlots = ['10-11', '11-12', '15-16', '17-18', '20-21'];
   currentUser: any;
   availableTimes: { [day: number]: { [timeSlot: string]: boolean } } = {};
-
+  courseImage: string | undefined;
+  imageUploaded: boolean = false;
+  errorMessage: string = '';
   isFormValidFlag: boolean = false;
 
   allSemesters = [
@@ -143,13 +145,15 @@ export class AddTutoringDialogComponent {
   onConfirmAddTutoring(): void {
     if (this.isFormValid()) {
       const selectedTimes = this.getSelectedTimes();
+      const formattedWhatTheyWillLearn = this.whatTheyWillLearn.split(',').map(item => item.trim()).join('/n');
       const newTutoring = {
         id: 0,
         title: this.selectedCourse ? `${this.selectedCourse} (${this.selectedSemester})` : 'Untitled Tutoring',
         description: this.description || 'No description provided',
         price: this.price || 0,
         times: selectedTimes,
-        image: '',
+        image: this.courseImage || '',
+        whatTheyWillLearn: formattedWhatTheyWillLearn,
         tutorId: this.currentUser?.tutorId || 1,
         courseId: this.availableCourses.find(course => course.name === this.selectedCourse)?.id || 1
       };
@@ -183,7 +187,23 @@ export class AddTutoringDialogComponent {
     });
   }
 
-
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      if (file.type === 'image/png' || file.type === 'image/jpeg' || file.type === 'image/jpg') {
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.courseImage = e.target.result;
+          this.imageUploaded = true;
+          this.errorMessage = '';
+        };
+        reader.readAsDataURL(file);
+      } else {
+        this.errorMessage = 'Invalid file type. Please select a PNG or JPEG file.';
+        this.imageUploaded = false;
+      }
+    }
+  }
 
 }
 
