@@ -6,11 +6,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { Router } from '@angular/router';
+import {TranslateModule} from "@ngx-translate/core";
+import {LanguageSwitcherComponent} from "../../../public/components/language-switcher/language-switcher.component";
 
 @Component({
   selector: 'app-plans',
   standalone: true,
-  imports: [CommonModule, PaymentComponent, MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule],
+  imports: [CommonModule, PaymentComponent, MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, TranslateModule, LanguageSwitcherComponent],
   templateUrl: './plans.component.html',
   styleUrls: ['./plans.component.css']
 })
