@@ -20,8 +20,6 @@ export class SemestersComponent implements OnInit {
     { name: 'Final Project', labelKey: 'footer.eighth', image: 'FinalProject.png', cycle: 8 },
   ];
 
-  isStudent: boolean = false;
-
   constructor(
     public translate: TranslateService,
     private authService: AuthService,
@@ -29,12 +27,9 @@ export class SemestersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.isStudent = !this.authService.getIsTutor();
   }
 
   onSemesterClick(semester: any): void {
-    if (this.isStudent) {
       this.router.navigate(['/courses', semester.cycle]);
-    }
   }
 }
