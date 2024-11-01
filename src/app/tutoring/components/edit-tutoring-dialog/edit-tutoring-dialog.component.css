@@ -1,0 +1,167 @@
+:host {
+  display: block;
+  background-color: #252525;
+  padding: 20px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+h3 {
+  margin-bottom: 10px;
+}
+
+.mat-dialog-content {
+  max-height: none;
+}
+
+.semester-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.semester-buttons button {
+  flex: 1 0 21%;
+  color: white;
+  border-color: #444;
+}
+
+.semester-buttons button.selected {
+  background-color: #d7374b;
+  color: white;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+textarea {
+  min-height: 100px;
+  color: white;
+}
+
+button[color="warn"] {
+  background-color: #d7374b;
+}
+
+.upload-text {
+  margin-left: 10px;
+  color: #888;
+}
+
+.subtitle {
+  color: #888;
+  font-size: 0.9em;
+  margin-top: 0;
+}
+
+.time-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 5px;
+}
+
+.time-table th {
+  text-align: center;
+  font-weight: normal;
+  color: #888;
+}
+
+.time-table button {
+  width: 100%;
+  min-width: 0;
+  padding: 5px;
+  color: white;
+  border-color: #444;
+}
+
+.time-table button:hover {
+  background-color: #482323;
+
+}
+
+.time-table button.selected {
+  background-color: #d7374b;
+  color: white;
+}
+
+mat-dialog-actions {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.avatar{
+  width: 200px;
+  height: 100px;
+  display: block;
+  margin: 1rem 0 0 0;
+}
+
+.upload-message {
+  color: green;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.error-message {
+  color: #423c3c;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+input[type="file"] {
+  display: none;
+}
+label[for="courseImage"] {
+  display: inline-block;
+  background-color: #7a0423;;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  margin: 1.5rem 0;
+}
+
+button[type="submit"],
+button[type="button"] {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+  color: white;
+  background-color: #7a0423;
+  border: none;
+  border-radius: 5px;
+}
+
+button[type="submit"]:hover,
+button[type="button"]:hover {
+  background-color: #fb4365;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+button[type="button"].secondary {
+  background-color: #ff4081;
+}
+
+button[type="button"].secondary:hover {
+  background-color: #e4356b;
+}
+
+.upload-button:hover{
+  background-color: #fb4365;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
