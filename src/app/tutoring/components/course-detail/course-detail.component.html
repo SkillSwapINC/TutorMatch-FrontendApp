@@ -16,19 +16,29 @@
 
       <div class="tutor-available-times">
         <h3>{{ 'footer.TutorAvT' | translate }}</h3>
-        <table>
+        <table class="time-table">
+          <thead>
           <tr>
-            <th>{{ 'footer.Sun' | translate }}</th><th>{{ 'footer.Mon' | translate }}</th><th>{{ 'footer.Tue' | translate }}</th><th>{{ 'footer.Wed' | translate }}</th><th>{{ 'footer.Thu' | translate }}</th><th>{{ 'footer.Fri' | translate }}</th><th>{{ 'footer.Sat' | translate }}</th>
+            <th>{{ 'footer.Sun' | translate }}</th>
+            <th>{{ 'footer.Mon' | translate }}</th>
+            <th>{{ 'footer.Tue' | translate }}</th>
+            <th>{{ 'footer.Wed' | translate }}</th>
+            <th>{{ 'footer.Thu' | translate }}</th>
+            <th>{{ 'footer.Fri' | translate }}</th>
+            <th>{{ 'footer.Sat' | translate }}</th>
           </tr>
-          <tr>
-            <td *ngFor="let time of times['0']">{{ time }}</td>
-            <td *ngFor="let time of times['1']">{{ time}}</td>
-            <td *ngFor="let time of times['2']">{{ time}}</td>
-            <td *ngFor="let time of times['3']">{{ time}}</td>
-            <td *ngFor="let time of times['4']">{{ time}}</td>
-            <td *ngFor="let time of times['5']">{{ time}}</td>
-            <td *ngFor="let time of times['6']">{{ time}}</td>
+          </thead>
+          <tbody>
+          <tr *ngFor="let timeSlot of timeSlots">
+            <td [ngClass]="{'validated': isTimeSlotValidated(0, timeSlot)}">{{ timeSlot }}</td>
+            <td [ngClass]="{'validated': isTimeSlotValidated(1, timeSlot)}">{{ timeSlot }}</td>
+            <td [ngClass]="{'validated': isTimeSlotValidated(2, timeSlot)}">{{ timeSlot }}</td>
+            <td [ngClass]="{'validated': isTimeSlotValidated(3, timeSlot)}">{{ timeSlot }}</td>
+            <td [ngClass]="{'validated': isTimeSlotValidated(4, timeSlot)}">{{ timeSlot }}</td>
+            <td [ngClass]="{'validated': isTimeSlotValidated(5, timeSlot)}">{{ timeSlot }}</td>
+            <td [ngClass]="{'validated': isTimeSlotValidated(6, timeSlot)}">{{ timeSlot }}</td>
           </tr>
+          </tbody>
         </table>
       </div>
     </div>

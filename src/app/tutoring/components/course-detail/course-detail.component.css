@@ -211,3 +211,8 @@ body {
   max-width: 300px;
   box-sizing: border-box;
 }
+
+.time-table td.validated {
+  background-color: #a2ff82;
+  color: black;
+}

@@ -18,6 +18,7 @@ export class CourseDetailComponent implements OnInit {
   courseWhatTheyWillLearn: string | undefined;
   semesterName: string | undefined;
   courseNotFound: boolean = false;
+  timeSlots: string[] = ['10-11', '11-12', '15-16', '17-18', '20-21'];
 
   constructor(
     private route: ActivatedRoute,
@@ -117,4 +118,16 @@ export class CourseDetailComponent implements OnInit {
     event.preventDefault();
     window.history.back();
   }
+
+  /**
+   * @method isTimeSlotValidated
+   * @param day {number} - The day of the week.
+   * @param timeSlot {string} - The time slot.
+   * @description Checks if the time slot is validated.
+   */
+
+  isTimeSlotValidated(day: number, timeSlot: string): boolean {
+    return this.times[day]?.includes(timeSlot);
+  }
+
 }
