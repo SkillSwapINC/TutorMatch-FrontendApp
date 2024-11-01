@@ -138,8 +138,24 @@ export class BaseService<T> {
    */
   public createTutoring(tutoring:any): Observable<any> {
     return this.http.post<any>(this.resourcePath(), JSON.stringify(tutoring), {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
     })
+  }
+
+  /**
+   * @method editTutoring
+   * @description
+   * Updates an existing tutoring session in the JSON Server.
+   * @param {any} id - The ID of the tutoring session to be updated.
+   * @param {any} item - The tutoring session data to be updated.
+   * @returns {Observable<any>} - An observable with the updated tutoring session data.
+   */
+
+  public editTutoring(id: any, item: any): Observable<any> {
+    return this.http.put<T>(`${this.resourcePath()}/${id}`, JSON.stringify(item), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
   }
 
   /**

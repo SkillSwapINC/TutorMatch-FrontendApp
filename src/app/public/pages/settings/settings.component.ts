@@ -1,13 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {RegisterService} from "../../services/register.service";
-import {Router} from "@angular/router";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {MatButton} from "@angular/material/button";
 import {MatInput} from "@angular/material/input";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
-import {NgIf} from "@angular/common";
+import {NgIf, NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-settings',
@@ -21,7 +20,8 @@ import {NgIf} from "@angular/common";
     MatInput,
     MatLabel,
     TranslateModule,
-    NgIf
+    NgIf,
+    NgOptimizedImage
   ],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.css'
@@ -35,7 +35,6 @@ export class SettingsComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private registerService: RegisterService,
-    private router: Router,
     private translate: TranslateService
   ) {
     this.settingsForm = this.fb.group({
@@ -45,6 +44,10 @@ export class SettingsComponent implements OnInit {
     });
   }
 
+  /**
+   * @method ngOnInit
+   * @description Lifecycle hook that is called after the component's constructor.
+   */
   ngOnInit(): void {
     const user = localStorage.getItem('currentUser');
     if (user) {
@@ -53,6 +56,11 @@ export class SettingsComponent implements OnInit {
     }
   }
 
+  /**
+   * @method populateForm
+   * @description Populates the form with the current user's data.
+   */
+
   populateForm() {
     this.settingsForm.patchValue({
       avatar: this.currentUser.avatar,
@@ -60,6 +68,11 @@ export class SettingsComponent implements OnInit {
       cycle: this.currentUser.cycle
     });
   }
+
+  /**
+   * @method onSave
+   * @description Updates the user's data and navigates to the dashboard page.
+   */
 
   onSave() {
     if (this.settingsForm.valid) {
@@ -71,7 +84,7 @@ export class SettingsComponent implements OnInit {
         next: (response) => {
           console.log('User updated successfully:', response);
           localStorage.setItem('currentUser', JSON.stringify(response));
-          this.router.navigate(['Dashboard']).then();
+          window.history.back();
         },
         error: (error) => {
           console.error('Error updating user:', error);
@@ -82,10 +95,16 @@ export class SettingsComponent implements OnInit {
     }
   }
 
+  /**
+   * @method onFileSelected
+   * @param event
+   * @description Handles the file selected event and updates the avatar image.
+   */
+
   onFileSelected(event: any): void {
     const file = event.target.files[0];
     if (file) {
-      if (file.type === 'image/png' || file.type === 'image/jpeg') {
+      if (file.type === 'image/png' || file.type === 'image/jpeg' || file.type === 'image/jpg') {
         const reader = new FileReader();
         reader.onload = (e: any) => {
           this.settingsForm.patchValue({ avatar: e.target.result });
@@ -102,7 +121,14 @@ export class SettingsComponent implements OnInit {
     }
   }
 
-  onBack(): void {
-    this.router.navigate(['/Dashboard']).then(r => console.log('Navigated back to dashboard:', r));
+  /**
+   * @method goBack
+   * @param event
+   * @description Navigates back to the previous page.
+   */
+
+  goBack(event: Event): void {
+    event.preventDefault();
+    window.history.back();
   }
 }

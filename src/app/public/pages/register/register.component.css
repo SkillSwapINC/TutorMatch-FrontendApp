@@ -47,7 +47,7 @@ button[type="button"] {
   transition: all 0.3s ease;
   margin-bottom: 1rem;
   color: white;
-  background-color: #e64c3d;
+  background-color: #D83749;
   border: none;
   border-radius: 8px;
 }
@@ -86,7 +86,7 @@ mat-radio-button {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #430b0e, #c0392b);
+  background: linear-gradient(-27deg, rgba(105,17,31,1) 0%, rgba(216,55,73,1) 50%, rgba(105,17,31,1) 100%);
 }
 
 .signup-card {

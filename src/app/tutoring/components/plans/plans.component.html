@@ -11,56 +11,59 @@
     </button>
   </div>
   <mat-menu #languageMenu="matMenu">
+    <app-language-switcher></app-language-switcher>
   </mat-menu>
 </mat-toolbar>
 
 <div class="plans-container">
-  <h1>Become a tutor and guide others to academic success.</h1>
-  <p>Offer your knowledge and help others achieve academic success, start offering your tutoring today!</p>
+  <h1>{{'footer.Become' | translate }}</h1>
+  <p>{{'footer.Offer' | translate }}</p>
 
   <div class="plan-cards">
     <div class="plan-card">
-      <h2>BASIC Plan</h2>
+      <h2>{{'footer.Basic' | translate }}</h2>
+      <p class="price">$1.99</p>
       <ul>
-        <li>Basic profile on the platform.</li>
-        <li>Access to interested students.</li>
-        <li>History of tutoring.</li>
-        <li>Support with response within 48 hours.</li>
+        <li>{{'footer.Basic1' | translate }}</li>
+        <li>{{'footer.Basic2' | translate }}</li>
+        <li>{{'footer.Basic3' | translate }}</li>
+        <li>{{'footer.Basic4' | translate }}</li>
       </ul>
-      <button mat-raised-button color="accent" (click)="togglePayment()">Buy Plan</button>
+      <button mat-raised-button color="accent" (click)="selectPlan('BASIC', 1.99)">{{'footer.BuyPlan' | translate }}</button>
     </div>
 
     <div class="plan-card">
-      <h2>STANDARD Plan</h2>
+      <h2>{{'footer.Standard' | translate }}</h2>
+      <p class="price">$4.99</p>
       <ul>
-        <li>Everything in the basic plan.</li>
-        <li>Access to tutoring management tools (advanced calendars, automatic reminders).</li>
-        <li>Personalized recommendations for students.</li>
-        <li>Improved visibility in searches.</li>
-        <li>Support with a response within 24 hours.</li>
+        <li>{{'footer.Standard1' | translate }}</li>
+        <li>{{'footer.Standard2' | translate }}</li>
+        <li>{{'footer.Standard3' | translate }}</li>
+        <li>{{'footer.Standard4' | translate }}</li>
+        <li>{{'footer.Standard5' | translate }}</li>
       </ul>
-      <button mat-raised-button color="accent" (click)="togglePayment()">Buy Plan</button>
+      <button mat-raised-button color="accent" (click)="selectPlan('STANDARD', 4.99)">{{'footer.BuyPlan' | translate }}</button>
     </div>
 
     <div class="plan-card">
-      <h2>PREMIUM Plan</h2>
+      <h2>{{'footer.Premium' | translate }}</h2>
+      <p class="price">$9.99</p>
       <ul>
-        <li>Everything in the standard plan.</li>
-        <li>Featured profile with greater exposure on the platform.</li>
-        <li>Access to advanced statistics on tutoring performance.</li>
-        <li>Promotions and discounts on ads within the platform.</li>
-        <li>Priority support with a response within 12 hours.</li>
-        <li>Access to exclusive events and professional development opportunities.</li>
+        <li>{{'footer.Premium1' | translate }}</li>
+        <li>{{'footer.Premium2' | translate }}</li>
+        <li>{{'footer.Premium3' | translate }}</li>
+        <li>{{'footer.Premium4' | translate }}</li>
+        <li>{{'footer.Premium5' | translate }}</li>
+        <li>{{'footer.Premium6' | translate }}</li>
       </ul>
-      <button mat-raised-button color="accent" (click)="togglePayment()">Buy Plan</button>
+      <button mat-raised-button color="accent" (click)="selectPlan('PREMIUM', 9.99)">{{'footer.BuyPlan' | translate }}</button>
     </div>
   </div>
 </div>
 
 <div class="overlay" *ngIf="showPayment">
   <div class="payment-container">
-    <app-payment></app-payment>
-    <button mat-raised-button class="close-btn" (click)="togglePayment()">Close</button>
+    <app-payment [selectedPlan]="selectedPlan" [selectedPrice]="selectedPrice"></app-payment>
+    <button mat-raised-button class="close-btn" color="warn" (click)="togglePayment()">{{'footer.Close' | translate }}</button>
   </div>
 </div>
-

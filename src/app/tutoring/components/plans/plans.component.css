@@ -47,7 +47,7 @@
 
 .plans-container {
   text-align: center;
-  background: linear-gradient(135deg, #69111F 15%, #D83749 50%, #69111F 100%);
+  background: linear-gradient(-27deg, rgba(105,17,31,1) 0%, rgba(216,55,73,1) 50%, rgba(105,17,31,1) 100%);
   color: white;
   padding: 50px 0;
   min-height: calc(91.6vh - 100px);
@@ -101,7 +101,7 @@
 }
 
 .plan-card button {
-  background-color: #D30000;
+  background-color: #D83749;
   color: white;
   align-self: center;
   margin-top: auto;

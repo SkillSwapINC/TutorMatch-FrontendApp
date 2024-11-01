@@ -7,20 +7,6 @@ body {
   overflow: hidden;
 }
 
-.payment-container {
-  background-color: #1E1E1E;
-  color: #ffffff;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-  overflow: hidden;
-  height: auto;
-}
-
-
 .payment-container:hover {
   transform: translateY(-5px);
 }
@@ -75,6 +61,7 @@ body {
 }
 
 .card-wrapper {
+  display: flex;
   margin-bottom: 30px;
   perspective: 1000px;
 }
@@ -108,7 +95,6 @@ body {
 
 .card-back {
   transform: rotateY(180deg);
-  background-color: #313131;
   align-items: center;
 }
 
@@ -134,8 +120,7 @@ body {
 }
 
 .cvv-box {
-  background-color: #ffffff;
-  color: #000000;
+  color: #ffffff;
   padding: 10px;
   border-radius: 5px;
   font-size: 18px;
@@ -152,7 +137,7 @@ body {
 }
 
 .half-width {
-  width: 48%;
+  width: 45%;
 }
 
 label {
@@ -225,32 +210,6 @@ input:focus {
   background-color: #BC012C;
 }
 
-@media (max-width: 480px) {
-  .payment-container {
-    padding: 20px;
-  }
-
-  .form-row {
-    flex-direction: column;
-  }
-
-  .half-width {
-    width: 100%;
-  }
-}
-
-.payment-container {
-  background-color: #1E1E1E;
-  color: #ffffff;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-  overflow-y: auto;
-  max-height: 90vh;
-}
 
 .credit-card {
   position: relative;
@@ -306,14 +265,27 @@ input:focus {
   margin-left: -5px;
 }
 
+.form-container{
+  display: flex;
+  flex-direction: column;
+  align-items: normal;
+  justify-content: center;
+  margin: 20px;
+}
+
+
 @media (max-width: 480px) {
-  .payment-container {
-    padding: 20px;
+  .card-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: 150px;
+    margin: 20px;
   }
 
   .credit-card {
-    padding: 15px 10px 10px 10px;
-    margin-left: -20px;
+    padding: 15px;
+    width: 100%;
   }
 
   .card-number {
@@ -322,5 +294,13 @@ input:focus {
 
   .card-details {
     font-size: 11px;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .half-width {
+    width: 100%;
   }
 }

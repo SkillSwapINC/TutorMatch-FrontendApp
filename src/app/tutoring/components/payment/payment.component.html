@@ -1,13 +1,13 @@
-<div class="payment-container">
   <div class="payment-header">
-    <h2>Secure Payment</h2>
-    <p>Choose your payment method and complete your transaction securely.</p>
+    <h2>{{'footer.SecurePayment' | translate }}</h2>
+    <p>{{'footer.SelectedPlan' | translate }}: {{ selectedPlan }} - ${{ selectedPrice }}</p>
+    <p>{{'footer.ChoosePaymentMethod' | translate }}</p>
   </div>
 
   <div class="payment-options">
     <button class="payment-option" [class.active]="paymentMethod === 'credit-card'" (click)="setPaymentMethod('credit-card')">
       <i class="fas fa-credit-card"></i>
-      Credit Card
+      {{'footer.CreditCard' | translate }}
     </button>
     <button class="payment-option" [class.active]="paymentMethod === 'paypal'" (click)="setPaymentMethod('paypal')">
       <i class="fab fa-paypal"></i>
@@ -34,9 +34,9 @@
     </div>
   </div>
 
-  <form (ngSubmit)="onSubmit()" novalidate *ngIf="paymentMethod === 'credit-card'">
+  <form class="form-container" (ngSubmit)="onSubmit()" novalidate *ngIf="paymentMethod === 'credit-card'">
     <div class="form-group">
-      <label for="name">Name on Card</label>
+      <label for="name">{{'footer.NameOnCard' | translate }}</label>
       <input
         type="text"
         id="name"
@@ -50,7 +50,7 @@
     </div>
 
     <div class="form-group">
-      <label for="cardNumber">Card Number</label>
+      <label for="cardNumber">{{'footer.CardNumber' | translate }}</label>
       <input
         type="text"
         id="cardNumber"
@@ -65,7 +65,7 @@
 
     <div class="form-row">
       <div class="form-group half-width">
-        <label for="expiryDate">Expiry Date</label>
+        <label for="expiryDate">{{'footer.ExpiryDate' | translate }}</label>
         <input
           type="text"
           id="expiryDate"
@@ -92,12 +92,10 @@
         >
       </div>
     </div>
-
-    <button type="submit" class="btn-submit" [disabled]="!formValid">Pay Now</button>
+    <button type="submit" class="btn-submit" [disabled]="!formValid">{{'footer.PayNow' | translate }}</button>
   </form>
 
   <div class="paypal-container" *ngIf="paymentMethod === 'paypal'">
-    <p>Click the button below to log in to your PayPal account and complete your payment.</p>
-    <button class="btn-paypal" (click)="openPayPalLogin()">Log in to PayPal</button>
+    <p>{{'footer.Click' | translate }}</p>
+    <button class="btn-paypal" (click)="openPayPalLogin()">{{'footer.LoginPayPal' | translate }}</button>
   </div>
-</div>

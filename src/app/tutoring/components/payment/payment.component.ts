@@ -1,17 +1,20 @@
-import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { Component, Input } from '@angular/core';
 import {RegisterService} from "../../../public/services/register.service";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-payment',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, TranslateModule],
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent {
+  @Input() selectedPlan: string | undefined;
+  @Input() selectedPrice: number | undefined;
   paymentMethod: 'credit-card' | 'paypal' = 'credit-card';
   cardHolder = 'ㅤ';
   cardNumber = '';
@@ -92,13 +95,9 @@ export class PaymentComponent {
 
   onSubmit() {
     if (this.formValid) {
-      // Lógica para procesar el pago
-
-      // Si el pago es exitoso, registrar al tutor
       const pendingTutor = sessionStorage.getItem('pendingTutor');
       if (pendingTutor) {
         const tutorData = JSON.parse(pendingTutor);
-
 
         this.registerService.setUserRole(tutorData.role);
         this.registerService.registerUser(tutorData).subscribe({
@@ -115,7 +114,6 @@ export class PaymentComponent {
       }
     }
   }
-
 
   openPayPalLogin() {
     window.open('https://www.paypal.com/signin', '_blank', 'width=500,height=600');

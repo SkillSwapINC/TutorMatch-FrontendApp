@@ -3,6 +3,7 @@
   <form [formGroup]="settingsForm" (ngSubmit)="onSave()">
     <div>
       <label class="settings-title">{{ 'footer.pProfile' | translate }}<br></label>
+      <img *ngIf="settingsForm.get('avatar')?.value" [src]="settingsForm.get('avatar')?.value" alt="Avatar" class="avatar">
       <label class="upload-button" for="avatar">{{ 'footer.pUpload' | translate }}
       <input  type="file" id="avatar" formControlName="avatar" (change)="onFileSelected($event)" style="display: none;">
       </label>
@@ -26,6 +27,6 @@
       </mat-form-field>
     </div>
     <button mat-raised-button color="warn" type="submit">{{'footer.pSave' | translate}}</button>
-    <button mat-raised-button color="warn" type="button" (click)="onBack()">{{ 'footer.pBack' | translate }}</button>
+    <button mat-raised-button color="warn" type="button" (click)="goBack($event)">{{ 'footer.pBack' | translate }}</button>
   </form>
 </div>

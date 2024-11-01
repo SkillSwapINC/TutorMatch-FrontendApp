@@ -43,6 +43,7 @@ export class ToolbarComponent implements OnInit {
     });
   }
 
+
   navigateToSettings() {
     this.router.navigate(['/Settings']).then();
   }
