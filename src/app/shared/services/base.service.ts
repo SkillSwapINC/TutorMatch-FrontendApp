@@ -145,6 +145,20 @@ export class BaseService<T> {
   }
 
   /**
+   * @method editTutoring
+   * @description
+   * Updates an existing tutoring session in the JSON Server.
+   * @param {any} id - The ID of the tutoring session to be updated.
+   * @param {any} item - The tutoring session data to be updated.
+   * @returns {Observable<any>} - An observable with the updated tutoring session data.
+   */
+
+  public editTutoring(id: any, item: any): Observable<any> {
+    return this.http.put<T>(`${this.resourcePath()}/${id}`, JSON.stringify(item), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  /**
    * @method updateUser
    * @description
    * Updates an existing user in the JSON Server.
