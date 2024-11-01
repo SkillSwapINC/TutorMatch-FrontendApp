@@ -27,6 +27,7 @@
     "pUpload": "Upload an image",
     "pSave": "Save",
     "pBack": "Back",
+    "pEditProfile": "Edit Profile",
     "pRole": "Role",
     "pUserProfile": "User Profile",
     "pImageUploaded": "Image uploaded",
@@ -102,6 +103,7 @@
     "ExpiryDate": "Expiry Date",
     "PayNow": "Pay Now",
     "Click": "Click the button below to log in to your PayPal account and complete your payment.",
-    "LoginPayPal": "Login to PayPal"
+    "LoginPayPal": "Login to PayPal",
+    "EditTutoring": "Edit Tutoring"
   }
 }

@@ -27,6 +27,7 @@
     "pUpload": "Subir una imagen",
     "pSave": "Guardar",
     "pBack": "Atrás",
+    "pEditProfile": "Editar Perfil",
     "pRole": "Rol",
     "pUserProfile": "Perfil de usuario",
     "pImageUploaded": "Imagen subida",
@@ -102,6 +103,7 @@
     "ExpiryDate": "Fecha de Expiración",
     "PayNow": "Pagar ahora",
     "Click": "Haz clic en el botón de abajo para iniciar sesión en tu cuenta de PayPal y completar tu pago.",
-    "LoginPayPal": "Iniciar sesión en PayPal"
+    "LoginPayPal": "Iniciar sesión en PayPal",
+    "EditTutoring": "Editar Tutoría"
   }
 }
