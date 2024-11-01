@@ -112,6 +112,7 @@ export class AddTutoringDialogComponent {
   onSemesterSelected(): void {
     const selectedSemesterObj = this.allSemesters.find(sem => sem.name === this.selectedSemester);
     this.availableCourses = selectedSemesterObj ? selectedSemesterObj.courses : [];
+    this.checkFormValidity();
   }
 
   toggleTimeSlot(day: number, timeSlot: string): void {
@@ -124,7 +125,13 @@ export class AddTutoringDialogComponent {
   }
 
   isFormValid(): boolean {
-    return this.areTimeSlotsSelected();
+  return this.selectedSemester !== '' &&
+         this.selectedCourse !== '' &&
+         this.description !== '' &&
+         this.price > 0 &&
+         this.whatTheyWillLearn !== '' &&
+         this.courseImage !== undefined &&
+         this.areTimeSlotsSelected();
   }
 
   areTimeSlotsSelected(): boolean {
@@ -143,9 +150,8 @@ export class AddTutoringDialogComponent {
   }
 
   onConfirmAddTutoring(): void {
-    if (this.isFormValid()) {
+    if (this.isFormValid() && this.price > 0) {
       const selectedTimes = this.getSelectedTimes();
-      const formattedWhatTheyWillLearn = this.whatTheyWillLearn.split(',').map(item => item.trim()).join('/n');
       const newTutoring = {
         id: 0,
         title: this.selectedCourse ? `${this.selectedCourse} (${this.selectedSemester})` : 'Untitled Tutoring',
@@ -153,7 +159,7 @@ export class AddTutoringDialogComponent {
         price: this.price || 0,
         times: selectedTimes,
         image: this.courseImage || '',
-        whatTheyWillLearn: formattedWhatTheyWillLearn,
+        whatTheyWillLearn: this.whatTheyWillLearn,
         tutorId: this.currentUser?.tutorId || 1,
         courseId: this.availableCourses.find(course => course.name === this.selectedCourse)?.id || 1
       };
@@ -196,11 +202,13 @@ export class AddTutoringDialogComponent {
           this.courseImage = e.target.result;
           this.imageUploaded = true;
           this.errorMessage = '';
+          this.checkFormValidity();
         };
         reader.readAsDataURL(file);
       } else {
         this.errorMessage = 'Invalid file type. Please select a PNG or JPEG file.';
         this.imageUploaded = false;
+        this.checkFormValidity();
       }
     }
   }

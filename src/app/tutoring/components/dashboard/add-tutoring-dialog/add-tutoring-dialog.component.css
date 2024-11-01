@@ -1,7 +1,6 @@
 :host {
   display: block;
-  background-color: #242524;
-  color: white;
+  background-color: #252525;
   padding: 20px;
 }
 
@@ -42,6 +41,7 @@ mat-form-field {
 
 textarea {
   min-height: 100px;
+  color: white;
 }
 
 button[color="warn"] {
@@ -79,6 +79,11 @@ button[color="warn"] {
   border-color: #444;
 }
 
+.time-table button:hover {
+  background-color: #482323;
+
+}
+
 .time-table button.selected {
   background-color: #d7374b;
   color: white;
@@ -113,7 +118,6 @@ mat-dialog-actions {
 input[type="file"] {
   display: none;
 }
-
 label[for="courseImage"] {
   display: inline-block;
   background-color: #7a0423;;
@@ -138,7 +142,7 @@ button[type="button"] {
   color: white;
   background-color: #7a0423;
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
 }
 
 button[type="submit"]:hover,

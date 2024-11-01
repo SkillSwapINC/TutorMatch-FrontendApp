@@ -6,7 +6,7 @@
 </h2>
 
 <div mat-dialog-content>
-  <form #tutoringForm="ngForm">
+  <form style="color: #ffffff;" #tutoringForm="ngForm">
     <h3 style="color: #ffffff;">{{ 'footer.CourseSemester' | translate }}</h3>
     <div class="semester-buttons">
       <button mat-stroked-button *ngFor="let semester of semesters"
@@ -17,9 +17,9 @@
     </div>
 
     <h3 style="color: #ffffff;">{{ 'footer.CourseName' | translate }}</h3>
-    <mat-form-field appearance="outline">
+    <mat-form-field color="warn" appearance="outline">
       <mat-select [(ngModel)]="selectedCourse" name="courseName" placeholder="{{ 'footer.SelectCourse' | translate }}" required>
-        <mat-option *ngFor="let course of availableCourses" [value]="course.name">
+        <mat-option  *ngFor="let course of availableCourses" [value]="course.name">
           {{course.name}}
         </mat-option>
       </mat-select>
@@ -27,7 +27,7 @@
 
     <h3 style="color: #ffffff;">{{ 'footer.Price' | translate }}</h3>
     <mat-form-field color="warn" appearance="outline">
-      <input matInput type="number" [(ngModel)]="price" name="price" placeholder="{{ 'footer.EnterPrice' | translate }}" required>
+      <input matInput type="number" [(ngModel)]="price" name="price" placeholder="{{ 'footer.EnterPrice' | translate }}" min="0" required>
     </mat-form-field>
 
     <h3 style="color: #ffffff;">{{ 'footer.CourseDescription' | translate }}</h3>
@@ -53,89 +53,43 @@
     <p class="subtitle">{{ 'footer.EnterYourAvailableTimes' | translate }}</p>
 
     <table class="time-table">
-      <thead>
-      <tr>
-        <th>{{ 'footer.Sun' | translate }}</th>
-        <th>{{ 'footer.Mon' | translate }}</th>
-        <th>{{ 'footer.Tue' | translate }}</th>
-        <th>{{ 'footer.Wed' | translate }}</th>
-        <th>{{ 'footer.Thu' | translate }}</th>
-        <th>{{ 'footer.Fri' | translate }}</th>
-        <th>{{ 'footer.Sat' | translate }}</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>
-          <button mat-stroked-button [ngClass]="{'selected': isSelected(0, '10-11')}" (click)="toggleTimeSlot(0, '10-11')">10-11</button>
-        </td>
-        <td>
-          <button mat-stroked-button [ngClass]="{'selected': isSelected(1, '10-11')}" (click)="toggleTimeSlot(1, '10-11')">10-11</button>
-        </td>
-        <td>
-          <button mat-stroked-button [ngClass]="{'selected': isSelected(2, '10-11')}" (click)="toggleTimeSlot(2, '10-11')">10-11</button>
-        </td>
-        <td>
-          <button mat-stroked-button [ngClass]="{'selected': isSelected(3, '10-11')}" (click)="toggleTimeSlot(3, '10-11')">10-11</button>
-        </td>
-        <td>
-          <button mat-stroked-button [ngClass]="{'selected': isSelected(4, '10-11')}" (click)="toggleTimeSlot(4, '10-11')">10-11</button>
-        </td>
-        <td>
-          <button mat-stroked-button [ngClass]="{'selected': isSelected(5, '10-11')}" (click)="toggleTimeSlot(5, '10-11')">10-11</button>
-        </td>
-        <td>
-          <button mat-stroked-button [ngClass]="{'selected': isSelected(6, '10-11')}" (click)="toggleTimeSlot(6, '10-11')">10-11</button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <button mat-stroked-button [ngClass]="{'selected': isSelected(0, '11-12')}" (click)="toggleTimeSlot(0, '11-12')">11-12</button>
-        </td>
-        <td>
-          <button mat-stroked-button [ngClass]="{'selected': isSelected(1, '11-12')}" (click)="toggleTimeSlot(1, '11-12')">11-12</button>
-        </td>
-        <td>
-          <button mat-stroked-button [ngClass]="{'selected': isSelected(2, '11-12')}" (click)="toggleTimeSlot(2, '11-12')">11-12</button>
-        </td>
-        <td>
-          <button mat-stroked-button [ngClass]="{'selected': isSelected(3, '11-12')}" (click)="toggleTimeSlot(3, '11-12')">11-12</button>
-        </td>
-        <td>
-          <button mat-stroked-button [ngClass]="{'selected': isSelected(4, '11-12')}" (click)="toggleTimeSlot(4, '11-12')">11-12</button>
-        </td>
-        <td>
-          <button mat-stroked-button [ngClass]="{'selected': isSelected(5, '11-12')}" (click)="toggleTimeSlot(5, '11-12')">11-12</button>
-        </td>
-        <td>
-          <button mat-stroked-button [ngClass]="{'selected': isSelected(6, '11-12')}" (click)="toggleTimeSlot(6, '11-12')">11-12</button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <button mat-stroked-button [ngClass]="{'selected': isSelected(0, '15-16')}" (click)="toggleTimeSlot(0, '15-16')">15-16</button>
-        </td>
-        <td>
-          <button mat-stroked-button [ngClass]="{'selected': isSelected(1, '15-16')}" (click)="toggleTimeSlot(1, '15-16')">15-16</button>
-        </td>
-        <td>
-          <button mat-stroked-button [ngClass]="{'selected': isSelected(2, '15-16')}" (click)="toggleTimeSlot(2, '15-16')">15-16</button>
-        </td>
-        <td>
-          <button mat-stroked-button [ngClass]="{'selected': isSelected(3, '15-16')}" (click)="toggleTimeSlot(3, '15-16')">15-16</button>
-        </td>
-        <td>
-          <button mat-stroked-button [ngClass]="{'selected': isSelected(4, '15-16')}" (click)="toggleTimeSlot(4, '15-16')">15-16</button>
-        </td>
-        <td>
-          <button mat-stroked-button [ngClass]="{'selected': isSelected(5, '15-16')}" (click)="toggleTimeSlot(5, '15-16')">15-16</button>
-        </td>
-        <td>
-          <button mat-stroked-button [ngClass]="{'selected': isSelected(6, '15-16')}" (click)="toggleTimeSlot(6, '15-16')">15-16</button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+  <thead>
+    <tr>
+      <th>{{ 'footer.Sun' | translate }}</th>
+      <th>{{ 'footer.Mon' | translate }}</th>
+      <th>{{ 'footer.Tue' | translate }}</th>
+      <th>{{ 'footer.Wed' | translate }}</th>
+      <th>{{ 'footer.Thu' | translate }}</th>
+      <th>{{ 'footer.Fri' | translate }}</th>
+      <th>{{ 'footer.Sat' | translate }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let timeSlot of timeSlots">
+      <td>
+        <button mat-stroked-button [ngClass]="{'selected': isSelected(0, timeSlot)}" (click)="toggleTimeSlot(0, timeSlot)">{{ timeSlot }}</button>
+      </td>
+      <td>
+        <button mat-stroked-button [ngClass]="{'selected': isSelected(1, timeSlot)}" (click)="toggleTimeSlot(1, timeSlot)">{{ timeSlot }}</button>
+      </td>
+      <td>
+        <button mat-stroked-button [ngClass]="{'selected': isSelected(2, timeSlot)}" (click)="toggleTimeSlot(2, timeSlot)">{{ timeSlot }}</button>
+      </td>
+      <td>
+        <button mat-stroked-button [ngClass]="{'selected': isSelected(3, timeSlot)}" (click)="toggleTimeSlot(3, timeSlot)">{{ timeSlot }}</button>
+      </td>
+      <td>
+        <button mat-stroked-button [ngClass]="{'selected': isSelected(4, timeSlot)}" (click)="toggleTimeSlot(4, timeSlot)">{{ timeSlot }}</button>
+      </td>
+      <td>
+        <button mat-stroked-button [ngClass]="{'selected': isSelected(5, timeSlot)}" (click)="toggleTimeSlot(5, timeSlot)">{{ timeSlot }}</button>
+      </td>
+      <td>
+        <button mat-stroked-button [ngClass]="{'selected': isSelected(6, timeSlot)}" (click)="toggleTimeSlot(6, timeSlot)">{{ timeSlot }}</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
   </form>
 </div>
 
