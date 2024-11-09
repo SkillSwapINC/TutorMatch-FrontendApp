@@ -85,3 +85,71 @@
 .mat-form-field-flex {
   height: 100%;
 }
+
+@media (max-width: 1024px) {
+  .custom-toolbar {
+    height: auto;
+    flex-wrap: wrap;
+    padding: 16px;
+  }
+
+  .container {
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .search-bar-container {
+    width: 100%;
+    order: 3;
+    margin-top: 16px;
+  }
+
+  .search-bar {
+    max-width: none;
+  }
+
+  .icon-buttons {
+    order: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .name {
+    font-size: 20px;
+  }
+
+  .logo {
+    height: 32px;
+  }
+
+  .icon-buttons button {
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-toolbar {
+    padding: 12px;
+  }
+
+  .name {
+    font-size: 18px;
+  }
+
+  .logo {
+    height: 28px;
+    margin-right: 8px;
+  }
+
+  .icon-buttons button {
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  .avatar img {
+    width: 32px;
+    height: 32px;
+  }
+}

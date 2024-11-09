@@ -1,74 +1,119 @@
 .semesters-section {
-    margin: 40px auto;
-    text-align: center;
-    width: 70%;
-  }
+  margin: 40px auto;
+  text-align: center;
+  width: 90%;
+  max-width: 1200px;
+}
 
-  .semesters-section h3 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #fff;
-  }
+.semesters-section h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
 
-  .semesters-grid {
-    display: flex;
-    justify-content: center;
-  }
+.semesters-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
 
-  mat-grid-list {
-    width: 100%;
-    max-width: 1200px;
-  }
-
-  mat-grid-tile {
-    padding: 10px;
-  }
+.semester-item {
+  flex: 1 1 calc(25% - 20px);
+  max-width: calc(25% - 20px);
+  margin-bottom: 20px;
+}
 
 .clickable {
   cursor: pointer;
 }
 
 mat-card {
-    background-color: #252525;
-    color: white;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: 90%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 0 0 30px 50px;
+  background-color: #252525;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+mat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+mat-card img {
+  max-width: 40%;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1rem;
+  color: #ccc;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .semester-item {
+    flex: 1 1 calc(33.33% - 20px);
+    max-width: calc(33.33% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .semesters-section h3 {
+    font-size: 1.75rem;
   }
 
-  mat-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  .semester-item {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
   }
 
   mat-card img {
-    max-width: 40%;
-    height: auto;
-    margin-bottom: 15px;
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .semesters-section {
+    width: 95%;
+    margin: 20px auto;
+  }
+
+  .semesters-section h3 {
+    font-size: 1.5rem;
+  }
+
+  .semester-item {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  mat-card {
+    padding: 15px;
+  }
+
+  mat-card img {
+    max-width: 60%;
   }
 
   h4 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 10px;
+    font-size: 1.1rem;
   }
 
   p {
-    font-size: 1rem;
-    color: #ccc;
-    margin: 0;
+    font-size: 0.9rem;
   }
-
-  @media (max-width: 768px) {
-
-  }
-
-  @media (max-width: 480px) {
-
-  }
+}
