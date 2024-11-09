@@ -12,7 +12,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatCard, MatCardAvatar, MatCardContent, MatCardHeader, MatCardImage} from "@angular/material/card";
 import { MatCardSubtitle, MatCardTitle} from "@angular/material/card";
 import { CourseRecomComponent } from './course-recom/course-recom.component';
@@ -31,6 +31,7 @@ import { AddTutoringDialogComponent } from './add-tutoring-dialog/add-tutoring-d
 import {CourseListComponent} from "./course-list/course-list.component";
 import {CourseDetailComponent} from "../course-detail/course-detail.component";
 import {RouterLink} from "@angular/router";
+import {MatAutocomplete, MatAutocompleteTrigger} from "@angular/material/autocomplete";
 
 
 @NgModule({
@@ -53,7 +54,7 @@ import {RouterLink} from "@angular/router";
     MatButton,
     MatCardSubtitle, MatCardTitle, LoginComponent, RegisterComponent,
     MatIconButton, MatFormFieldModule, MatInputModule, FormsModule, NgOptimizedImage, MatCard, MatCardHeader, MatAnchor, MatCardAvatar, MatTabGroup, MatTab, MatTabLabel, MatCardContent, MatCardImage, MatGridList, MatGridTile, FooterContentComponent, MatMenuTrigger, LanguageSwitcherComponent, MatMenu, PageNotFoundComponent, TranslateModule,
-    MatDialogModule, MatButtonModule, MatSelectModule, MatMenuItem, RouterLink],
+    MatDialogModule, MatButtonModule, MatSelectModule, MatMenuItem, RouterLink, MatAutocomplete, MatAutocompleteTrigger, ReactiveFormsModule],
   exports: [DashboardComponent, ToolbarComponent]
 })
 export class DashboardModule { }
