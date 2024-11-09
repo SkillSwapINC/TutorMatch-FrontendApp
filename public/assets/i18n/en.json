@@ -104,6 +104,20 @@
     "PayNow": "Pay Now",
     "Click": "Click the button below to log in to your PayPal account and complete your payment.",
     "LoginPayPal": "Login to PayPal",
-    "EditTutoring": "Edit Tutoring"
+    "EditTutoring": "Edit Tutoring",
+    "softwareSemester1": "Introduction to Algorithms",
+    "softwareSemester2": "Algorithms",
+    "softwareSemester3": "Algorithms and Data Structures",
+    "softwareSemester4": "Software Design and Patterns",
+    "softwareSemester5": "Database Design",
+    "softwareSemester6": "IHC and Mobile Technologies",
+    "softwareSemester7": "Web Applications",
+    "softwareSemester8": "Open Source Application Development",
+    "softwareSemester9": "Mobile Device Applications",
+    "softwareSemester10": "Algorithmic Complexity",
+    "softwareSemester11": "Design of Software Engineering Experiments",
+    "softwareSemester12": "Software Architecture Fundamentals",
+    "softwareSemester13": "Emerging Software Architectures",
+    "softwareSemester14": "Computer Project Management"
   }
 }
