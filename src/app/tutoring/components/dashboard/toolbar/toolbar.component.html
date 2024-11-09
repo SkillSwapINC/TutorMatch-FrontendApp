@@ -11,10 +11,19 @@
   <!-- search bar -->
   <div class="search-bar-container">
     <mat-form-field color="warn" class="search-bar" appearance="outline">
-      <input matInput [placeholder]="'footer.search' | translate">
-      <button mat-icon-button matSuffix aria-label="Search">
+      <input matInput
+             [placeholder]="'footer.search' | translate"
+             [formControl]="searchControl"
+             [matAutocomplete]="auto"
+             (keyup.enter)="onSearch()">
+      <button mat-icon-button matSuffix aria-label="Search" (click)="onSearch()">
         <mat-icon>search</mat-icon>
       </button>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSemesterSelect($event.option.value)">
+        <mat-option *ngFor="let semester of (filteredSemesters | async)" [value]="semester.labelKey">
+          {{ semester.labelKey | translate }}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
   </div>
 
