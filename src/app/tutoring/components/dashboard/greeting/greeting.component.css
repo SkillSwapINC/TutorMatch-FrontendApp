@@ -1,38 +1,41 @@
 .user-greeting {
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 20px;
   background-color: #333;
+  flex-wrap: wrap;
 }
 
 .user-info {
-  height: 200px;
-  margin-left: 500px;
   display: flex;
   color: #ffffff;
   align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 }
-.user-details{
-  margin-bottom: 40px;
-  width: 180px;
+
+.user-details {
+  flex: 1;
+  min-width: 180px;
   color: #ffffff;
+  margin-left: 20px;
 }
+
 .user-avatar {
   width: 120px;
   height: 120px;
-  margin-right: 10px;
+  flex-shrink: 0;
 }
 
 .user-avatar img {
   width: 100%;
-  height: auto;
-  margin-right: 10px;
+  height: 100%;
+  object-fit: cover;
   border-radius: 50%;
 }
 
 mat-icon {
-  width: 400px;
-  height: 400px;
   font-size: 90px;
   color: #ff0000;
   margin-left: 25px;
@@ -40,8 +43,9 @@ mat-icon {
 
 .mat-card-title {
   color: #ffffff;
-  text-align: justify;
+  text-align: left;
   margin-bottom: 5px;
+  font-size: 24px;
 }
 
 .mat-card-subtitle {
@@ -50,7 +54,79 @@ mat-icon {
 }
 
 .edit-semester {
-  width: 9%;
-  margin-bottom: 45px;
-  margin-right: 910px;
+  width: 100%;
+  max-width: 200px;
+  margin-top: 20px;
+}
+
+@media (max-width: 1024px) {
+  .user-info {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .user-details {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+  mat-icon {
+    font-size: 70px;
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+  .edit-semester {
+    margin: 20px auto 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .user-greeting {
+    padding: 15px;
+  }
+
+  .user-avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .mat-card-title {
+    font-size: 20px;
+  }
+
+  .mat-card-subtitle {
+    font-size: 16px;
+  }
+
+  mat-icon {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-greeting {
+    padding: 10px;
+  }
+
+  .user-avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .mat-card-title {
+    font-size: 18px;
+  }
+
+  .mat-card-subtitle {
+    font-size: 14px;
+  }
+
+  mat-icon {
+    font-size: 50px;
+  }
+
+  .edit-semester {
+    max-width: 150px;
+  }
 }
