@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import {MatDialog} from "@angular/material/dialog";
-import {EditTutoringDialogComponent} from "../../edit-tutoring-dialog/edit-tutoring-dialog.component";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-greeting',
@@ -9,21 +8,24 @@ import {EditTutoringDialogComponent} from "../../edit-tutoring-dialog/edit-tutor
 })
 export class GreetingComponent {
   currentUser: any;
+  isTutor: boolean = false;
 
-  constructor(private dialog: MatDialog) {
+  constructor(private router: Router) {
     const userData = localStorage.getItem('currentUser');
     if (userData) {
       this.currentUser = JSON.parse(userData);
+      this.isTutor = this.currentUser.role === 'teacher';
     }
   }
 
-  openEditTutoringDialog(): void {
-    const dialogRef = this.dialog.open(EditTutoringDialogComponent);
+  /**
+   * Navigates to the tutorings view for the current user.
+   * @returns void
+   */
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log('Result of the dialogue:', result);
-      }
-    });
+  openTutorings(): void {
+  if (this.currentUser && this.currentUser.tutorId) {
+    this.router.navigate([`/tutor/${this.currentUser.tutorId}/tutorings`]).then(r => console.log(r));
   }
+}
 }

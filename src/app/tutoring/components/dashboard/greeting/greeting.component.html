@@ -5,8 +5,8 @@
     </div>
     <div class="user-details">
       <mat-card-title>{{'footer.helloAgain' | translate}}, {{ currentUser?.name }} {{ currentUser?.lastName }}!</mat-card-title>
-      <mat-card-subtitle style="color: #ffffff">{{currentUser?.cycle}}° {{'footer.semester' | translate}} - <br> 2024-02</mat-card-subtitle>
+      <mat-card-subtitle style="color: #ffffff">{{currentUser?.cycle}}° {{'footer.semester' | translate}}<br>2024-02</mat-card-subtitle>
     </div>
-    <button mat-button style="color: #ff0000" color="warn" class="edit-semester" (click)="openEditTutoringDialog()">{{'footer.editSemester' | translate}}</button>
+    <button *ngIf="isTutor" mat-button style="color: #ff0000" color="warn" class="edit-semester" (click)="openTutorings()">{{'footer.MyTutorings' | translate}}</button>
   </div>
 </mat-card-header>
