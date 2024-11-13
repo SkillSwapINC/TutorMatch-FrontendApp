@@ -35,7 +35,7 @@
     "search": "Buscar cualquier curso",
     "helloAgain": "Hola de nuevo",
     "semester": "Semestre",
-    "editSemester": "Editar Semestre",
+    "MyTutorings": "Mis Tutorías",
     "whatLearn": "Que aprender ahora",
     "softwareSemesters": "Semestres de Ingeniería de Software",
     "first": "Primer Semestre",
@@ -118,6 +118,14 @@
     "softwareSemester11": "Diseño de Experimentos de Ingenieria de Software",
     "softwareSemester12": "Fundamentos de Arquitectura de Software",
     "softwareSemester13": "Arquitecturas de Software Emergentes",
-    "softwareSemester14": "Gerencia de Proyectos en Computacion"
+    "softwareSemester14": "Gerencia de Proyectos en Computacion",
+    "description": "Descripción",
+    "editTutoring": "Editar Tutoría",
+    "deleteTutoring": "Eliminar Tutoría",
+    "confirmation":"Confirmación",
+    "deleteMessage":"¿Estás seguro de que deseas eliminar esta tutoría?",
+    "cancel":"Cancelar",
+    "accept":"Aceptar",
+    "noTutorings":"No tiene tutorías registradas"
   }
 }
