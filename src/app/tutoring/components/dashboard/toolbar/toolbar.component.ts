@@ -187,6 +187,13 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   }
 
   /**
+   * Navigates to Dashboard page.
+   * @returns void
+   */
+  navigateToDashboard() {
+    this.router.navigate(['/Dashboard']).then();
+  }
+  /**
    * Logs the user out and redirects to the login page.
    *
    * @returns void
