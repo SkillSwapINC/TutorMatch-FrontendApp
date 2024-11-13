@@ -18,6 +18,13 @@ export class CourseListComponent implements OnInit {
     private translate: TranslateService
   ) {}
 
+  /**
+   * @method ngOnInit
+   * @description
+   * Obtiene los cursos de un semestre específico y sus tutorías.
+   * @returns {void}
+   */
+
   ngOnInit(): void {
     const cycle = Number(this.route.snapshot.paramMap.get('cycle'));
 
@@ -50,6 +57,13 @@ export class CourseListComponent implements OnInit {
       this.updateSemesterName(cycle);
     });
   }
+
+  /**
+   * @method updateSemesterName
+   * @description
+   * Actualiza el nombre del semestre.
+   * @param cycle
+   */
 
   updateSemesterName(cycle: number): void {
     this.translate.get('footer.semester').subscribe((res: string) => {

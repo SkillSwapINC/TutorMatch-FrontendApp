@@ -45,7 +45,8 @@
 
     <div class="course-price-section">
       <img *ngIf="courseImage" [src]="courseImage" alt="Imagen del curso">
-      <h2 *ngIf="coursePrice" class="course-price">S/. {{ coursePrice }}</h2>
+      <h1 class="course-title">{{ course?.title }}</h1>
+      <h3 *ngIf="coursePrice" class="course-price">S/. {{ coursePrice }}</h3>
       <a *ngIf="tutorEmail"
          [href]="'mailto:' + tutorEmail + '?subject=Tutorías sobre ' + course?.title + '&body=Hola,%20me%20gustaría%20saber%20más%20sobre%20esta%20tutoría.%20[Edita%20si%20crees%20necesario]'"
          target="_blank">
