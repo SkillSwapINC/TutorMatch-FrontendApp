@@ -63,7 +63,7 @@ export class TutorTutoringsComponent implements OnInit {
   /**
    * @method loadTutorings
    * @description
-   * Carga las tutorías de un tutor específico por su ID.
+   * Load the tutorings of the tutor.
    * @returns {void}
    */
 
@@ -86,8 +86,8 @@ export class TutorTutoringsComponent implements OnInit {
   /**
    * @method editTutoring
    * @description
-   * Abre un diálogo para editar una tutoría.
-   * @param {number} tutoringId - ID de la tutoría a editar.
+   * Open a dialog to edit a tutoring session.
+   * @param {number} tutoringId - ID of the tutoring session to edit.
    * @returns {void}
    */
 
@@ -110,8 +110,8 @@ export class TutorTutoringsComponent implements OnInit {
   /**
    * @method deleteTutoring
    * @description
-   * Elimina una tutoría específica por su ID y recarga la lista de tutorías.
-   * @param {number} tutoringId - ID de la tutoría a eliminar.
+   * Delete a tutoring session by its ID and reload the tutorings.
+   * @param {number} tutoringId - ID of the tutoring session to delete.
    * @returns {void}
    */
   deleteTutoring(tutoringId: number): void {
@@ -124,13 +124,13 @@ export class TutorTutoringsComponent implements OnInit {
       }
     });
   }
-  /**
+   /**
   * @method truncateDescription
   * @description
-  * Trunca la descripción a un número específico de palabras.
-  * @param {string} description - La descripción completa.
-  * @param {number} limit - El número máximo de palabras.
-  * @returns {string} - La descripción truncada.
+  * Truncates the description to a specific number of words.
+  * @param {string} description - The full description.
+  * @param {number} limit - The maximum number of words.
+  * @returns {string} - The truncated description.
   */
   truncateDescription(description: string, limit: number): string {
   const words = description.split(' ');
@@ -143,7 +143,7 @@ export class TutorTutoringsComponent implements OnInit {
   /**
    * @method confirmDeleteTutoring
    * @description
-   * Abre un diálogo de confirmación antes de eliminar una tutoría.
+   * Open a dialog to confirm the deletion of a tutoring session.
    * @param {number} tutoringId - ID de la tutoría a eliminar.
    * @returns {void}
    */
@@ -161,7 +161,7 @@ export class TutorTutoringsComponent implements OnInit {
 
   /**
    * @method goToCourseDetail
-   * @description Navega a la página de detalles del curso.
+   * @description Navigate to the course detail page.
    * @param {number} tutoringId - ID de la tutoría.
    * @returns {void}
    */
