@@ -1,0 +1,141 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 5rem;
+}
+
+.tutoring-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  box-sizing: border-box;
+  margin: 3rem;
+}
+
+.tutoring-card {
+  background-color: #2c2c2c;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  color: white;
+  box-sizing: border-box;
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out;
+}
+
+.tutoring-card:hover {
+  transform: scale(1.03);
+}
+
+.tutoring-card img {
+  max-width: 100%;
+  border-radius: 4px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.tutoring-card h3 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.tutoring-card p {
+  font-size: 0.9rem;
+  margin: 5px 0;
+}
+
+.tutoring-card .mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tutoring-card-div:hover {
+  cursor: pointer;
+}
+
+.vertical-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+}
+.vertical-buttons button {
+  width: 100%;
+  background: #7a0522;
+  color: white;
+}
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  margin-top: -100px;
+}
+
+.centered-container p {
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+@media (max-width: 1024px) {
+  .tutoring-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .centered-container p {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .tutoring-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+  }
+
+  .tutoring-card {
+    padding: 10px;
+  }
+
+  .tutoring-card h3 {
+    font-size: 1rem;
+  }
+
+  .tutoring-card p {
+    font-size: 0.8rem;
+  }
+
+  .centered-container p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tutoring-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tutoring-card img {
+    height: 200px;
+  }
+
+  .tutoring-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .tutoring-card p {
+    font-size: 0.9rem;
+  }
+
+  .centered-container p {
+    font-size: 1rem;
+  }
+}
