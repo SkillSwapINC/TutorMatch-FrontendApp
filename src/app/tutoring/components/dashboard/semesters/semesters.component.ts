@@ -30,6 +30,6 @@ export class SemestersComponent implements OnInit {
   }
 
   onSemesterClick(semester: any): void {
-      this.router.navigate(['/courses', semester.cycle]);
+      this.router.navigate(['/courses', semester.cycle]).then(r => r);
   }
 }
