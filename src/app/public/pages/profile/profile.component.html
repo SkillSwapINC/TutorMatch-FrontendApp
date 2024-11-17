@@ -1,14 +1,14 @@
 <mat-card *ngIf="currentUser" class="profile-card">
   <div class="profile-header">
     <div class="avatar-container">
-      <img [src]="currentUser.avatar" alt="Avatar" class="avatar">
+      <img [src]="currentUser.avatarUrl" alt="Avatar" class="avatar">
     </div>
   </div>
 
   <mat-card-content class="profile-content">
-    <h2 class="name">{{ currentUser.name }} {{ currentUser.lastName }}</h2>
-    <p class="role" *ngIf="currentUser.role === 'teacher'">{{'footer.teacher' | translate }}</p>
-    <p class="role" *ngIf="currentUser.role === 'student'">{{'footer.student' | translate }}</p>
+    <h2 class="name">{{ currentUser.fullName }}</h2>
+    <p class="role" *ngIf="currentUser.roleType === 'teacher'">{{'footer.teacher' | translate }}</p>
+    <p class="role" *ngIf="currentUser.roleType === 'student'">{{'footer.student' | translate }}</p>
     <mat-list class="info-list">
       <mat-list-item>
         <mat-icon>email</mat-icon>
@@ -16,8 +16,8 @@
       </mat-list-item>
       <mat-list-item>
         <mat-icon>work</mat-icon>
-        <span *ngIf="currentUser.role === 'teacher'">{{'footer.pRole' | translate }}: {{'footer.teacher' | translate }}</span>
-        <span *ngIf="currentUser.role === 'student'">{{'footer.pRole' | translate }}: {{'footer.student' | translate }}</span>
+        <span *ngIf="currentUser.roleType === 'teacher'">{{'footer.pRole' | translate }}: {{'footer.teacher' | translate }}</span>
+        <span *ngIf="currentUser.roleType === 'student'">{{'footer.pRole' | translate }}: {{'footer.student' | translate }}</span>
       </mat-list-item>
       <mat-list-item>
         <mat-icon>person</mat-icon>
@@ -27,7 +27,7 @@
       </mat-list-item>
       <mat-list-item>
         <mat-icon>calendar_today</mat-icon>
-        <span>{{ currentUser.cycle }}° {{'footer.semester' | translate }}</span>
+        <span>{{ currentUser.semester }}° {{'footer.semester' | translate }}</span>
       </mat-list-item>
     </mat-list>
   </mat-card-content>
