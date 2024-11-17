@@ -126,6 +126,7 @@
     "deleteMessage": "Are you sure you want to delete this tutoring?",
     "cancel": "Cancel",
     "accept": "Accept",
-    "noTutorings": "No tutorings were registered"
+    "noTutorings": "No tutorings were registered",
+    "noTutoringsCourse": "No tutorings were registered for this course"
   }
 }

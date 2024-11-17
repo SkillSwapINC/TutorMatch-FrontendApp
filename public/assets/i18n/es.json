@@ -126,6 +126,7 @@
     "deleteMessage":"¿Estás seguro de que deseas eliminar esta tutoría?",
     "cancel":"Cancelar",
     "accept":"Aceptar",
-    "noTutorings":"No tiene tutorías registradas"
+    "noTutorings":"No tiene tutorías registradas",
+    "noTutoringsCourse":"No tiene tutorías registradas para este curso"
   }
 }
