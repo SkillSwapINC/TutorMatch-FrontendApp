@@ -15,6 +15,7 @@ import { MatFormField, MatSelect } from '@angular/material/select';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
 import { NgClass, NgForOf, NgIf } from '@angular/common';
+import {Tutoring} from "../../model/tutoring.entity";
 
 @Component({
   selector: 'app-edit-tutoring-dialog',
@@ -40,31 +41,29 @@ import { NgClass, NgForOf, NgIf } from '@angular/common';
   styleUrls: ['edit-tutoring-dialog.component.css']
 })
 export class EditTutoringDialogComponent implements OnInit {
-  tutoring: any;
+  @Input() tutoring: Tutoring;
+  @Output() editTutoring = new EventEmitter<Tutoring>();
   tutoringForm: FormGroup;
+  timeSlots: string[] = ['8-9', '10-11', '12-13', '14-15', '16-17', '18-19', '20-21'];
   daysOfWeek = [0, 1, 2, 3, 4, 5, 6];
-  timeSlots = ['10-11', '11-12', '15-16', '17-18', '20-21'];
-  courseImage: string | undefined;
+  availableTimes: { [day: number]: { [timeSlot: string]: boolean } } = {};
+  image: string | undefined;
   imageUploaded: boolean = false;
   errorMessage: string = '';
-  availableTimes: { [day: number]: { [timeSlot: string]: boolean } } = {};
 
   constructor(
     public dialogRef: MatDialogRef<EditTutoringDialogComponent>,
-    private tutoringService: TutoringService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    private tutoringService: TutoringService
   ) {
     this.tutoring = data.tutoring;
     this.tutoringForm = this.fb.group({
-      title: [this.tutoring.title, Validators.required],
-      description: [this.tutoring.description, Validators.required],
       price: [this.tutoring.price, [Validators.required, Validators.min(0)]],
+      description: [this.tutoring.description, Validators.required],
       whatTheyWillLearn: [this.tutoring.whatTheyWillLearn, Validators.required],
     });
     this.initializeTimeSlots();
-    this.courseImage = this.tutoring.image;
-    this.imageUploaded = !!this.courseImage;
   }
 
   /**
@@ -75,9 +74,12 @@ export class EditTutoringDialogComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.tutoring.times) {
-      Object.entries(this.tutoring.times).forEach(([day, slots]: [string, any]) => {
-        slots.forEach((slot: string) => {
-          this.availableTimes[Number(day)][slot] = true;
+      this.tutoring.times.forEach(day => {
+        if (!this.availableTimes[day.dayOfWeek]) {
+          this.availableTimes[day.dayOfWeek] = {};
+        }
+        day.availableHours.forEach(slot => {
+          this.availableTimes[day.dayOfWeek][slot] = true;
         });
       });
     }
@@ -121,9 +123,9 @@ export class EditTutoringDialogComponent implements OnInit {
   * @returns {boolean} - True if the time slot is selected.
   */
 
-  isSelected(day: number, timeSlot: string): boolean {
-    return this.availableTimes[day][timeSlot];
-  }
+   isSelected(day: number, timeSlot: string): boolean {
+     return this.availableTimes[day][timeSlot];
+   }
 
   /**
    * @method onFileSelected
@@ -139,7 +141,7 @@ export class EditTutoringDialogComponent implements OnInit {
       if (file.type === 'image/png' || file.type === 'image/jpeg' || file.type === 'image/jpg') {
         const reader = new FileReader();
         reader.onload = (e: any) => {
-          this.courseImage = e.target.result;
+          this.image = e.target.result;
           this.imageUploaded = true;
           this.errorMessage = '';
         };
@@ -180,22 +182,54 @@ export class EditTutoringDialogComponent implements OnInit {
 
   onConfirmEditTutoring(): void {
     if (this.tutoringForm.valid) {
+      const selectedTimes = this.getSelectedTimes();
+      const formattedTimes = this.formatTimesForApi(selectedTimes);
       const updatedTutoring = {
         ...this.tutoring,
-        ...this.tutoringForm.value,
-        image: this.courseImage,
-        times: this.getSelectedTimes()
+        price: this.tutoringForm.value.price,
+        description: this.tutoringForm.value.description,
+        whatTheyWillLearn: this.tutoringForm.value.whatTheyWillLearn,
+        times: formattedTimes,
+        image: this.image || this.tutoring.image
       };
-
-      this.tutoringService.updateTutoring(this.tutoring.id, updatedTutoring).subscribe({
-        next: response => {
-          this.dialogRef.close(response);
-        },
-        error: () => {
-          this.errorMessage = 'Error updating tutoring session. Please try again.';
-        }
-      });
+      this.updateTutoring(updatedTutoring);
     }
+  }
+
+  /**
+   * @method formatTimesForApi
+   * @description
+   * Formats the selected tutoring times for the API.
+   * @param {Object} selectedTimes - Selected tutoring times.
+   * @returns {Object[]} - Formatted tutoring times.
+   */
+
+  formatTimesForApi(selectedTimes: { [day: number]: string[] }): { dayOfWeek: number, availableHours: string[] }[] {
+    return this.daysOfWeek.map(day => ({
+      dayOfWeek: day,
+      availableHours: selectedTimes[day] || []
+    }));
+  }
+
+  /**
+   * @method updateTutoring
+   * @description
+   * Update the tutoring session.
+   * @param {Tutoring} tutoring - Tutoring session.
+   * @returns {void}
+   */
+
+  updateTutoring(tutoring: Tutoring): void {
+    this.tutoringService.updateTutoring(tutoring.id, tutoring).subscribe({
+      next: (response) => {
+        const updatedTutoring = new Tutoring(response);
+        this.editTutoring.emit(updatedTutoring);
+        this.dialogRef.close(updatedTutoring);
+      },
+      error: (error) => {
+        console.error('Error updating tutoring', error);
+      }
+    });
   }
 
   /**

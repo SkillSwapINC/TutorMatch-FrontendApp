@@ -1,4 +1,4 @@
-<h2 mat-dialog-title style="color: #ffffff;">{{ tutoring.title }}
+<h2 mat-dialog-title style="color: #ffffff; font-size: 1.20rem">{{ tutoring.title }}
   <button mat-icon-button (click)="closeDialog()" style="float: right;">
     <mat-icon>close</mat-icon>
   </button>
@@ -20,7 +20,8 @@
     <label class="upload-button" for="courseImage">{{ 'footer.pUpload' | translate }}
       <input type="file" id="courseImage" (change)="onFileSelected($event)" style="display: none;">
     </label>
-    <img *ngIf="courseImage" [src]="courseImage" alt="Course Image" class="avatar">
+    <span class="upload-text">{{ 'footer.UploadCourseImage' | translate }}</span>
+    <img *ngIf="image || tutoring.image" [src]="image || tutoring.image" alt="Course Image" class="avatar">
     <div *ngIf="imageUploaded" class="upload-message">{{ 'footer.pImageUploaded' | translate }}</div>
     <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 
@@ -30,37 +31,49 @@
     </mat-form-field>
 
     <h3>{{ 'footer.YourAvailableTimes' | translate }}</h3>
-    <p>{{ 'footer.EnterYourAvailableTimes' | translate }}</p>
+    <p class="subtitle">{{ 'footer.EnterYourAvailableTimes' | translate }}</p>
 
     <table class="time-table">
       <thead>
-      <tr>
-        <th>{{ 'footer.Sun' | translate }}</th>
-        <th>{{ 'footer.Mon' | translate }}</th>
-        <th>{{ 'footer.Tue' | translate }}</th>
-        <th>{{ 'footer.Wed' | translate }}</th>
-        <th>{{ 'footer.Thu' | translate }}</th>
-        <th>{{ 'footer.Fri' | translate }}</th>
-        <th>{{ 'footer.Sat' | translate }}</th>
-      </tr>
+        <tr>
+          <th>{{ 'footer.Sun' | translate }}</th>
+          <th>{{ 'footer.Mon' | translate }}</th>
+          <th>{{ 'footer.Tue' | translate }}</th>
+          <th>{{ 'footer.Wed' | translate }}</th>
+          <th>{{ 'footer.Thu' | translate }}</th>
+          <th>{{ 'footer.Fri' | translate }}</th>
+          <th>{{ 'footer.Sat' | translate }}</th>
+        </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let timeSlot of timeSlots">
-        <td *ngFor="let day of daysOfWeek">
-          <button mat-stroked-button
-                  [ngClass]="{'selected': isSelected(day, timeSlot)}"
-                  (click)="toggleTimeSlot(day, timeSlot)">
-            {{ timeSlot }}
-          </button>
-        </td>
-      </tr>
+        <tr *ngFor="let timeSlot of timeSlots">
+          <td>
+            <button mat-stroked-button [ngClass]="{'selected': isSelected(0, timeSlot)}" (click)="toggleTimeSlot(0, timeSlot)">{{ timeSlot }}</button>
+          </td>
+          <td>
+            <button mat-stroked-button [ngClass]="{'selected': isSelected(1, timeSlot)}" (click)="toggleTimeSlot(1, timeSlot)">{{ timeSlot }}</button>
+          </td>
+          <td>
+            <button mat-stroked-button [ngClass]="{'selected': isSelected(2, timeSlot)}" (click)="toggleTimeSlot(2, timeSlot)">{{ timeSlot }}</button>
+          </td>
+          <td>
+            <button mat-stroked-button [ngClass]="{'selected': isSelected(3, timeSlot)}" (click)="toggleTimeSlot(3, timeSlot)">{{ timeSlot }}</button>
+          </td>
+          <td>
+            <button mat-stroked-button [ngClass]="{'selected': isSelected(4, timeSlot)}" (click)="toggleTimeSlot(4, timeSlot)">{{ timeSlot }}</button>
+          </td>
+          <td>
+            <button mat-stroked-button [ngClass]="{'selected': isSelected(5, timeSlot)}" (click)="toggleTimeSlot(5, timeSlot)">{{ timeSlot }}</button>
+          </td>
+          <td>
+            <button mat-stroked-button [ngClass]="{'selected': isSelected(6, timeSlot)}" (click)="toggleTimeSlot(6, timeSlot)">{{ timeSlot }}</button>
+          </td>
+        </tr>
       </tbody>
     </table>
   </form>
 </div>
 
 <div mat-dialog-actions align="end">
-  <button mat-flat-button color="warn" (click)="onConfirmEditTutoring()" [disabled]="!tutoringForm.valid">
-    {{ 'footer.EditTutoring' | translate }}
-  </button>
+  <button mat-flat-button color="warn" (click)="onConfirmEditTutoring()" [disabled]="!tutoringForm.valid">{{ 'footer.EditTutoring' | translate }}</button>
 </div>
