@@ -23,9 +23,23 @@ export class PlansComponent {
 
   constructor(private router: Router) {}
 
+  /**
+   * @method togglePayment
+   * @description This method toggles the payment form
+   * @returns void
+   */
+
   togglePayment() {
     this.showPayment = !this.showPayment;
   }
+
+  /**
+   * @method selectPlan
+   * @description This method selects the plan and sets the selected plan and price
+   * @param planName
+   * @param price
+   * @returns void
+   */
 
   selectPlan(planName: string, price: number) {
     this.selectedPlan = planName;
@@ -33,9 +47,21 @@ export class PlansComponent {
     this.togglePayment();
   }
 
+  /**
+   * @method onLogin
+   * @description This method navigates to the login page
+   * @returns void
+   */
+
   onLogin() {
     this.router.navigate(['LogIn']);
   }
+
+  /**
+   * @method onSignUp
+   * @description This method navigates to the register page
+   * @returns void
+   */
 
   onSignUp() {
     this.router.navigate(['Register']);
