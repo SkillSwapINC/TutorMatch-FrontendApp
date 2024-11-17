@@ -26,7 +26,7 @@ export class AuthService extends BaseService<any> {
   private loadCurrentUser() {
     const user = this.getCurrentUser();
     if (user) {
-      this.isTutor = user.role === 'teacher';
+      this.isTutor = user.roleType === 'teacher';
     }
   }
 
@@ -51,7 +51,7 @@ export class AuthService extends BaseService<any> {
    */
   setCurrentUser(user: any): void {
     localStorage.setItem(this.currentUserKey, JSON.stringify(user));
-    this.isTutor = user.role === 'teacher';
+    this.isTutor = user.roleType === 'teacher';
   }
 
   /**

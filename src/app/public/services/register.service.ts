@@ -26,10 +26,10 @@ export class RegisterService extends BaseService<any>{
   /**
    * @method setUserRole
    * @description Sets the current user's role.
-   * @param {string} role - The user's role.
+   * @param {string} roleType - The user's role.
    */
-  setUserRole(role: string) {
-    this.userRole = role;
+  setUserRole(roleType: string) {
+    this.userRole = roleType;
   }
 
   /**
@@ -49,7 +49,7 @@ export class RegisterService extends BaseService<any>{
   getTutors(): Observable<any[]> {
     return this.http.get<any[]>(`${this.resourcePath()}`)
       .pipe(
-        map(users => users.filter(user => user.role === 'teacher' && user.tutorId != null)),
+        map(users => users.filter(user => user.roleType === 'teacher' && user.tutorId != null)),
         catchError(this.handleError)
       );
   }

@@ -12,6 +12,10 @@ export class TutoringService extends BaseService<any> {
     this.resourceEndPoint = '/tutorings';
   }
 
+  private buildPath(endpoint: string): string {
+    return `${this.basePath}${endpoint}`;
+  }
+
   /**
    * @method getCourses
    * @description
@@ -20,8 +24,7 @@ export class TutoringService extends BaseService<any> {
    */
 
   getCourses(): Observable<any> {
-    this.resourceEndPoint = '/courses';
-    return this.http.get(this.resourcePath());
+    return this.http.get(this.buildPath('/courses'));
   }
 
   /**
@@ -33,8 +36,7 @@ export class TutoringService extends BaseService<any> {
    */
 
   getTutoringByCourseId(courseId: number): Observable<any> {
-    this.resourceEndPoint = '/tutorings';
-    return this.http.get(`${this.resourcePath()}?courseId=${courseId}`);
+    return this.http.get(this.buildPath(`/tutorings?courseId=${courseId}`));
   }
 
   /**
@@ -46,8 +48,7 @@ export class TutoringService extends BaseService<any> {
    */
 
   getCoursesBySemester(cycle: number): Observable<any> {
-    this.resourceEndPoint = '/courses';
-    return this.http.get(`${this.resourcePath()}?cycle=${cycle}`);
+    return this.http.get(this.buildPath(`/courses?cycle=${cycle}`));
   }
 
   /**
@@ -58,8 +59,7 @@ export class TutoringService extends BaseService<any> {
    */
 
   getUsers(): Observable<any> {
-    this.resourceEndPoint = '/users';
-    return this.http.get(this.resourcePath());
+    return this.http.get(this.buildPath('/users'));
   }
 
   /**
@@ -71,11 +71,10 @@ export class TutoringService extends BaseService<any> {
    */
 
   getTutorById(tutorId: number): Observable<any> {
-    this.resourceEndPoint = '/users';
-    return this.http.get<any[]>(`${this.resourcePath()}?tutorId=${tutorId}&role=teacher`).pipe(
-      map((response: any[]) => response[0])
-    );
-  }
+  return this.http.get<any[]>(this.buildPath(`/users`)).pipe(
+    map((response: any[]) => response.find(user => user.tutorId === tutorId && user.roleType === 'teacher'))
+  );
+}
 
   /**
    * @method getTutoringById
@@ -86,8 +85,7 @@ export class TutoringService extends BaseService<any> {
    */
 
   getTutoringById(tutoringId: number): Observable<any> {
-    this.resourceEndPoint = '/tutorings';
-    return this.http.get(`${this.resourcePath()}/${tutoringId}`);
+    return this.http.get(this.buildPath(`/tutorings/${tutoringId}`));
   }
 
   /**
@@ -99,7 +97,7 @@ export class TutoringService extends BaseService<any> {
    */
 
   getTutoringsByTutorId(tutorId: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.resourcePath()}?tutorId=${tutorId}`);
+    return this.http.get<any[]>(this.buildPath(`/tutorings?tutorId=${tutorId}`));
   }
 
   /**
@@ -112,8 +110,7 @@ export class TutoringService extends BaseService<any> {
    */
 
   updateTutoring(tutoringId: number, tutoringData: any): Observable<any> {
-    this.resourceEndPoint = '/tutorings';
-    return this.http.patch(`${this.resourcePath()}/${tutoringId}`, tutoringData);
+    return this.http.patch(this.buildPath(`/tutorings/${tutoringId}`), tutoringData);
   }
 
   /**
@@ -125,8 +122,7 @@ export class TutoringService extends BaseService<any> {
    */
 
   deleteTutoring(tutoringId: number): Observable<any> {
-    this.resourceEndPoint = '/tutorings';
-    return this.http.delete(`${this.resourcePath()}/${tutoringId}`);
+    return this.http.delete(this.buildPath(`/tutorings/${tutoringId}`));
   }
 
 }
