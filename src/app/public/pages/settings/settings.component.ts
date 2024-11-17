@@ -7,6 +7,7 @@ import {MatButton} from "@angular/material/button";
 import {MatInput} from "@angular/material/input";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {NgIf, NgOptimizedImage} from "@angular/common";
+import {User} from "../../../tutoring/model/user.entity";
 
 @Component({
   selector: 'app-settings',
@@ -28,7 +29,7 @@ import {NgIf, NgOptimizedImage} from "@angular/common";
 })
 export class SettingsComponent implements OnInit {
   settingsForm: FormGroup;
-  currentUser: any;
+  currentUser: User | undefined;
   imageUploaded: boolean = false;
   errorMessage: string = '';
 
@@ -38,9 +39,9 @@ export class SettingsComponent implements OnInit {
     private translate: TranslateService
   ) {
     this.settingsForm = this.fb.group({
-      avatar: [null],
+      avatarUrl: [null],
       gender: [null],
-      cycle: [null, [Validators.required, Validators.min(1), Validators.max(10)]]
+      semester: [null, [Validators.required, Validators.min(1), Validators.max(10)]]
     });
   }
 
@@ -51,7 +52,7 @@ export class SettingsComponent implements OnInit {
   ngOnInit(): void {
     const user = localStorage.getItem('currentUser');
     if (user) {
-      this.currentUser = JSON.parse(user);
+      this.currentUser = new User(JSON.parse(user));
       this.populateForm();
     }
   }
@@ -62,11 +63,13 @@ export class SettingsComponent implements OnInit {
    */
 
   populateForm() {
-    this.settingsForm.patchValue({
-      avatar: this.currentUser.avatar,
-      gender: this.currentUser.gender,
-      cycle: this.currentUser.cycle
-    });
+    if (this.currentUser) {
+      this.settingsForm.patchValue({
+        avatarUrl: this.currentUser.avatarUrl,
+        gender: this.currentUser.gender,
+        semester: this.currentUser.semester
+      });
+    }
   }
 
   /**
@@ -75,11 +78,11 @@ export class SettingsComponent implements OnInit {
    */
 
   onSave() {
-    if (this.settingsForm.valid) {
-      const updatedUser = {
+    if (this.settingsForm.valid && this.currentUser) {
+      const updatedUser = new User({
         ...this.currentUser,
         ...this.settingsForm.value
-      };
+      });
       this.registerService.updateUser(updatedUser, this.currentUser.id).subscribe({
         next: (response) => {
           console.log('User updated successfully:', response);
@@ -107,7 +110,7 @@ export class SettingsComponent implements OnInit {
       if (file.type === 'image/png' || file.type === 'image/jpeg' || file.type === 'image/jpg') {
         const reader = new FileReader();
         reader.onload = (e: any) => {
-          this.settingsForm.patchValue({ avatar: e.target.result });
+          this.settingsForm.patchValue({ avatarUrl: e.target.result });
           this.imageUploaded = true;
           this.errorMessage = '';
         };

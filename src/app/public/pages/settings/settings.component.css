@@ -56,7 +56,7 @@ input[type="file"] {
   display: none;
 }
 
-label[for="avatar"] {
+label[for="avatarUrl"] {
   display: inline-block;
   background-color: #7a0423;
   color: #fff;
