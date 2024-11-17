@@ -14,7 +14,7 @@ export class GreetingComponent {
     const userData = localStorage.getItem('currentUser');
     if (userData) {
       this.currentUser = JSON.parse(userData);
-      this.isTutor = this.currentUser.role === 'teacher';
+      this.isTutor = this.currentUser.roleType === 'teacher';
     }
   }
 
