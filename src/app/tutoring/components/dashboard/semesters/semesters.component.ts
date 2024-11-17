@@ -29,6 +29,12 @@ export class SemestersComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * @method onSemesterClick
+   * @description Redirect to courses page
+   * @param semester
+   */
+
   onSemesterClick(semester: any): void {
       this.router.navigate(['/courses', semester.cycle]).then(r => r);
   }
