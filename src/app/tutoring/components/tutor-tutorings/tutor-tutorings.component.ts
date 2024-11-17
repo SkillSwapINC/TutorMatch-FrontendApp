@@ -50,8 +50,7 @@ export class TutorTutoringsComponent implements OnInit {
     private tutoringService: TutoringService,
     private route: ActivatedRoute,
     private dialog: MatDialog,
-    private router: Router,
-    private translate: TranslateModule
+    private router: Router
   ) {
     this.tutorId = +this.route.snapshot.paramMap.get('tutorId')!;
   }

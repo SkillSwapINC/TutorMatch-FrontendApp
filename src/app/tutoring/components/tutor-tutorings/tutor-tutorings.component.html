@@ -1,5 +1,5 @@
 <app-toolbar></app-toolbar>
-<div *ngIf="tutorings.length > 0; else noTutorings">
+<div class="container" *ngIf="tutorings.length > 0; else noTutorings">
   <div class="tutoring-grid">
     <mat-card class="tutoring-card" *ngFor="let tutoring of tutorings">
       <img *ngIf="tutoring.image" mat-card-image [src]="tutoring.image" alt="Imagen del curso">
