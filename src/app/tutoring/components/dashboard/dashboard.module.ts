@@ -26,10 +26,9 @@ import {PageNotFoundComponent} from "../../../public/pages/page-not-found/page-n
 import {LoginComponent} from "../../../public/pages/login/login.component";
 import {RegisterComponent} from "../../../public/pages/register/register.component";
 import {GreetingComponent} from "./greeting/greeting.component";
-import {TranslateModule} from "@ngx-translate/core";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import { AddTutoringDialogComponent } from './add-tutoring-dialog/add-tutoring-dialog.component';
 import {CourseListComponent} from "./course-list/course-list.component";
-import {CourseDetailComponent} from "../course-detail/course-detail.component";
 import {RouterLink} from "@angular/router";
 import {MatAutocomplete, MatAutocompleteTrigger} from "@angular/material/autocomplete";
 
@@ -43,7 +42,6 @@ import {MatAutocomplete, MatAutocompleteTrigger} from "@angular/material/autocom
     SemestersComponent,
     AddTutoringDialogComponent,
     CourseListComponent,
-    CourseDetailComponent
   ],
   imports: [
     CommonModule,
@@ -57,4 +55,9 @@ import {MatAutocomplete, MatAutocompleteTrigger} from "@angular/material/autocom
     MatDialogModule, MatButtonModule, MatSelectModule, MatMenuItem, RouterLink, MatAutocomplete, MatAutocompleteTrigger, ReactiveFormsModule],
   exports: [DashboardComponent, ToolbarComponent]
 })
-export class DashboardModule { }
+export class DashboardModule {
+  constructor(private translate: TranslateService) {
+    this.translate.setDefaultLang('en');
+    this.translate.use('en');
+  }
+}
