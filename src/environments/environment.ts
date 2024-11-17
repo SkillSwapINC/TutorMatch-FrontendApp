@@ -1,5 +1,4 @@
 export const environment = {
   production: true,
-  serverBasePath: 'https://tutormatch-api.onrender.com'
-  //serverBasePath: 'http://localhost:8080/api/v1'
+  serverBasePath: 'https://magnificent-vision-production.up.railway.app/api/v1',
 };
