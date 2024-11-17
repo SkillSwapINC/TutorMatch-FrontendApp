@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-footer-content',
   standalone: true,
   imports: [
-    TranslateModule
+    TranslateModule,
+    NgOptimizedImage
   ],
   templateUrl: './footer-content.component.html',
   styleUrl: './footer-content.component.css'
