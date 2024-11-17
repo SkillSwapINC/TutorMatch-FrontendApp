@@ -67,9 +67,27 @@ body, html {
   background-color: #f6405f;
 }
 
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  margin-top: -100px;
+}
+
+.centered-container p {
+  font-size: 2rem;
+  color: #ffffff;
+}
+
 @media (max-width: 1024px) {
   .courses-grid {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .centered-container p {
+    font-size: 1.5rem;
   }
 }
 
@@ -99,6 +117,10 @@ body, html {
     padding: 8px 16px;
     font-size: 0.8rem;
   }
+
+  .centered-container p {
+    font-size: 1.2rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -121,5 +143,9 @@ body, html {
   .request-tutoring-button {
     padding: 10px 20px;
     font-size: 0.9rem;
+  }
+
+  .centered-container p {
+    font-size: 1rem;
   }
 }

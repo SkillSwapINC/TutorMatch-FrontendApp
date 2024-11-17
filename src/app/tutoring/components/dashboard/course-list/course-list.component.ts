@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TutoringService } from '../../../services/tutoring.service';
 import { TranslateService } from '@ngx-translate/core';
+import { Course } from '../../../model/course.entity';
+import { Tutoring } from '../../../model/tutoring.entity';
+import { User } from '../../../model/user.entity';
 
 @Component({
   selector: 'app-course-list',
@@ -21,34 +24,36 @@ export class CourseListComponent implements OnInit {
   /**
    * @method ngOnInit
    * @description
-   * Obtiene los cursos de un semestre específico y sus tutorías.
-   * @returns {void}
+   * This method is called when the component is initialized.
    */
 
   ngOnInit(): void {
     const cycle = Number(this.route.snapshot.paramMap.get('cycle'));
 
-    this.tutoringService.getCoursesBySemester(cycle).subscribe((courses: any[]) => {
-      courses.forEach(course => {
-        this.tutoringService.getTutoringByCourseId(course.id).subscribe((tutorings: any[]) => {
-          tutorings.forEach(tutoring => {
-            this.tutoringService.getTutorById(tutoring.tutorId).subscribe((tutor: any) => {
-              if (tutor) {
-                const newTutoring = {
-                  id: tutoring.id,
-                  courseName: course.name,
-                  tutorName: `${tutor.name} ${tutor.lastName}`,
-                  price: tutoring.price,
-                  image: tutoring.image,
-                  title: tutoring.title
-                };
-                console.log('Tutoring data:', newTutoring);
-                this.semesterCourses.push(newTutoring);
-              }
+    this.tutoringService.getCoursesBySemester(cycle).subscribe((courses: Course[]) => {
+      if (courses.length === 0) {
+        this.semesterCourses = [];
+      } else {
+        courses.forEach(course => {
+          this.tutoringService.getTutoringByCourseId(course.id).subscribe((tutorings: Tutoring[]) => {
+            tutorings.forEach(tutoring => {
+              this.tutoringService.getTutorById(tutoring.tutorId).subscribe((tutor: User) => {
+                if (tutor) {
+                  const newTutoring = {
+                    id: tutoring.id,
+                    courseName: course.name,
+                    tutorName: `${tutor.fullName}`,
+                    price: tutoring.price,
+                    image: tutoring.image,
+                    title: tutoring.title
+                  };
+                  this.semesterCourses.push(newTutoring);
+                }
+              });
             });
           });
         });
-      });
+      }
       this.updateSemesterName(cycle);
     });
 
@@ -61,7 +66,7 @@ export class CourseListComponent implements OnInit {
   /**
    * @method updateSemesterName
    * @description
-   * Actualiza el nombre del semestre.
+   * This method updates the semester name.
    * @param cycle
    */
 
