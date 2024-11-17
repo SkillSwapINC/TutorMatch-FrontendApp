@@ -46,21 +46,29 @@ export class LoginComponent {
     this.router.navigate(['Register']).then();
   }
 
+  /**
+   * @method onSubmit
+   * @description This method is called when the user submits the login form. It will attempt to log the user in using the
+   * provided credentials. If the login is successful, the user will be redirected to the dashboard. If the login fails, an
+   * error message will be displayed to the user.
+   * @returns void
+   */
+
   onSubmit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
       this.errorMessage = '';
 
       this.authService.login(email, password).subscribe({
-        next: (users: any[]) => {
-          if (users.length > 0) {
-            const user = users[0];
+        next: (user: any) => {
+          if (user) {
             this.authService.setCurrentUser(user);
-            
-            this.authService.setIsTutor(user.role === 'teacher');
+
+            this.authService.setIsTutor(user.roleType === 'teacher');
 
             this.router.navigate(['Dashboard']).then();
           } else {
+
             this.errorMessage = 'Invalid credentials. Please try again.';
           }
         },
@@ -76,5 +84,5 @@ export class LoginComponent {
       this.errorMessage = 'Please fill out the form correctly.';
     }
   }
-}
 
+}
