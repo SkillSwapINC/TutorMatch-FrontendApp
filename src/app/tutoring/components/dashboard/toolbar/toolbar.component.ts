@@ -59,7 +59,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
    */
   constructor(private dialog: MatDialog,private router: Router, private registerService: RegisterService,private authService: AuthService,private translateService: TranslateService) {
     const currentUser = this.authService.getCurrentUser();
-    if (currentUser && currentUser.role === 'teacher') {
+    if (currentUser && currentUser.roleType === 'teacher') {
       this.isTutor = true;
     } else {
       this.isTutor = this.authService.getIsTutor();
@@ -202,4 +202,5 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     this.authService.logout();
     this.router.navigate(['LogIn']).then();
   }
+
 }
