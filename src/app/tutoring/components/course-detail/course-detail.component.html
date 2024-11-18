@@ -49,7 +49,7 @@
       <h1 class="course-title">{{ tutoring.title }}</h1>
       <h3 *ngIf="tutoring.price" class="course-price">S/. {{ tutoring.price }}</h3>
       <a *ngIf="tutor?.email"
-         [href]="'mailto:' + tutor?.email + '?subject=Tutorías sobre ' + tutoring.title + '&body=Hola,%20me%20gustaría%20saber%20más%20sobre%20esta%20tutoría.%20[Edita%20si%20crees%20necesario]'"
+         [href]="'mailto:' + tutor?.email + '?subject=' + encodeURIComponent('Tutorias sobre ' + tutoring.title) + '&body=' + encodeURIComponent('Hola, me gustaria saber mas sobre esta tutoria. [Edita si crees necesario]')"
          target="_blank">
         <button class="request-tutoring-button">{{ 'footer.RequestTutoring' | translate }}</button>
       </a>
