@@ -1,65 +1,79 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { TutoringService } from '../../services/tutoring.service';
+import { Tutoring } from '../../model/tutoring.entity';
+import {User} from "../../model/user.entity";
+import { TranslateModule } from "@ngx-translate/core";
+import { NgClass, NgForOf, NgIf } from "@angular/common";
+import { FooterContentComponent } from "../../../public/components/footer-content/footer-content.component";
+import { DashboardModule } from "../dashboard/dashboard.module";
 
 @Component({
   selector: 'app-course-detail',
   templateUrl: './course-detail.component.html',
+  standalone: true,
+  imports: [
+    TranslateModule,
+    NgForOf,
+    NgClass,
+    FooterContentComponent,
+    DashboardModule,
+    NgIf
+  ],
   styleUrls: ['./course-detail.component.css']
 })
 export class CourseDetailComponent implements OnInit {
-  course: any;
-  times: any = {};
-  tutorName: string | undefined;
-  tutorEmail: string | undefined;
-  tutorAvatar: string | undefined;
-  courseImage: string | undefined;
-  coursePrice: number | undefined;
-  courseWhatTheyWillLearn: string | undefined;
+  tutoring: Tutoring | undefined;
+  tutor: User | undefined;
   semesterName: string | undefined;
   courseNotFound: boolean = false;
-  timeSlots: string[] = ['10-11', '11-12', '15-16', '17-18', '20-21'];
+  timeSlots: string[] = ['8-9', '10-11', '12-13', '14-15', '16-17', '18-19', '20-21'];
 
   constructor(
     private route: ActivatedRoute,
     private tutoringService: TutoringService
   ) {}
 
-  /**
-   * @method ngOnInit
-   * @description Lifecycle hook that is called after the component's constructor.
-   */
   ngOnInit(): void {
     const tutoringId = Number(this.route.snapshot.paramMap.get('id') ?? 0);
+    console.log('Received tutoringId:', tutoringId);
     if (tutoringId !== 0) {
       this.getCourseDetails(tutoringId);
+    } else {
+      console.error('Tutoring ID is invalid or not provided.');
     }
   }
 
   /**
    * @method getCourseDetails
-   * @param tutoringId {number} - The ID of the tutoring course.
-   * @description Fetches the details of the tutoring course.
+   * @description
+   * Fetches the course details by tutoring ID.
+   *
+   * @param tutoringId
    */
   getCourseDetails(tutoringId: number) {
     this.tutoringService.getTutoringById(tutoringId).subscribe({
-      next: (tutoring: any) => {
-        if (tutoring) {
-          this.course = tutoring;
-          this.courseImage = tutoring.image;
-          this.coursePrice = tutoring.price;
-          this.courseWhatTheyWillLearn = tutoring.whatTheyWillLearn;
-          this.times = tutoring.times || {};
+      next: (data: any) => {
+        if (data && data.length > 0) {
+          this.tutoring = new Tutoring(data[0]);
+          console.log('Tutoring object after construction:', this.tutoring);
+          console.log('Tutor ID:', this.tutoring.tutorId);
 
-          this.getTutorDetails(tutoring.tutorId);
-          this.getSemesterName(tutoring.courseId);
+          const tutorId = this.tutoring.tutorId;
+          if (tutorId && tutorId > 0) {
+            this.getTutorDetails(tutorId);
+            this.getSemesterName(this.tutoring.courseId);
+          } else {
+            this.tutor = undefined;
+          }
+
           this.courseNotFound = false;
         } else {
           this.courseNotFound = true;
         }
       },
       error: (error) => {
-        console.error("Error fetching course details", error);
+        console.error('Error fetching course details', error);
         this.courseNotFound = true;
       }
     });
@@ -67,43 +81,50 @@ export class CourseDetailComponent implements OnInit {
 
   /**
    * @method getTutorDetails
-   * @param tutorId {number} - The ID of the tutor.
-   * @description Fetches the details of the tutor.
+   * @description
+   * Fetches the tutor details by tutor ID.
+   *
+   * @param tutorId
    */
+
   getTutorDetails(tutorId: number) {
+    console.log('Fetching tutor details for tutorId:', tutorId);
     this.tutoringService.getTutorById(tutorId).subscribe({
-      next: (tutor: any) => {
-        if (tutor) {
-          this.tutorName = `${tutor.name} ${tutor.lastName}`;
-          this.tutorAvatar = tutor.avatar;
-          this.tutorEmail = tutor.email
+      next: (tutorData: any) => {
+        if (tutorData) {
+          this.tutor = new User(tutorData);
+          console.log('Tutor object after construction:', this.tutor);
         } else {
-          this.tutorName = 'Teacher not available';
-          this.tutorAvatar = undefined;
+          this.tutor = undefined;
         }
       },
       error: (error) => {
-        console.error("Error fetching tutor details", error);
-        this.tutorName = 'Teacher not available';
+        console.error('Error fetching tutor details', error);
+        this.tutor = undefined;
       }
     });
   }
 
   /**
    * @method getSemesterName
-   * @param courseId {number} - The ID of the course.
-   * @description Fetches the name of the semester for the course.
+   * @description
+   * Fetches the semester name by course ID.
+   *
+   * @param courseId
    */
+
   getSemesterName(courseId: number) {
+    if (!courseId || courseId <= 0) {
+      this.semesterName = 'Semester not available';
+      return;
+    }
+
     this.tutoringService.getCourses().subscribe({
       next: (courses: any[]) => {
         const selectedCourse = courses.find(course => course.id === courseId);
-        if (selectedCourse) {
-          this.semesterName = `Semester ${selectedCourse.cycle}`;
-        }
+        this.semesterName = selectedCourse ? `Semester ${selectedCourse.cycle}` : 'Semester not available';
       },
-      error: (error) => {
-        console.error("Error fetching semester name", error);
+      error: () => {
         this.semesterName = 'Semester not available';
       }
     });
@@ -111,9 +132,12 @@ export class CourseDetailComponent implements OnInit {
 
   /**
    * @method goBack
-   * @param event {Event} - The event object.
-   * @description Navigates back to the previous page.
+   * @description
+   * Navigates to the previous page.
+   *
+   * @param event
    */
+
   goBack(event: Event): void {
     event.preventDefault();
     window.history.back();
@@ -121,13 +145,17 @@ export class CourseDetailComponent implements OnInit {
 
   /**
    * @method isTimeSlotValidated
-   * @param day {number} - The day of the week.
-   * @param timeSlot {string} - The time slot.
-   * @description Checks if the time slot is validated.
+   * @description
+   * Checks if the time slot is validated.
+   *
+   * @param day
+   * @param timeSlot
+   * @returns {boolean | undefined}
    */
 
-  isTimeSlotValidated(day: number, timeSlot: string): boolean {
-    return this.times[day]?.includes(timeSlot);
+  isTimeSlotValidated(day: number, timeSlot: string): boolean | undefined {
+    return this.tutoring?.times[day]?.availableHours.includes(timeSlot);
   }
 
+  protected readonly encodeURIComponent = encodeURIComponent;
 }

@@ -213,6 +213,99 @@ body {
 }
 
 .time-table td.validated {
-  background-color: #a2ff82;
-  color: black;
+  color: #37D85A;
+  font-weight: bold;
+  border: 2px solid #37D85A;
 }
+
+.highlight {
+  color: green;
+  font-weight: bold;
+}
+
+td {
+  color: gray;
+}
+
+@media (max-width: 1024px) {
+  .course-detail {
+    flex-direction: column;
+  }
+
+  .course-info {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .course-price-section {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .course-title {
+    font-size: 24px;
+  }
+
+  .course-description {
+    font-size: 14px;
+  }
+
+  .what-you-will-learn ul {
+    grid-template-columns: 1fr;
+  }
+
+  .tutor-available-times {
+    overflow-x: auto;
+  }
+
+  .time-table {
+    min-width: 600px;
+  }
+
+  .time-table th,
+  .time-table td {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .course-detail {
+    padding: 10px;
+  }
+
+  .course-title {
+    font-size: 20px;
+  }
+
+  .course-description {
+    font-size: 13px;
+  }
+
+  .what-you-will-learn,
+  .tutor-available-times {
+    padding: 15px;
+  }
+
+  .what-you-will-learn h3,
+  .tutor-available-times h3 {
+    font-size: 18px;
+  }
+
+  .course-price {
+    font-size: 20px;
+  }
+
+  .request-tutoring-button {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .breadcrumbs {
+    font-size: 12px;
+  }
+}
+
+

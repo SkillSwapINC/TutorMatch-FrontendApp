@@ -44,11 +44,24 @@ export class CourseRecomComponent implements OnInit {
     this.startAutoPlay();
   }
 
+  /**
+   * @method startAutoPlay
+   * @description Starts the autoplay of the recommended courses
+   * @returns void
+   */
+
   startAutoPlay() {
     setInterval(() => {
       this.selectedIndex = (this.selectedIndex + 1) % this.recommendedCourses.length;
     }, 5000);
   }
+
+  /**
+   * @method onTabChange
+   * @description Changes the selected index of the recommended courses
+   * @param event - Event that contains the new index
+   * @returns void
+   */
 
   onTabChange(event: any) {
     this.selectedIndex = event.index;

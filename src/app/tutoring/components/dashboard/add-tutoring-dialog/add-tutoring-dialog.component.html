@@ -19,7 +19,7 @@
     <h3 style="color: #ffffff;">{{ 'footer.CourseName' | translate }}</h3>
     <mat-form-field color="warn" appearance="outline">
       <mat-select [(ngModel)]="selectedCourse" name="courseName" placeholder="{{ 'footer.SelectCourse' | translate }}" required>
-        <mat-option  *ngFor="let course of availableCourses" [value]="course.name">
+        <mat-option *ngFor="let course of availableCourses" [value]="course">
           {{course.name}}
         </mat-option>
       </mat-select>
@@ -53,43 +53,43 @@
     <p class="subtitle">{{ 'footer.EnterYourAvailableTimes' | translate }}</p>
 
     <table class="time-table">
-  <thead>
-    <tr>
-      <th>{{ 'footer.Sun' | translate }}</th>
-      <th>{{ 'footer.Mon' | translate }}</th>
-      <th>{{ 'footer.Tue' | translate }}</th>
-      <th>{{ 'footer.Wed' | translate }}</th>
-      <th>{{ 'footer.Thu' | translate }}</th>
-      <th>{{ 'footer.Fri' | translate }}</th>
-      <th>{{ 'footer.Sat' | translate }}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let timeSlot of timeSlots">
-      <td>
-        <button mat-stroked-button [ngClass]="{'selected': isSelected(0, timeSlot)}" (click)="toggleTimeSlot(0, timeSlot)">{{ timeSlot }}</button>
-      </td>
-      <td>
-        <button mat-stroked-button [ngClass]="{'selected': isSelected(1, timeSlot)}" (click)="toggleTimeSlot(1, timeSlot)">{{ timeSlot }}</button>
-      </td>
-      <td>
-        <button mat-stroked-button [ngClass]="{'selected': isSelected(2, timeSlot)}" (click)="toggleTimeSlot(2, timeSlot)">{{ timeSlot }}</button>
-      </td>
-      <td>
-        <button mat-stroked-button [ngClass]="{'selected': isSelected(3, timeSlot)}" (click)="toggleTimeSlot(3, timeSlot)">{{ timeSlot }}</button>
-      </td>
-      <td>
-        <button mat-stroked-button [ngClass]="{'selected': isSelected(4, timeSlot)}" (click)="toggleTimeSlot(4, timeSlot)">{{ timeSlot }}</button>
-      </td>
-      <td>
-        <button mat-stroked-button [ngClass]="{'selected': isSelected(5, timeSlot)}" (click)="toggleTimeSlot(5, timeSlot)">{{ timeSlot }}</button>
-      </td>
-      <td>
-        <button mat-stroked-button [ngClass]="{'selected': isSelected(6, timeSlot)}" (click)="toggleTimeSlot(6, timeSlot)">{{ timeSlot }}</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+      <thead>
+        <tr>
+          <th>{{ 'footer.Sun' | translate }}</th>
+          <th>{{ 'footer.Mon' | translate }}</th>
+          <th>{{ 'footer.Tue' | translate }}</th>
+          <th>{{ 'footer.Wed' | translate }}</th>
+          <th>{{ 'footer.Thu' | translate }}</th>
+          <th>{{ 'footer.Fri' | translate }}</th>
+          <th>{{ 'footer.Sat' | translate }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let timeSlot of timeSlots">
+          <td>
+            <button mat-stroked-button [ngClass]="{'selected': isSelected(0, timeSlot)}" (click)="toggleTimeSlot(0, timeSlot)">{{ timeSlot }}</button>
+          </td>
+          <td>
+            <button mat-stroked-button [ngClass]="{'selected': isSelected(1, timeSlot)}" (click)="toggleTimeSlot(1, timeSlot)">{{ timeSlot }}</button>
+          </td>
+          <td>
+            <button mat-stroked-button [ngClass]="{'selected': isSelected(2, timeSlot)}" (click)="toggleTimeSlot(2, timeSlot)">{{ timeSlot }}</button>
+          </td>
+          <td>
+            <button mat-stroked-button [ngClass]="{'selected': isSelected(3, timeSlot)}" (click)="toggleTimeSlot(3, timeSlot)">{{ timeSlot }}</button>
+          </td>
+          <td>
+            <button mat-stroked-button [ngClass]="{'selected': isSelected(4, timeSlot)}" (click)="toggleTimeSlot(4, timeSlot)">{{ timeSlot }}</button>
+          </td>
+          <td>
+            <button mat-stroked-button [ngClass]="{'selected': isSelected(5, timeSlot)}" (click)="toggleTimeSlot(5, timeSlot)">{{ timeSlot }}</button>
+          </td>
+          <td>
+            <button mat-stroked-button [ngClass]="{'selected': isSelected(6, timeSlot)}" (click)="toggleTimeSlot(6, timeSlot)">{{ timeSlot }}</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </form>
 </div>
 

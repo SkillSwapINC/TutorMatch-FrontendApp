@@ -167,7 +167,7 @@ export class BaseService<T> {
    * @returns {Observable<T>} - An observable with the updated user data.
    */
   public updateUser(user: T, id: number): Observable<T> {
-    return this.http.put<T>(`${this.resourcePath()}/${id}`, JSON.stringify(user), this.httpOptions)
+    return this.http.patch<T>(`${this.resourcePath()}/${id}`, JSON.stringify(user), this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 

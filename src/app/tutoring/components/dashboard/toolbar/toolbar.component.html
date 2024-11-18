@@ -1,8 +1,8 @@
 <!--toolbar-->
 <mat-toolbar color="warn" class="custom-toolbar">
   <!-- logo  -->
-  <div class="container">
-    <img class="logo" ngSrc="TutorMatch.png" alt="user" height="118" width="50">
+  <div class="container" (click)="navigateToDashboard()">
+    <img class="logo" ngSrc="https://i.ibb.co/zhWRvvY/Tutor-Match-removebg-preview.png" alt="user" width="106" height="118" style="width: auto;">
     <div>
       <span class="name">TutorMatch</span>
     </div>
@@ -11,10 +11,19 @@
   <!-- search bar -->
   <div class="search-bar-container">
     <mat-form-field color="warn" class="search-bar" appearance="outline">
-      <input matInput [placeholder]="'footer.search' | translate">
-      <button mat-icon-button matSuffix aria-label="Search">
+      <input matInput
+             [placeholder]="'footer.search' | translate"
+             [formControl]="searchControl"
+             [matAutocomplete]="auto"
+             (keyup.enter)="onSearch()">
+      <button mat-icon-button matSuffix aria-label="Search" (click)="onSearch()">
         <mat-icon>search</mat-icon>
       </button>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSemesterSelect($event.option.value)">
+        <mat-option *ngFor="let semester of (filteredSemesters | async)" [value]="semester.labelKey">
+          {{ semester.labelKey | translate }}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
   </div>
 
@@ -26,7 +35,7 @@
     </button>
 
     <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="Profile" class="avatar">
-      <img [src]="currentUser.avatar" alt="Avatar">
+      <img [src]="currentUser.avatarUrl" alt="Avatar">
     </button>
 
     <button mat-icon-button [matMenuTriggerFor]="languageMenu" aria-label="Change language">

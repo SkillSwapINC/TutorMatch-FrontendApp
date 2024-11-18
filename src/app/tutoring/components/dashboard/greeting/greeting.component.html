@@ -1,12 +1,12 @@
 <mat-card-header>
   <div class="user-info">
     <div mat-card-avatar class="user-avatar">
-      <img [src]="currentUser.avatar" alt="Avatar" class="avatar">
+      <img [src]="currentUser.avatarUrl" alt="Avatar" class="avatar">
     </div>
     <div class="user-details">
-      <mat-card-title>{{'footer.helloAgain' | translate}}, {{ currentUser?.name }} {{ currentUser?.lastName }}!</mat-card-title>
-      <mat-card-subtitle style="color: #ffffff">{{currentUser?.cycle}}° {{'footer.semester' | translate}} - <br> 2024-02</mat-card-subtitle>
+      <mat-card-title>{{'footer.helloAgain' | translate}}, {{ currentUser?.fullName }}!</mat-card-title>
+      <mat-card-subtitle style="color: #ffffff">{{currentUser?.semester}}° {{'footer.semester' | translate}}<br>2024-02</mat-card-subtitle>
     </div>
-    <button mat-button style="color: #ff0000" color="warn" class="edit-semester" (click)="openEditTutoringDialog()">{{'footer.editSemester' | translate}}</button>
+    <button *ngIf="isTutor" mat-button style="color: #ff0000" color="warn" class="edit-semester" (click)="openTutorings()">{{'footer.MyTutorings' | translate}}</button>
   </div>
 </mat-card-header>

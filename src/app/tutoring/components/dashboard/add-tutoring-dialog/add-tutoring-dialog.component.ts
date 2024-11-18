@@ -1,6 +1,9 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { TutoringService } from '../../../services/tutoring.service';
+import {Tutoring} from "../../../model/tutoring.entity";
+import {Course} from "../../../model/course.entity";
+import {User} from "../../../model/user.entity";
 
 
 @Component({
@@ -9,17 +12,17 @@ import { TutoringService } from '../../../services/tutoring.service';
   styleUrls: ['./add-tutoring-dialog.component.css']
 })
 export class AddTutoringDialogComponent {
-  @Output() addTutoring = new EventEmitter<any>();
+  @Output() addTutoring = new EventEmitter<Tutoring>();
   semesters = ['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth', 'Seventh', 'Eighth'];
   selectedSemester = '';
-  availableCourses: any[] = [];
-  selectedCourse = '';
+  availableCourses: { name: string; id: number }[] = [];
+  selectedCourse: Course | undefined;
   description = '';
   price: number = 0;
   whatTheyWillLearn = '';
   daysOfWeek = [0, 1, 2, 3, 4, 5, 6];
-  timeSlots = ['10-11', '11-12', '15-16', '17-18', '20-21'];
-  currentUser: any;
+  timeSlots: string[] = ['8-9', '10-11', '12-13', '14-15', '16-17', '18-19', '20-21'];
+  currentUser: User | undefined;
   availableTimes: { [day: number]: { [timeSlot: string]: boolean } } = {};
   courseImage: string | undefined;
   imageUploaded: boolean = false;
@@ -93,12 +96,24 @@ export class AddTutoringDialogComponent {
 
   }
 
+  /**
+   * @method loadCurrentUser
+   * @description Load the current user from local storage
+   * @returns void
+   */
+
   loadCurrentUser(): void {
     const userData = localStorage.getItem('currentUser');
     if (userData) {
-      this.currentUser = JSON.parse(userData);
+      this.currentUser = new User(JSON.parse(userData));
     }
   }
+
+  /**
+   * @method initializeTimeSlots
+   * @description Initialize the available times for each day of the week
+   * @returns void
+   */
 
   initializeTimeSlots(): void {
     for (let day of this.daysOfWeek) {
@@ -109,30 +124,64 @@ export class AddTutoringDialogComponent {
     }
   }
 
+  /**
+   * @method onSemesterSelected
+   * @description Handle the selection of a semester
+   * @returns void
+   */
+
   onSemesterSelected(): void {
     const selectedSemesterObj = this.allSemesters.find(sem => sem.name === this.selectedSemester);
     this.availableCourses = selectedSemesterObj ? selectedSemesterObj.courses : [];
     this.checkFormValidity();
   }
 
+  /**
+   * @method toggleTimeSlot
+   * @description Toggle the availability of a time slot
+   * @param day
+   * @param timeSlot
+   */
+
   toggleTimeSlot(day: number, timeSlot: string): void {
     this.availableTimes[day][timeSlot] = !this.availableTimes[day][timeSlot];
     this.checkFormValidity();
   }
 
+  /**
+   * @method isSelected
+   * @description Check if a time slot is selected
+   * @param day
+   * @param timeSlot
+   * @returns boolean
+   */
+
   isSelected(day: number, timeSlot: string): boolean {
     return this.availableTimes[day][timeSlot];
   }
 
+  /**
+   * @method isFormValid
+   * @description Check if the form is valid
+   * @returns boolean
+   *
+   */
+
   isFormValid(): boolean {
-  return this.selectedSemester !== '' &&
-         this.selectedCourse !== '' &&
-         this.description !== '' &&
-         this.price > 0 &&
-         this.whatTheyWillLearn !== '' &&
-         this.courseImage !== undefined &&
-         this.areTimeSlotsSelected();
+    return this.selectedSemester !== '' &&
+      this.selectedCourse !== undefined &&
+      this.description !== '' &&
+      this.price > 0 &&
+      this.whatTheyWillLearn !== '' &&
+      this.courseImage !== undefined &&
+      this.areTimeSlotsSelected();
   }
+
+  /**
+   * @method areTimeSlotsSelected
+   * @description Check if time slots are selected
+   * @returns boolean
+   */
 
   areTimeSlotsSelected(): boolean {
     for (let day of this.daysOfWeek) {
@@ -145,27 +194,59 @@ export class AddTutoringDialogComponent {
     return false;
   }
 
+  /**
+   * @method checkFormValidity
+   * @description Check the validity of the form
+   * @returns void
+   */
+
   checkFormValidity(): void {
     this.isFormValidFlag = this.isFormValid();
   }
 
+  /**
+   * @method onConfirmAddTutoring
+   * @description Confirm the addition of a tutoring
+   * @returns void
+   */
+
   onConfirmAddTutoring(): void {
     if (this.isFormValid() && this.price > 0) {
       const selectedTimes = this.getSelectedTimes();
-      const newTutoring = {
-        id: 0,
-        title: this.selectedCourse ? `${this.selectedCourse} (${this.selectedSemester})` : 'Untitled Tutoring',
-        description: this.description || 'No description provided',
-        price: this.price || 0,
-        times: selectedTimes,
+      const formattedTimes = this.formatTimesForApi(selectedTimes);
+      const newTutoring = new Tutoring({
+        title: this.selectedCourse?.name || '',
+        description: this.description,
+        price: this.price,
+        times: formattedTimes,
         image: this.courseImage || '',
         whatTheyWillLearn: this.whatTheyWillLearn,
-        tutorId: this.currentUser?.tutorId || 1,
-        courseId: this.availableCourses.find(course => course.name === this.selectedCourse)?.id || 1
-      };
+        tutorId: this.currentUser?.id || 0,
+        courseId: this.selectedCourse?.id || 0
+      });
       this.createTutoring(newTutoring);
     }
   }
+
+  /**
+   * @method formatTimesForApi
+   * @description Format the times for the API
+   * @param selectedTimes
+   * @returns { dayOfWeek: number, availableHours: string[] }[]
+   */
+
+  formatTimesForApi(selectedTimes: { [day: number]: string[] }): { dayOfWeek: number, availableHours: string[] }[] {
+    return this.daysOfWeek.map(day => ({
+      dayOfWeek: day,
+      availableHours: selectedTimes[day] || []
+    }));
+  }
+
+  /**
+   * @method getSelectedTimes
+   * @description Get the selected times
+   * @returns { [day: number]: string[] }
+   */
 
   getSelectedTimes(): { [day: number]: string[] } {
     let selectedTimes: { [day: number]: string[] } = {};
@@ -180,18 +261,42 @@ export class AddTutoringDialogComponent {
     return selectedTimes;
   }
 
+  /**
+   * @method closeDialog
+   * @description Close the dialog
+   * @returns void
+   */
+
   closeDialog(): void {
     this.dialogRef.close();
   }
 
-  createTutoring(tutoring: any): void {
+  /**
+   * @method createTutoring
+   * @description Create a tutoring
+   * @param tutoring
+   * @returns void
+   */
+
+  createTutoring(tutoring: Tutoring): void {
     this.tutoringService.createTutoring(tutoring).subscribe({
       next: (response) => {
-        this.addTutoring.emit(response);
-        this.dialogRef.close(response);
+        const createdTutoring = new Tutoring(response);
+        this.addTutoring.emit(createdTutoring);
+        this.dialogRef.close(createdTutoring);
       },
+      error: (error) => {
+        console.error('Error creating tutoring', error);
+      }
     });
   }
+
+  /**
+   * @method onFileSelected
+   * @description Handle the selection of a file
+   * @param event
+   * @returns void
+   */
 
   onFileSelected(event: any): void {
     const file = event.target.files[0];

@@ -1,0 +1,10 @@
+<div class="container">
+  <h1 mat-dialog-title style="color: white;">{{ 'footer.confirmation' | translate }}</h1>
+  <div mat-dialog-content>
+    <p>{{ 'footer.deleteMessage' | translate }}</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()" color="warn">{{ 'footer.cancel' | translate }}</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial color="warn">{{ 'footer.accept' | translate }}</button>
+  </div>
+</div>
