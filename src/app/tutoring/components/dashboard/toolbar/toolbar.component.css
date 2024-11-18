@@ -14,6 +14,12 @@
   align-items: center;
 }
 
+.container:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: ease-in-out 0.3s;
+}
+
 .name{
   font-weight: bold;
   font-size: 24px;

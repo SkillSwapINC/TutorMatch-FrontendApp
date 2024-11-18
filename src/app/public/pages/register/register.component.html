@@ -28,7 +28,7 @@
     <form [formGroup]="registerForm" class="signup-form">
       <mat-form-field color="warn" appearance="fill">
         <mat-label>{{ 'footer.pName' | translate }}</mat-label>
-        <input matInput type="text" formControlName="name" [placeholder]="'footer.pName' | translate" required>
+        <input matInput type="text" formControlName="firstName" [placeholder]="'footer.pName' | translate" required>
       </mat-form-field>
 
       <mat-form-field color="warn" appearance="fill">
@@ -47,7 +47,7 @@
 
       <mat-form-field color="warn" appearance="fill">
         <mat-label>{{ 'footer.pCycle' | translate }}</mat-label>
-        <input matInput type="number" formControlName="cycle" [placeholder]="'footer.pCycle' | translate" min="1" max="10" required>
+        <input matInput type="number" formControlName="semester" [placeholder]="'footer.pCycle' | translate" min="1" max="10" required>
       </mat-form-field>
 
       <mat-form-field color="warn" appearance="fill">
@@ -63,7 +63,7 @@
       </mat-form-field>
 
       <div class="radio-group">
-        <mat-radio-group formControlName="role" color="warn" (change)="onRoleChange($event)">
+        <mat-radio-group formControlName="roleType" color="warn" (change)="onRoleChange($event)">
           <mat-radio-button value="teacher">{{ 'footer.teacher' | translate }}</mat-radio-button>
           <mat-radio-button value="student">{{ 'footer.student' | translate }}</mat-radio-button>
         </mat-radio-group>

@@ -1,5 +1,5 @@
 <app-toolbar></app-toolbar>
-<div class="container" *ngIf="semesterCourses?.length">
+<div class="container" *ngIf="semesterCourses.length > 0; else noTutorings">
   <h1>{{ semesterName }}</h1>
 
   <div class="courses-grid">
@@ -14,4 +14,14 @@
     </a>
   </div>
 </div>
+
+<ng-template #noTutorings>
+  <div class="container">
+    <h1>{{ semesterName }}</h1>
+    <div class="centered-container">
+      <p>{{ 'footer.noTutoringsCourse' | translate }}</p>
+    </div>
+  </div>
+</ng-template>
+
 <app-footer-content></app-footer-content>

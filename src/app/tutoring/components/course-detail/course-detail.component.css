@@ -213,11 +213,20 @@ body {
 }
 
 .time-table td.validated {
-  background-color: #a2ff82;
-  color: black;
+  color: #37D85A;
+  font-weight: bold;
+  border: 2px solid #37D85A;
 }
 
-/* Responsive styles */
+.highlight {
+  color: green;
+  font-weight: bold;
+}
+
+td {
+  color: gray;
+}
+
 @media (max-width: 1024px) {
   .course-detail {
     flex-direction: column;
@@ -298,3 +307,5 @@ body {
     font-size: 12px;
   }
 }
+
+

@@ -35,7 +35,7 @@
     "search": "Search any course",
     "helloAgain": "Hello again",
     "semester": "Semester",
-    "editSemester": "Edit Semester",
+    "MyTutorings": "My Tutorings",
     "whatLearn": "What to learn now",
     "softwareSemesters": "Software Engineering Semesters",
     "first": "First Semester",
@@ -118,6 +118,15 @@
     "softwareSemester11": "Design of Software Engineering Experiments",
     "softwareSemester12": "Software Architecture Fundamentals",
     "softwareSemester13": "Emerging Software Architectures",
-    "softwareSemester14": "Computer Project Management"
+    "softwareSemester14": "Computer Project Management",
+    "description": "Description",
+    "editTutoring": "Edit Tutoring",
+    "deleteTutoring": "Delete Tutoring",
+    "confirmation": "Confirmation",
+    "deleteMessage": "Are you sure you want to delete this tutoring?",
+    "cancel": "Cancel",
+    "accept": "Accept",
+    "noTutorings": "No tutorings were registered",
+    "noTutoringsCourse": "No tutorings were registered for this course"
   }
 }

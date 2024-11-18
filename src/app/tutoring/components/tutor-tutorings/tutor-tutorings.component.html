@@ -1,0 +1,34 @@
+<app-toolbar></app-toolbar>
+<div class="container" *ngIf="tutorings.length > 0; else noTutorings">
+  <div class="tutoring-grid">
+    <mat-card class="tutoring-card" *ngFor="let tutoring of tutorings">
+      <img *ngIf="tutoring.image" mat-card-image [src]="tutoring.image" alt="Imagen del curso">
+      <div class="tutoring-card-div" (click)="goToCourseDetail(tutoring.id)">
+        <mat-card-header>
+          <mat-card-title><strong>{{ tutoring.title }}</strong></mat-card-title>
+        </mat-card-header>
+        <mat-card-content style="padding-top: 10px">
+          <p><strong>{{ 'footer.description' | translate }}:</strong> {{ truncateDescription(tutoring.description, 10) }}</p>
+          <p><strong>{{ 'footer.Price' | translate }}:</strong> S/.{{ tutoring.price }}</p>
+        </mat-card-content>
+      </div>
+      <mat-card-actions class="vertical-buttons">
+        <button mat-raised-button (click)="editTutoring(tutoring.id)">
+          <mat-icon>edit</mat-icon>{{ 'footer.editTutoring' | translate }}
+        </button>
+        <button mat-raised-button (click)="confirmDeleteTutoring(tutoring.id)">
+          <mat-icon>delete</mat-icon>{{ 'footer.deleteTutoring' | translate }}
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+<ng-template #noTutorings>
+  <div class="centered-container">
+    <p>{{ 'footer.noTutorings' | translate }}</p>
+  </div>
+</ng-template>
+
+<app-footer-content></app-footer-content>
+

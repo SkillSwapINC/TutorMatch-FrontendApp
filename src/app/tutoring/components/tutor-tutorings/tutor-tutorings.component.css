@@ -1,25 +1,19 @@
-body, html {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
 .container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  margin: 5rem;
 }
 
-.courses-grid {
+.tutoring-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
   box-sizing: border-box;
+  margin: 3rem;
 }
 
-.course-card {
+.tutoring-card {
   background-color: #2c2c2c;
   padding: 15px;
   border-radius: 8px;
@@ -30,41 +24,47 @@ body, html {
   transition: transform 0.3s ease-in-out;
 }
 
-.course-card:hover {
+.tutoring-card:hover {
   transform: scale(1.03);
 }
 
-.course-card img {
+.tutoring-card img {
   max-width: 100%;
   border-radius: 4px;
   height: 150px;
   object-fit: cover;
 }
 
-.course-card h2 {
+.tutoring-card h3 {
   font-size: 1.2rem;
   margin: 10px 0;
 }
 
-.course-card p {
+.tutoring-card p {
   font-size: 0.9rem;
   margin: 5px 0;
 }
 
-.request-tutoring-button {
-  background-color: #7b0523;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 10px;
-  font-size: 0.9rem;
-  transition: background-color 0.3s ease;
+.tutoring-card .mat-card-actions {
+  display: flex;
+  justify-content: space-between;
 }
 
-.request-tutoring-button:hover {
-  background-color: #f6405f;
+.tutoring-card-div:hover {
+  cursor: pointer;
+}
+
+.vertical-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+}
+.vertical-buttons button {
+  width: 100%;
+  background: #7a0522;
+  color: white;
 }
 
 .centered-container {
@@ -73,7 +73,7 @@ body, html {
   align-items: center;
   height: 100vh;
   text-align: center;
-  margin-top: -100px;
+  margin: 0;
 }
 
 .centered-container p {
@@ -82,7 +82,7 @@ body, html {
 }
 
 @media (max-width: 1024px) {
-  .courses-grid {
+  .tutoring-grid {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 
@@ -96,25 +96,20 @@ body, html {
     padding: 0.5rem;
   }
 
-  .courses-grid {
+  .tutoring-grid {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 15px;
   }
 
-  .course-card {
+  .tutoring-card {
     padding: 10px;
   }
 
-  .course-card h2 {
+  .tutoring-card h3 {
     font-size: 1rem;
   }
 
-  .course-card p {
-    font-size: 0.8rem;
-  }
-
-  .request-tutoring-button {
-    padding: 8px 16px;
+  .tutoring-card p {
     font-size: 0.8rem;
   }
 
@@ -124,24 +119,19 @@ body, html {
 }
 
 @media (max-width: 480px) {
-  .courses-grid {
+  .tutoring-grid {
     grid-template-columns: 1fr;
   }
 
-  .course-card img {
+  .tutoring-card img {
     height: 200px;
   }
 
-  .course-card h2 {
+  .tutoring-card h3 {
     font-size: 1.1rem;
   }
 
-  .course-card p {
-    font-size: 0.9rem;
-  }
-
-  .request-tutoring-button {
-    padding: 10px 20px;
+  .tutoring-card p {
     font-size: 0.9rem;
   }
 
