@@ -154,6 +154,8 @@ export class CourseDetailComponent implements OnInit {
    */
 
   isTimeSlotValidated(day: number, timeSlot: string): boolean | undefined {
-  return this.tutoring?.times[day]?.availableHours.includes(timeSlot);
-}
+    return this.tutoring?.times[day]?.availableHours.includes(timeSlot);
+  }
+
+  protected readonly encodeURIComponent = encodeURIComponent;
 }
